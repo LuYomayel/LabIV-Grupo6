@@ -77,6 +77,18 @@ public class ServletAlumno extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/ListarAlumnos.jsp");
 			rd.forward(request, response);
 	}
+		
+		if(request.getParameter("btnEliminar")!=null) {
+			int id= Integer.parseInt(request.getParameter("legajo").toString());
+			AlumnoDao dao =new AlumnoDao();
+			dao.eliminarAlumno(id);
+			
+			ArrayList<Alumno> lista= dao.ListarAlumnos();
+			request.setAttribute("listita", lista);
+			RequestDispatcher rd = request.getRequestDispatcher("/");
+			rd.forward(request, response);
+		}
+		
 	}
 
 }

@@ -76,6 +76,33 @@ public class DocenteDao {
 		}
 		return listaDocentes;
 		}
+	
+	public int eliminarDocente(int id)
+	{
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int filas=0;
+		Connection cn = null;
+		try
+		{
+			cn = DriverManager.getConnection(host+dbName, user,pass);
+			Statement st = cn.createStatement();
+			String query = "DELETE FROM docentes WHERE legajo="+id;
+			filas=st.executeUpdate(query);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return filas;
+	}
+	
 	}
 	
 	

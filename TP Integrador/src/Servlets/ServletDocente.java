@@ -77,6 +77,17 @@ public class ServletDocente extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/ListarDocentes.jsp");
 			rd.forward(request, response);
 	}
+		
+		if(request.getParameter("btnEliminar")!=null) {
+			int id= Integer.parseInt(request.getParameter("legajo").toString());
+			DocenteDao dao =new DocenteDao();
+			dao.eliminarDocente(id);
+			
+			ArrayList<Docente> lista= dao.ListarDocentes();
+			request.setAttribute("listita", lista);
+			RequestDispatcher rd = request.getRequestDispatcher("/");
+			rd.forward(request, response);
+		}
 
 }
 }
