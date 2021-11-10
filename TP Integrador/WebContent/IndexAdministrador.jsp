@@ -15,8 +15,18 @@
             <label for="btnMenu"></label>
             <nav class="menu">
                 <ul>
-                        <li><a href="#">Profesores</a></li>
-                        <li><a href="#">Alumnos</a></li>
+                        <li><a href="#">Profesores</a>
+                        <ul id="desple">
+                                <li><a href="#">Agregado de Profesor</a></li>
+                                <li><a href="#">Listado de Profesores</a></li>
+                            </ul>
+                            </li>
+                        <li><a href="#">Alumnos</a>
+                        <ul id="desple">
+                                <li><a href="#">Agregado de Alumno</a></li>
+                                <li><a href="#">Listado de alumnos</a></li>
+                            </ul>
+                            </li>
                         <li><a href="#">Cursos</a>
                         <ul id="desple">
                                 <li><a href="#">Agregado de cursado</a></li>
