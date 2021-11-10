@@ -99,6 +99,35 @@ public int eliminarAlumno(int id)
 	}
 	return filas;
 }
+
+public Alumno obtenerAlumno(String apellido) {
+	Alumno x = new Alumno();
+	Connection cn = null;
+	try {
+		cn = DriverManager.getConnection(host+dbName,user,pass);
+		Statement st =cn.createStatement();
+		String query = "SELECT * FROM alumnos WHERE apellido="+apellido;
+		ResultSet rs = st.executeQuery(query);
+		rs.next();
+		x.setLegajo(rs.getInt("legajo"));
+		x.setDni(rs.getString("dni"));
+		x.setNombre(rs.getString("nombre"));
+		x.setApellido(rs.getString("apellido"));
+		x.setFechanacimiento(rs.getString("fechanacimiento"));
+		x.setDireccion(rs.getString("direccion"));
+		x.setNacionalidad(rs.getString("nacionalidad"));
+		x.setProvincia(rs.getString("provincia"));
+		x.setEmail(rs.getString("email"));
+		x.setTelefono(rs.getString("telefono"));			
+	}
+	catch(Exception e)
+	{
+		e.printStackTrace();
+	}
+	return x;
+	
+	
+}
 }
 	
 
