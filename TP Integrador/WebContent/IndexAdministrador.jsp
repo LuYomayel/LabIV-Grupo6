@@ -15,7 +15,7 @@
             <label for="btnMenu"></label>
             <nav class="menu">
                 <ul>
-                        <li><a href="#">Profesores</a>
+                        <li><a href="#">Profesores </a>
                         <ul id="desple">
                                 <li><a href="#">Agregado de Profesor</a></li>
                                 <li><a href="#">Listado de Profesores</a></li>
