@@ -24,7 +24,7 @@ public class DocenteDaoImpl implements DocenteDao{
 			// TODO Auto-generated catch block
 			e.printStackTrace();						
 		}
-		String query="INSERT INTO docentes(dni,nombre,apellido,fechanacimiento,direccion,localidad,nacionalidad,email,telefono)VALUES('"+docente.getDni()+"','"+docente.getNombre()+"','"+docente.getApellido()+"','"+docente.getFechanacimiento()+"','"+docente.getDireccion()+"','"+docente.getLocalidad()+"','"+docente.getNacionalidad()+"','"+docente.getEmail()+"','"+docente.getTelefono()+"')";
+		String query="INSERT INTO docentes(legajo_Docente, Dni_Docente, Nombre_Docente, Apellido_Docente, FechaNac_Docente, Localidad_Docente, Telefono_Docente,Nacionalidad_Docente, Email_Docente, Contrasenia_Docente)VALUES("+docente.getLegajo()+",'"+docente.getDni()+"','"+docente.getNombre()+"','"+docente.getApellido()+"','"+docente.getFechanacimiento()+"','"+docente.getLocalidad()+"','"+docente.getTelefono()+"','"+docente.getNacionalidad()+"','"+docente.getEmail()+"','"+docente.getContraseña()+"')";
 		Connection cn = null;
 		int filas =0;
 		try {

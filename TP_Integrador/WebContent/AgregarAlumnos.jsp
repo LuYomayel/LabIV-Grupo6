@@ -38,7 +38,7 @@
 	
 	<h1><p align="center";" ><b>Agregar Alumnos </b> </p></h1>
 	
-	<form action="ServletAlumno" method="get" class ="contenedor">
+	<form action="ServletAlumno" method="post" class ="contenedor">
 	<table>
 	<% 
 		Alumno alumno = new Alumno(); 
@@ -65,9 +65,7 @@
 		<tr>
 			<td>Provincia</td><td><input type="text" name="txtProvincia"></td>
 		</tr>
-		<tr>
-			<td>Localidad</td><td><input type="text" name="txtLocalidad"></td>
-		</tr>
+		
 		<tr>
 			<td>Direccion</td><td><input type="text" name="txtDireccion"></td>
 		</tr>

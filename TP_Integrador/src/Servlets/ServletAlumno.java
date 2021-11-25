@@ -36,7 +36,7 @@ public class ServletAlumno extends HttpServlet {
 		
 		
 		if(request.getParameter("btnAgregar")!=null){
-			if(request.getParameter("txtDni")!=null && request.getParameter("txtNombre")!=null && request.getParameter("txtApellido")!=null && request.getParameter("txtFecha")!=null&& request.getParameter("txtDireccion")!=null&& request.getParameter("txtNacionalidad")!=null&& request.getParameter("txtProvincia")!=null && request.getParameter("txtLocalidad") !=null && request.getParameter("txtEmail")!=null&& request.getParameter("txtTelefono")!=null) {
+			if(request.getParameter("txtDni")!=null && request.getParameter("txtNombre")!=null && request.getParameter("txtApellido")!=null && request.getParameter("txtFecha")!=null&& request.getParameter("txtDireccion")!=null&& request.getParameter("txtNacionalidad")!=null&& request.getParameter("txtProvincia")!=null && request.getParameter("txtEmail")!=null&& request.getParameter("txtTelefono")!=null) {
 				int filas =0;
 				Alumno alu = new Alumno();
 				
@@ -48,7 +48,7 @@ public class ServletAlumno extends HttpServlet {
 				alu.setDireccion(request.getParameter("txtDireccion"));
 				alu.setNacionalidad(request.getParameter("txtNacionalidad"));
 				alu.setProvincia(request.getParameter("txtProvincia"));
-				alu.setLocalidad(request.getParameter("txtLocalidad"));
+				
 				alu.setEmail(request.getParameter("txtEmail"));
 				alu.setTelefono(request.getParameter("txtTelefono"));
 				
