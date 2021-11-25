@@ -1,0 +1,111 @@
+create schema bdutn;
+
+use bdutn;
+
+CREATE TABLE `bdutn`.`carreras` (
+  `idCarreras` INT NOT NULL,
+  `Descripcion_carrera` VARCHAR(45) NULL,
+  PRIMARY KEY (`idCarreras`));
+
+CREATE TABLE `bdutn`.`materiasxcarrera` (
+  `idMateriasxCarrera` INT NOT NULL,
+  `idCarrera_Mat` INT NULL,
+  `IdMateria_Mat` INT NULL,
+  PRIMARY KEY (`idMateriasxCarrera`));
+
+ALTER TABLE `bdutn`.`materiasxcarrera` 
+ADD INDEX `FK_MateriasxCarrera_idx` (`idCarrera_Mat` ASC),
+DROP INDEX `FK_MateriasxCarrera_idx` ;
+;
+CREATE TABLE `bdutn`.`materias` (
+  `idMaterias` INT NOT NULL,
+  `Descripcion_Materias` VARCHAR(45) NULL,
+  PRIMARY KEY (`idMaterias`));
+
+ALTER TABLE `bdutn`.`materiasxcarrera` 
+ADD INDEX `FK_MateriasxCarrera_Mat_idx` (`IdMateria_Mat` ASC);
+;
+ALTER TABLE `bdutn`.`materiasxcarrera` 
+ADD CONSTRAINT `FK_MateriasxCarrera_Mat`
+  FOREIGN KEY (`IdMateria_Mat`)
+  REFERENCES `bdutn`.`materias` (`idMaterias`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+CREATE TABLE `bdutn`.`alumnos` (
+  `idAlumnos` INT NOT NULL,
+  `Legajo` INT NOT NULL,
+  `Dni` INT NOT NULL,
+  `Nombre` VARCHAR(45) NOT NULL,
+  `Apellido` VARCHAR(45) NOT NULL,
+  `FechaNac` DATE NULL,
+  `Nacionalidad` VARCHAR(45) NULL,
+  `Provincia` VARCHAR(45) NULL,
+  `Email` VARCHAR(45) NOT NULL,
+  `Telefono` INT NULL,
+  PRIMARY KEY (`idAlumnos`),
+  UNIQUE INDEX `Legajo_UNIQUE` (`Legajo` ASC),
+  UNIQUE INDEX `Dni_UNIQUE` (`Dni` ASC));
+
+CREATE TABLE `bdutn`.`alumnosxmaterias` (
+  `idAlumnosxMaterias` INT NOT NULL,
+  `legajo_AlumnosxMaterias` INT NOT NULL,
+  `IDMateria_AlumnosxMateria` INT NOT NULL,
+  PRIMARY KEY (`idAlumnosxMaterias`));
+ALTER TABLE `bdutn`.`alumnosxmaterias` 
+ADD INDEX `FK_AlumnosxMateria_legajo_idx` (`legajo_AlumnosxMaterias` ASC),
+ADD INDEX `FK_AlumnosxMateria_Materia_idx` (`IDMateria_AlumnosxMateria` ASC);
+;
+ALTER TABLE `bdutn`.`alumnosxmaterias` 
+ADD CONSTRAINT `FK_AlumnosxMateria_legajo`
+  FOREIGN KEY (`legajo_AlumnosxMaterias`)
+  REFERENCES `bdutn`.`alumnos` (`Legajo`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `FK_AlumnosxMateria_Materia`
+  FOREIGN KEY (`IDMateria_AlumnosxMateria`)
+  REFERENCES `bdutn`.`materias` (`idMaterias`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+  CREATE TABLE `bdutn`.`docentes` (
+  `idDocentes` INT NOT NULL AUTO_INCREMENT,
+  `legajo_Docente` INT NOT NULL,
+  `Dni_Docente` INT NOT NULL,
+  `Nombre_Docente` VARCHAR(45) NULL,
+  `Apellido_Docente` VARCHAR(45) NULL,
+  `FechaNac_Docente` DATE NULL,
+  `Localidad_Docente` VARCHAR(45) NULL,
+  `Nacionalidad_Docente` VARCHAR(45) NULL,
+  `Email_Docente` VARCHAR(45) NOT NULL,
+  `Contrasenia_Docente` VARCHAR(45) NOT NULL,
+  `Telefono_Docente` VARCHAR(45) NULL,
+  PRIMARY KEY (`idDocentes`));
+
+CREATE TABLE `bdutn`.`docentexmateria` (
+  `idDocentexMateria` INT NOT NULL AUTO_INCREMENT,
+  `Legajo_DocentexMateria` INT NOT NULL,
+  `IDMateria_DocentexMateria` INT NULL,
+  PRIMARY KEY (`idDocentexMateria`));
+ALTER TABLE `bdutn`.`docentes` 
+ADD INDEX `INDEX_LEGAJO` (`legajo_Docente` ASC);
+;
+ALTER TABLE `bdutn`.`docentexmateria` 
+ADD INDEX `FK_DocentexMateria_Materia_idx` (`IDMateria_DocentexMateria` ASC);
+;
+ALTER TABLE `bdutn`.`docentexmateria` 
+ADD CONSTRAINT `FK_DocentexMateria_Materia`
+  FOREIGN KEY (`IDMateria_DocentexMateria`)
+  REFERENCES `bdutn`.`materias` (`idMaterias`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+CREATE TABLE `bdutn`.`cursos` (
+  `idCursos` INT NOT NULL,
+  `Descripcion_curso` VARCHAR(45) NULL,
+  `Semestre` INT NULL,
+  `Año` INT NULL,
+  `Alumnos` VARCHAR(45) NULL,
+  `Docentes` VARCHAR(45) NULL,
+  `Carrera` VARCHAR(45) NULL,
+  PRIMARY KEY (`idCursos`));

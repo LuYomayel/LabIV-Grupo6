@@ -34,9 +34,9 @@
             </nav>
             
 	</header>
-	<h1><p align="center";" ><b>Agregar Alumnos </b> </p><p align="center"><p align="left">
+	<h1><p align="center";" ><b>Agregar Alumnos </b> </p><p align="center"><p align="center">
 			<ul2>
-					<li2>Legajo &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   <input type="text" name="Legajo"> </li2><br>
+					<li2>Legajo &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   <input type="text" name="Legajo" class="menu2"> </li2><br>
 					<li2>Documento	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input type="text" name="Documento"></li2><br>
 					<li2>Nombre	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" name="Nombre"></li2><br>
 					<li2>Apellido  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; <input type="text" name="Legajo"></li2><br>
@@ -46,9 +46,9 @@
 					<li2>Direccion	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;<input type="text" name="Direccion"></li2><br>
 					<li2>Email	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   <input type="text" name="Email"></li2><br>
 					<li2>Telefono	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;<input type="text" name="Telefono"></li2><br><br>
-					<li2> <input type="Submit" name="AGREGAR" value="AGREGAR"></li2>				
+					<li2> </li2>				
 					
-			</ul2>
+			</ul2><input type="Submit" name="AGREGAR" value="AGREGAR" style="color: #000000">
 			
 	</h1>
 	
