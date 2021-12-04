@@ -38,7 +38,7 @@
 	
 	<h1><p aling ="Center";"  ><b> Listar Alumno</b></p> </h1>
 	<form action="ServeletAlumno" method= "post" class ="contenedor">
-		<table style="width:100%"> 
+		<table border=1 ,style="text-align: center"> 
 		<nav class= "table">
 		<tr>
 			<th>Legajo</th>
@@ -52,7 +52,10 @@
 			<th>Email</th>
 			<th>Telefono</th>
 		</tr>
+		
 				<tr>
+				<%for (Alumno a : listarAlumno)
+				{ %> 
 					<td></td>
 					<td></td>
 					<td></td>
@@ -63,6 +66,7 @@
 					<td></td>
 					<td></td>
 					<td></td>
+					<% } %>
 				</tr>
 			</nav>
 	</table>
