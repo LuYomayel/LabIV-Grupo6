@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="Stylesheet" href="Css/MenuAgregarAlumno.css" />
+<link rel="Stylesheet" href="Css/MenuAgregarProfesor.css" />
 </head>
 <body>
 <header>
@@ -13,13 +13,13 @@
                 <ul>
                         <li style="width: 276px; "><a href="#"><p align="left">Profesores</p></a>
                         <ul id="desple">
-                                <li><a href="#"><p align="left">Agregado de Profesor</p></a></li>
-                                <li><a href="#"><p align="left">Listado de Profesores</p></a></li>
+                                <li><a href="AgregarProfesores.jsp"><p align="left">Agregado de Profesor</p></a></li>
+                                <li><a href="ListadoProfesores.jsp"><p align="left">Listado de Profesores</p></a></li>
                             </ul>
                             </li><li style="width: 292px; "><a href="#"><p align="left">Alumnos</p></a>
                         <ul id="desple">
-                                <li><a href="#"><p align="left">Agregado de Alumno</p></a></li>
-                                <li><a href="#"><p align="left">Listado de alumnos</p></a></li>
+                                <li><a href="AgregarAlumnos.jsp"><p align="left">Agregado de Alumno</p></a></li>
+                                <li><a href="ListadoAlumnos.jsp"><p align="left">Listado de alumnos</p></a></li>
                             </ul>
                             </li>
                         
