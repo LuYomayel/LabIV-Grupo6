@@ -54,9 +54,9 @@
 		</tr>
 		
 				<tr>
-				<%for (Alumno a : listarAlumno)
+			<%for (Alumno a : listarAlumno)
 				{ %> 
-					<td></td>
+					<td>a.id_legajo</td>
 					<td></td>
 					<td></td>
 					<td></td>
