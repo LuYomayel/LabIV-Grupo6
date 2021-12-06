@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.AlumnoDaoImpl.java"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@page import="Entidad.Alumno" %>
@@ -54,18 +56,18 @@
 		</tr>
 		
 				<tr>
-			<%for (Alumno a : listarAlumno)
+			<%for (Alumno a : ListarAlumnos)
 				{ %> 
-					<td>a.id_legajo</td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					<td>a.Legajo</td>
+					<td>a.Documento</td>
+					<td>a.Nombre</td>
+					<td>a.Apellido</td>
+					<td>a.FechaNac</td>
+					<td>a.Nacionalidad</td>
+					<td>a.Provincia</td>
+					<td>a.Direccion</td>
+					<td>a.Email</td>
+					<td>a.Telefono</td>
 					<% } %>
 				</tr>
 			</nav>
