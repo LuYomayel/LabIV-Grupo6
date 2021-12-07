@@ -13,12 +13,12 @@
                 <ul>
                         <li style="width: 276px; "><a href="#"><p align="left">Profesores</p></a>
                         <ul id="desple">
-                                <li><a href="AgregarProfesores.jsp"><p align="left">Agregado de Profesor</p></a></li>
+                                <li><a href="ServletDocente?Agregar=1"><p align="left">Agregado de Profesor</p></a></li>
                                 <li><a href="ServletDocente?Param=1"><p align="left">Listado de Profesores</p></a></li>
                             </ul>
                             </li><li style="width: 292px; "><a href="#"><p align="left">Alumnos</p></a>
                         <ul id="desple">
-                                <li><a href="AgregarAlumnos.jsp"><p align="left">Agregado de Alumno</p></a></li>
+                                <li><a href="ServletAlumno?Agregar=1"><p align="left">Agregado de Alumno</p></a></li>
                                 <li><a href="ServletAlumno?Param=1"><p align="left">Listado de alumnos</p></a></li>
                             </ul>
                             </li>
@@ -35,13 +35,22 @@
             
 	</header>
 	
+	<% 
+	int legajo=1000;
+	if(request.getAttribute("legajo")!=null)
+	{
+		legajo = (int)request.getAttribute("legajo");
+	}
+
+ 	%>
+	
 	<h1><p align="center";" ><b>Agregar Docente </b> </p></h1>
 	
 	<form action="ServletDocente" method="post" class ="contenedor">
 	<table>
 	
 		<tr>
-			<td>Legajo</td><td><input type="text" name="Legajo" class="menu2" ></td>
+			<td>Legajo</td><td><input type="text" name="Legajo" class="menu2" value="<%=legajo%>" readonly="true"></td>
 		</tr>
 		<tr>
 			<td>Documento</td><td><input type="text" name="txtDni"></td>

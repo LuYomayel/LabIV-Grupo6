@@ -91,6 +91,26 @@ public class ServletAlumno extends HttpServlet {
 	        rd.forward(request, response);
 		}
 		
+		if(request.getParameter("Agregar")!=null) {
+			int legajo = 1000;
+			AlumnoDaoImpl dao = new AlumnoDaoImpl();
+			ArrayList<Alumno> lista= dao.ListarAlumnos();
+			request.setAttribute("listaA", lista);
+			
+			if(lista != null) {
+				for(Alumno alumno : lista) {
+					if(alumno.getLegajo()>legajo) legajo = alumno.getLegajo();
+					
+				}
+				
+			}
+			legajo++;
+			
+			request.setAttribute("legajo", legajo);
+			RequestDispatcher rd = request.getRequestDispatcher("/AgregarAlumnos.jsp");
+			rd.forward(request, response);
+		}
+		
 	}
 
 	/**

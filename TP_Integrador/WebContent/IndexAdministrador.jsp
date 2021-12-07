@@ -17,13 +17,13 @@
                 <ul>
                         <li><a href="#">Profesores </a>
                         <ul id="desple">
-                                <li><a href="AgregarProfesores.jsp">Agregado de Profesor</a></li>
+                                <li><a href="ServletDocente?Agregar=1">Agregado de Profesor</a></li>
                                 <li><a href="ServletDocente?Param=1">Listado de Profesores</a></li>
                             </ul>
                             </li>
                         <li><a href="#">Alumnos</a>
                         <ul id="desple">
-                                <li><a href="AgregarAlumnos.jsp">Agregado de Alumno</a></li>
+                                <li><a href="ServletAlumno?Agregar=1">Agregado de Alumno</a></li>
                                 <li><a href="ServletAlumno?Param=1">Listado de alumnos</a></li>
                             </ul>
                             </li>

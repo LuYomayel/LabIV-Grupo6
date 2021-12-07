@@ -57,6 +57,25 @@ public class ServletDocente extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/ListadoProfesores.jsp");   
 	        rd.forward(request, response);
 		}
+		if(request.getParameter("Agregar")!=null) {
+			int legajo = 1000;
+			DocenteDaoImpl dao = new DocenteDaoImpl();
+			ArrayList<Docente> lista= dao.ListarDocentes();
+			request.setAttribute("listaA", lista);
+			
+			if(lista != null) {
+				for(Docente docente : lista) {
+					if(docente.getLegajo()>legajo) legajo = docente.getLegajo();
+					
+				}
+				
+			}
+			legajo++;
+			
+			request.setAttribute("legajo", legajo);
+			RequestDispatcher rd = request.getRequestDispatcher("/AgregarProfesores.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 	/**

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="Entidad.Alumno" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,12 +15,12 @@
                 <ul>
                         <li style="width: 276px; "><a href="#"><p align="left">Profesores</p></a>
                         <ul id="desple">
-                                <li><a href="AgregarProfesores.jsp"><p align="left">Agregado de Profesor</p></a></li>
+                                <li><a href="ServletDocente?Agregar=1"><p align="left">Agregado de Profesor</p></a></li>
                                 <li><a href="ServletDocente?Param=1"><p align="left">Listado de Profesores</p></a></li>
                             </ul>
                             </li><li style="width: 292px; "><a href="#"><p align="left">Alumnos</p></a>
                         <ul id="desple">
-                                <li><a href="AgregarAlumnos.jsp"><p align="left">Agregado de Alumno</p></a></li>
+                                <li><a href="ServletAlumno?Agregar=1"><p align="left">Agregado de Alumno</p></a></li>
                                 <li><a href="ServletAlumno?Param=1"><p align="left">Listado de alumnos</p></a></li>
                             </ul>
                             </li>
@@ -41,11 +42,15 @@
 	<form action="ServletAlumno" method="post" class ="contenedor">
 	<table>
 	<% 
-		Alumno alumno = new Alumno(); 
-		alumno.setLegajo(alumno.devuelveProximoLegajo());
-	%>
+	int legajo=1000;
+	if(request.getAttribute("legajo")!=null)
+	{
+		legajo = (int)request.getAttribute("legajo");
+	}
+
+ 	%>
 		<tr>
-			<td>Legajo</td><td><input type="text" name="Legajo" class="menu2" value="<%= alumno.getLegajo() %>"></td>
+			<td>Legajo</td><td><input type="text" name="Legajo" class="menu2" value="<%=legajo%>" readonly="true"></td>
 		</tr>
 		<tr>
 			<td>Documento</td><td><input type="text" name="txtDni"></td>
