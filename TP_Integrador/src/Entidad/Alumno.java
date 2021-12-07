@@ -28,10 +28,13 @@ public class Alumno {
 		this.fechanacimiento = fechanacimiento;
 		this.direccion = direccion;
 		this.nacionalidad = nacionalidad;
-		this.provincia =provincia;
+		this.provincia =provincia; 
 		this.localidad = localidad;
 		this.email = email;
 		this.telefono = telefono;
+		//ini mod joaquin 
+		
+		//fin mod joaquin 
 	}
 	public static int devuelveProximoLegajo() {
 		return cont++;
