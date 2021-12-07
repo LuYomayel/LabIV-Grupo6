@@ -14,7 +14,7 @@ public class DocenteDaoImpl implements DocenteDao{
 	private static String host = "jdbc:mysql://localhost:3306/";
 	private static String user = "root";
 	private static String pass =  "root";
-	private static String dbName = "bdutn";
+	private static String dbName = "dbutn2";
 	
 	@Override
 	public int agregarDocente(Docente docente) {
@@ -50,7 +50,9 @@ public class DocenteDaoImpl implements DocenteDao{
 		Connection cn= null;
 		try {
 			cn = DriverManager.getConnection(host+dbName,user,pass);
-			String query = "SELECT * FROM docentes";
+			String query = "\r\n" + 
+					"SELECT a.legajo Legajo,a.dni Dni,a.nombre Nombre,a.apellido Apellido, a.fechaNac FechaNacimiento, a.direccion Direccion, p.descripcion Pais, pr.descripcion Provincia, l.descripcion Localidad, a.email Email, a.telefono Telefono  FROM docentes a join paises p on p.idPais = a.idPais join provincias pr on pr.idPais = p.idPais join localidades l on l.idLocalidad = a.idLocalidad;\r\n" + 
+					"";
 			Statement st = cn.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			
@@ -60,10 +62,11 @@ public class DocenteDaoImpl implements DocenteDao{
 				x.setDni(rs.getString("dni"));
 				x.setNombre(rs.getString("nombre"));
 				x.setApellido(rs.getString("apellido"));
-				x.setFechanacimiento(rs.getString("fechanacimiento"));
+				x.setFechanacimiento(rs.getString("fechaNacimiento"));
 				x.setDireccion(rs.getString("direccion"));
-				x.setLocalidad(rs.getString("localidad"));
-				x.setNacionalidad(rs.getString("nacionalidad"));
+				x.setNacionalidad(rs.getString("Pais"));
+				x.setProvincia(rs.getString("provincia"));
+				x.setLocalidad(rs.getString("Localidad"));
 				x.setEmail(rs.getString("email"));
 				x.setTelefono(rs.getString("telefono"));			
 				listaDocentes.add(x);

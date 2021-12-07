@@ -18,7 +18,7 @@
                         <li><a href="#">Profesores </a>
                         <ul id="desple">
                                 <li><a href="AgregarProfesores.jsp">Agregado de Profesor</a></li>
-                                <li><a href="ListadoProfesores.jsp">Listado de Profesores</a></li>
+                                <li><a href="ServletDocente?Param=1">Listado de Profesores</a></li>
                             </ul>
                             </li>
                         <li><a href="#">Alumnos</a>

@@ -9,6 +9,7 @@ public class Docente {
 	private String direccion;
 	private String localidad;
 	private String nacionalidad;
+	private String provincia;
 	private String email;
 	private String contraseña;
 	private String telefono;
@@ -19,7 +20,7 @@ public class Docente {
 	}
 
 	public Docente( String dni, String nombre, String apellido, String fechanacimiento, String direccion,
-			String localidad, String nacionalidad, String email,String contraseña, String telefono) {
+			String localidad, String nacionalidad, String email,String contraseña, String telefono, String provincia) {
 		super();		
 		this.legajo = devuelveProximoLegajo();
 		this.dni = dni;
@@ -29,6 +30,7 @@ public class Docente {
 		this.direccion = direccion;
 		this.localidad = localidad;
 		this.nacionalidad = nacionalidad;
+		this.provincia = provincia;
 		this.email = email;
 		this.contraseña = contraseña;
 		this.telefono = telefono;
@@ -102,6 +104,14 @@ public class Docente {
 
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
+	}
+	
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
 	}
 
 	public String getEmail() {
