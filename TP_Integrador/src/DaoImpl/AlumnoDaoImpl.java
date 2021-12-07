@@ -13,7 +13,7 @@ public class AlumnoDaoImpl implements AlumnoDao{
 	private static String host = "jdbc:mysql://localhost:3306/";
 	private static String user = "root";
 	private static String pass =  "root";
-	private static String dbName = "bdutn";
+	private static String dbName = "dbutn2";
 	
 	
 	@Override
@@ -51,8 +51,8 @@ public class AlumnoDaoImpl implements AlumnoDao{
 		Connection cn= null;
 		try {
 			cn = DriverManager.getConnection(host+dbName,user,pass);
-			String query = "SELECT * FROM alumnos";
-			Statement st = cn.createStatement();
+			String query = "SELECT a.legajo Legajo,a.dni Dni,a.nombre Nombre,a.apellido Apellido, a.fechaNac FechaNacimiento, a.direccion Direccion, p.descripcion Pais, pr.descripcion Provincia, l.descripcion Localidad, a.email Email, a.telefono Telefono  FROM alumnos a join paises p on p.idPais = a.idPais join provincias pr on pr.idPais = p.idPais join localidades l on l.idLocalidad = a.idLocalidad;"; 
+					Statement st = cn.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			
 			while (rs.next()) {
@@ -61,10 +61,11 @@ public class AlumnoDaoImpl implements AlumnoDao{
 				x.setDni(rs.getString("dni"));
 				x.setNombre(rs.getString("nombre"));
 				x.setApellido(rs.getString("apellido"));
-				x.setFechanacimiento(rs.getString("fechanacimiento"));
+				x.setFechanacimiento(rs.getString("fechaNacimiento"));
 				x.setDireccion(rs.getString("direccion"));
-				x.setNacionalidad(rs.getString("nacionalidad"));
+				x.setNacionalidad(rs.getString("Pais"));
 				x.setProvincia(rs.getString("provincia"));
+				x.setLocalidad(rs.getString("Localidad"));
 				x.setEmail(rs.getString("email"));
 				x.setTelefono(rs.getString("telefono"));			
 				listaAlumnos.add(x);

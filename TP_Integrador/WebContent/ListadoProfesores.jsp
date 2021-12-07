@@ -21,7 +21,7 @@
                             </li><li style="width: 292px; "><a href="#"><p align="left">Alumnos</p></a>
                         <ul id="desple">
                                 <li><a href="AgregarAlumnos.jsp"><p align="left">Agregado de Alumno</p></a></li>
-                                <li><a href="ListadoAlumnos.jsp"><p align="left">Listado de alumnos</p></a></li>
+                                <li><a href="ServletAlumno?Param=1"><p align="left">Listado de alumnos</p></a></li>
                             </ul>
                             </li>
                         

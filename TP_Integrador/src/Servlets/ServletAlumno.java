@@ -66,6 +66,13 @@ public class ServletAlumno extends HttpServlet {
 			}
 			
 			}
+		if(request.getParameter("Param")!= null) {
+			AlumnoDaoImpl dao = new AlumnoDaoImpl();
+			ArrayList<Alumno> lista= dao.ListarAlumnos();
+			request.setAttribute("listaA", lista);
+			RequestDispatcher rd = request.getRequestDispatcher("/ListadoAlumnos.jsp");
+			rd.forward(request, response);
+		}
 		
 		
 	}
@@ -74,13 +81,13 @@ public class ServletAlumno extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("btnListarAlumnos")!=null) {
+		/*if(request.getParameter("btnListarAlumnos")!=null) {
 			AlumnoDaoImpl dao = new AlumnoDaoImpl();
 			ArrayList<Alumno> lista= dao.ListarAlumnos();
 			request.setAttribute("listita", lista);
 			RequestDispatcher rd = request.getRequestDispatcher("/ListarAlumnos.jsp");
 			rd.forward(request, response);
-	}
+	}*/
 		
 		if(request.getParameter("btnEliminar")!=null) {
 			int id= Integer.parseInt(request.getParameter("legajo").toString());

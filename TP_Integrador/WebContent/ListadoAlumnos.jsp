@@ -22,7 +22,7 @@
                             </li><li style="width: 292px; "><a href="#"><p align="left">Alumnos</p></a>
                         <ul id="desple">
                                 <li><a href="AgregarAlumnos.jsp"><p align="left">Agregado de Alumno</p></a></li>
-                                <li><a href="ListadoAlumnos.jsp"><p align="left">Listado de alumnos</p></a></li>
+                                <li><a href="ServletAlumno?Param=1"><p align="left">Listado de alumnos</p></a></li>
                             </ul>
                             </li>
                         
@@ -38,6 +38,15 @@
             
 	</header>
 	
+	<% 
+	ArrayList<Alumno> listaAlumnos = null;
+	if(request.getAttribute("listaA")!=null)
+	{
+		listaAlumnos = (ArrayList<Alumno>) request.getAttribute("listaA");
+	}
+
+ %>
+	
 	<h1><p aling ="Center";"  ><b> Listar Alumno</b></p> </h1>
 	<form action="ServeletAlumno" method= "post" class ="contenedor">
 		<table border=1 ,style="text-align: center"> 
@@ -48,28 +57,36 @@
 			<th>Nombre</th>
 			<th>Apellido</th>
 			<th>Fecha de Nacimiento</th>
+			<th>Direccion</th>
 			<th>Nacionalidad</th>
 			<th>Provincia</th>
-			<th>Direccion</th>
+			<th>Localidad</th>
+			
 			<th>Email</th>
 			<th>Telefono</th>
 			<th>ELIMINAR</th>
 		</tr>
-		
+				<%  if(listaAlumnos!=null)
+		for(Alumno alumno : listaAlumnos) 
+		{
+	%>
 				<tr>
 
-					<td>a.Legajo</td>
-					<td>a.Documento</td>
-					<td>a.Nombre</td>
-					<td>a.Apellido</td>
-					<td>a.FechaNac</td>
-					<td>a.Nacionalidad</td>
-					<td>a.Provincia</td>
-					<td>a.Direccion</td>
-					<td>a.Email</td>
-					<td>a.Telefono</td>
+					<td><%= alumno.getLegajo()%></td>
+					<td><%= alumno.getDni()%></td>
+					<td><%= alumno.getNombre()%></td>
+					<td><%= alumno.getApellido()%></td>
+					<td><%= alumno.getFechanacimiento()%>c</td>
+					<td><%= alumno.getDireccion()%></td>
+					<td><%= alumno.getNacionalidad()%></td>
+					<td><%= alumno.getProvincia()%></td>
+					<td><%= alumno.getLocalidad()%></td>
+					<td><%= alumno.getEmail()%></td>
+					<td><%= alumno.getTelefono()%></td>
+					
 					<td>BOTON ELIMINAR</td>
 				</tr>
+				<%  } %>
 			</nav>
 	</table>
 	

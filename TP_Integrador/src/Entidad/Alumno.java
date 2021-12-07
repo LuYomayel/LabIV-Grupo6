@@ -107,7 +107,7 @@ public class Alumno {
 	}
 
 	public String getLocalidad() {
-		return provincia;
+		return localidad;
 	}
 
 	public void setLocalidad(String localidad) {
