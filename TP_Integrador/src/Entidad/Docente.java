@@ -1,6 +1,7 @@
 package Entidad;
 
 public class Docente {
+	private int id;
 	private int legajo;
 	private String dni;	
 	private String nombre;
@@ -41,7 +42,14 @@ public class Docente {
 
 		}
 
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public int getLegajo() {
 		return legajo;
 	}

@@ -49,43 +49,52 @@
 	<h1><p aling ="Center";"  ><b> Listar Profesor</b></p> </h1>
 	<form action="ServeletAlumno" method= "post" class ="contenedor">
 		<table border=1 ,style="text-align: center"> 
-		<nav class= "table">
-		<tr>
-			<th>Legajo</th>
-			<th>Documento</th>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>Fecha de Nacimiento</th>
-			<th>Direccion</th>
-			<th>Nacionalidad</th>
-			<th>Provincia</th>
-			<th>Localidad</th>
-			
-			<th>Email</th>
-			<th>Telefono</th>
-			<th>ELIMINAR</th>
-		</tr>
+			<nav class= "table">
+				<thead>
+		
+					<tr>
+						<th>Legajo</th>
+						<th>Documento</th>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Fecha de Nacimiento</th>
+						<th>Direccion</th>
+						<th>Nacionalidad</th>
+						<th>Provincia</th>
+						<th>Localidad</th>
+						
+						<th>Email</th>
+						<th>Telefono</th>
+						<th>ELIMINAR</th>
+				</tr>
+			</thead>
+			<tbody>
 		
 				<tr>
 <%  if(listaDocentes!=null)
 		for(Docente docente : listaDocentes) 
 		{
 	%>
-					<td><%= docente.getLegajo()%></td>
-					<td><%= docente.getDni()%></td>
-					<td><%= docente.getNombre()%></td>
-					<td><%= docente.getApellido()%></td>
-					<td><%= docente.getFechanacimiento()%>c</td>
-					<td><%= docente.getDireccion()%></td>
-					<td><%= docente.getNacionalidad()%></td>
-					<td><%= docente.getProvincia()%></td>
-					<td><%= docente.getLocalidad()%></td>
-					<td><%= docente.getEmail()%></td>
-					<td><%= docente.getTelefono()%></td>
-					<td>BOTON ELIMINAR</td>
+					<form name="formulario" action="ServletDocente?idDocente=<%=docente.getId()%>" method="get">
+						<td><%= docente.getLegajo()%>   <input type="hidden" name="idDocente" value="<%=docente.getId()%>"> </td>
+						<td><%= docente.getDni()%></td>
+						<td><%= docente.getNombre()%></td>
+						<td><%= docente.getApellido()%></td>
+						<td><%= docente.getFechanacimiento()%>c</td>
+						<td><%= docente.getDireccion()%></td>
+						<td><%= docente.getNacionalidad()%></td>
+						<td><%= docente.getProvincia()%></td>
+						<td><%= docente.getLocalidad()%></td>
+						<td><%= docente.getEmail()%></td>
+						<td><%= docente.getTelefono()%></td>
+						<td><%= docente.getId()%></td>
+						<td><input type="submit" name="btnEliminar" value="Eliminar"></td>
+					</form> 
 				</tr>
 				<%  } %>
-			</nav>
+		
+			</tbody>
+		</nav>
 	</table>
 	
 	</form>

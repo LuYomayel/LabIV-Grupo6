@@ -1,6 +1,7 @@
 package Entidad;
 
 public class Alumno {
+	private int id;
 	private int legajo;
 	private String dni;	
 	private String nombre;
@@ -40,7 +41,15 @@ public class Alumno {
 		return cont++;
 
 		}
+	
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public int getLegajo() {
 		return legajo;
 	}

@@ -51,6 +51,8 @@
 	<form action="ServeletAlumno" method= "post" class ="contenedor">
 		<table border=1 ,style="text-align: center"> 
 		<nav class= "table">
+		<thead>
+		
 		<tr>
 			<th>Legajo</th>
 			<th>Documento</th>
@@ -66,13 +68,17 @@
 			<th>Telefono</th>
 			<th>ELIMINAR</th>
 		</tr>
+		</thead>
+		<tbody>
 				<%  if(listaAlumnos!=null)
 		for(Alumno alumno : listaAlumnos) 
 		{
-	%>
-				<tr>
+	%>	
+		<tr>
+			<form name="formulario" action="ServletAlumno?idAlumno=<%=alumno.getLegajo()%>" method="get">
+				
 
-					<td><%= alumno.getLegajo()%></td>
+					<td><%= alumno.getLegajo()%> <input type="hidden" name="idAlumno" value="<%=alumno.getLegajo()%>"> </td>
 					<td><%= alumno.getDni()%></td>
 					<td><%= alumno.getNombre()%></td>
 					<td><%= alumno.getApellido()%></td>
@@ -84,9 +90,12 @@
 					<td><%= alumno.getEmail()%></td>
 					<td><%= alumno.getTelefono()%></td>
 					
-					<td>BOTON ELIMINAR</td>
+					<td><input type="submit" name="btnEliminar" value="Eliminar"></td>
+				
+				</form> 
 				</tr>
 				<%  } %>
+		</tbody>
 			</nav>
 	</table>
 	

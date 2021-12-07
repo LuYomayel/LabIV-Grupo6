@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import DaoImpl.AlumnoDaoImpl;
+import DaoImpl.DocenteDaoImpl;
 import Entidad.Alumno;
+import Entidad.Docente;
 
 /**
  * Servlet implementation class ServletAlumno
@@ -74,6 +76,20 @@ public class ServletAlumno extends HttpServlet {
 			rd.forward(request, response);
 		}
 		
+		if(request.getParameter("btnEliminar")!=null)
+		{
+			String aux = request.getParameter("idAlumno").toString();
+			
+			int id = Integer.parseInt(request.getParameter("idAlumno").toString()) ;
+			AlumnoDaoImpl udao = new AlumnoDaoImpl();
+			//udao.eliminarAlumno(id);
+			
+            ArrayList<Alumno> lista= udao.ListarAlumnos();
+			request.setAttribute("listaA", lista);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/ListadoAlumnos.jsp");   
+	        rd.forward(request, response);
+		}
 		
 	}
 

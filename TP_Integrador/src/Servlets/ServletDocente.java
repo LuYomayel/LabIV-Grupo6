@@ -15,6 +15,7 @@ import DaoImpl.DocenteDaoImpl;
 import Entidad.Alumno;
 import Entidad.Docente;
 
+
 /**
  * Servlet implementation class ServletDocente
  */
@@ -40,6 +41,21 @@ public class ServletDocente extends HttpServlet {
 			request.setAttribute("listaD", lista);
 			RequestDispatcher rd = request.getRequestDispatcher("/ListadoProfesores.jsp");
 			rd.forward(request, response);
+		}
+		
+		if(request.getParameter("btnEliminar")!=null)
+		{
+			String aux = request.getParameter("idDocente").toString();
+			
+			int id = Integer.parseInt(request.getParameter("idDocente").toString()) ;
+			DocenteDaoImpl udao = new DocenteDaoImpl();
+			udao.eliminarDocente(id);
+			
+            ArrayList<Docente> lista= udao.ListarDocentes();
+			request.setAttribute("listaD", lista);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/ListadoProfesores.jsp");   
+	        rd.forward(request, response);
 		}
 	}
 

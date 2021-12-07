@@ -25,9 +25,9 @@ DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `idusuarios` int(11) NOT NULL AUTO_INCREMENT,
   `contrasenia` varchar(45) NOT NULL,
-  `idDocente_Usuario` int(11) NOT NULL,
-  PRIMARY KEY (`idusuarios`,`idDocente_Usuario`),
-  UNIQUE KEY `contrasenia_UNIQUE` (`contrasenia`),
+  `idDocente_Usuario` int(11) NULL,
+  `usuario_administrador` varchar(45) NULL,
+  PRIMARY KEY (`idusuarios`),  
   UNIQUE KEY `idDocente_Usuario_UNIQUE` (`idDocente_Usuario`),
   CONSTRAINT `idDocente_Usuario_UNIQUE` FOREIGN KEY (`idDocente_Usuario`) REFERENCES `docentes` (`idDocente`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;

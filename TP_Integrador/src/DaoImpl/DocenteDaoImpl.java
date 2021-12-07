@@ -51,13 +51,14 @@ public class DocenteDaoImpl implements DocenteDao{
 		try {
 			cn = DriverManager.getConnection(host+dbName,user,pass);
 			String query = "\r\n" + 
-					"SELECT a.legajo Legajo,a.dni Dni,a.nombre Nombre,a.apellido Apellido, a.fechaNac FechaNacimiento, a.direccion Direccion, p.descripcion Pais, pr.descripcion Provincia, l.descripcion Localidad, a.email Email, a.telefono Telefono  FROM docentes a join paises p on p.idPais = a.idPais join provincias pr on pr.idPais = p.idPais join localidades l on l.idLocalidad = a.idLocalidad;\r\n" + 
+					"SELECT a.idDocente Id,a.legajo Legajo,a.dni Dni,a.nombre Nombre,a.apellido Apellido, a.fechaNac FechaNacimiento, a.direccion Direccion, p.descripcion Pais, pr.descripcion Provincia, l.descripcion Localidad, a.email Email, a.telefono Telefono  FROM docentes a join paises p on p.idPais = a.idPais join provincias pr on pr.idPais = p.idPais join localidades l on l.idLocalidad = a.idLocalidad;\r\n" + 
 					"";
 			Statement st = cn.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			
 			while (rs.next()) {
 				Docente x = new Docente();
+				x.setId(rs.getInt("Id"));
 				x.setLegajo(rs.getInt("legajo"));
 				x.setDni(rs.getString("dni"));
 				x.setNombre(rs.getString("nombre"));
@@ -93,7 +94,9 @@ public class DocenteDaoImpl implements DocenteDao{
 		{
 			cn = DriverManager.getConnection(host+dbName, user,pass);
 			Statement st = cn.createStatement();
-			String query = "DELETE FROM docentes WHERE legajo="+id;
+			String query1 = "Delete from Usuarios where idDocente_Usuario="+id;
+			filas = st.executeUpdate(query1);
+			String query = "DELETE FROM docentes WHERE idDocente="+id;
 			filas=st.executeUpdate(query);
 		}
 		catch(Exception e)
