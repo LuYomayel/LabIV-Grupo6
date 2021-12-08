@@ -44,13 +44,19 @@ public class AlumnoNegocioImpl implements AlumnoNegocio{
 		if(alumno.getLegajo()>0 )//También se puede preguntar si existe ese ID 
 			//El tema es que el ID lo maneja la base de datos.
 		{
-			estado=adao.eliminarAlumno(legajo);
+			estado=adao.eliminarAlumno(id);
 		}
 		return estado;  //estado al ser int pregunto por el 0
 	}
 
 	@Override
 	public Alumno obtenerAlumno(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Alumno obtenerAlumno(String Apellido) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -53,4 +53,10 @@ public class DocenteNegocioImpl implements DocenteNegocio{
 		return null;
 	}
 
+	@Override
+	public Docente obtenerDocente(String apellido) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

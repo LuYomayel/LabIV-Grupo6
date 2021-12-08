@@ -14,6 +14,7 @@ public class Docente {
 	private String email;
 	private String contraseña;
 	private String telefono;
+	private int IdCarrera;
 	private static int cont=9999;
 	
 	public Docente() {
@@ -150,4 +151,10 @@ public class Docente {
 	public String toString() {
 		return apellido+" "+ nombre;
 	}
+
+	public int getIdCarrera() {
+		
+		return IdCarrera;
+	}
+	
 }
