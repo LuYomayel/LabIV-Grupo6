@@ -136,13 +136,13 @@ public class DocenteDaoImpl implements DocenteDao{
 
 	@Override
 	public int obtenerIdDocente(String mail) {
-		Docente docente = new Docente();
+		Docente d = new Docente();
 		Connection cn = null;	
 		int id = -1;
 		try {
 			cn = DriverManager.getConnection(host+dbName,user,pass);
 			Statement st =cn.createStatement();
-			String query = "select idDocente from docentes where email= '"+mail+"'";
+			String query = "select idDocente from docentes where email like('%"+mail+"%')";
 			ResultSet rs = st.executeQuery(query);
 			rs.next();
 			id = rs.getInt("idDocente");		
