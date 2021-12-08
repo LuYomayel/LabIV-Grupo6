@@ -2,10 +2,12 @@ package DaoImpl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 import Dao.PaisDao;
+
 import Entidad.Pais;
 
 public class PaisDaoImpl implements PaisDao {
@@ -36,19 +38,74 @@ public class PaisDaoImpl implements PaisDao {
 	}
 	@Override
 	public ArrayList<Pais> ListarPais() {
-		
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<Pais> listarPais= new ArrayList<Pais>();
+		Connection cn= null;
+		try {
+			cn = DriverManager.getConnection(host+dbName,user,pass);
+			String query = "Select idPais, descripcion from paises order by descripcion asc;";
+					Statement st = cn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			
+			while (rs.next()) {
+			Pais x = new Pais();
+			x.setIdPais(rs.getInt("idPais"));
+			x.setDescripcionPais(rs.getString("Descripcion"));
+			listarPais.add(x);
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return listarPais;
 	}
 	@Override
 	public int eliminarPais(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		int filas=0;
+		Connection cn = null;
+		try
+		{
+			cn = DriverManager.getConnection(host+dbName, user,pass);
+			Statement st = cn.createStatement();
+			String query = "DELETE FROM paises WHERE idpais ="+id;
+			filas=st.executeUpdate(query);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return filas;
 	}
 	@Override
 	public Pais obtenerPais(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Pais x = new Pais();
+		Connection cn = null;
+		try {
+			cn = DriverManager.getConnection(host+dbName,user,pass);
+			Statement st =cn.createStatement();
+			String query = "SELECT * FROM alumnos WHERE idPais="+id;
+			ResultSet rs = st.executeQuery(query);
+			rs.next();
+			x.setIdPais(rs.getInt("IdPais"));
+			x.setDescripcionPais(rs.getString("Descripcion"));
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return x;
 	}
 	
 
