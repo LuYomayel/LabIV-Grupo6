@@ -37,9 +37,10 @@ public class AlumnoNegocioImpl implements AlumnoNegocio{
 	}
 
 	@Override
-	public int eliminarAlumno(int legajo) {
+	public int eliminarAlumno(int id) {
 		int estado=0;
-		Alumno alumno = obtenerAlumno(legajo);
+		String Apellido = adao.getApellido;		
+		Alumno alumno = obtenerAlumno(Apellido);
 		if(alumno.getLegajo()>0 )//También se puede preguntar si existe ese ID 
 			//El tema es que el ID lo maneja la base de datos.
 		{
@@ -49,7 +50,7 @@ public class AlumnoNegocioImpl implements AlumnoNegocio{
 	}
 
 	@Override
-	public Alumno obtenerAlumno(int legajo) {
+	public Alumno obtenerAlumno(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

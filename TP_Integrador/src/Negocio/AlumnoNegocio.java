@@ -8,5 +8,6 @@ public interface AlumnoNegocio {
 	public int agregarAlumno(Alumno alumno);
 	public ArrayList<Alumno> ListarAlumnos();
 	public int eliminarAlumno(int id);
+	//¿Apellido y nombre?
 	public Alumno obtenerAlumno(String Apellido);
 }

@@ -38,6 +38,7 @@ public class DocenteNegocioImpl implements DocenteNegocio{
 	@Override
 	public int eliminarDocente(int legajo) {
 		int estado=0;
+		String Apellido = ddao.getApellido;
 		Docente docente =obtenerDocente(legajo);
 		if(docente.getLegajo()>0 )//El tema es que el ID lo maneja la base de datos. 
 		{
