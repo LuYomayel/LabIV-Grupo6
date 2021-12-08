@@ -10,4 +10,6 @@ public interface PaisDao {
 	public ArrayList<Pais> ListarPais();
 	public int eliminarPais(int id);
 	public Pais obtenerPais(int id);
+	public String GetDescOfPais(int id) ;
+	
 }

@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.sql.PreparedStatement;
+
 
 import Dao.PaisDao;
 
@@ -107,6 +109,41 @@ public class PaisDaoImpl implements PaisDao {
 		}
 		return x;
 	}
+	@Override
+	public String GetDescOfPais(int id) {
+			String desc=null;
+			
+			
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			Connection cn = null;
+			try
+			{
+				cn = DriverManager.getConnection(host + dbName, user, pass);
+				PreparedStatement st;
+				ResultSet rs;
+				st=cn.prepareStatement("select descripcion from paises where idPais ='" + id +"';");
+				rs=st.executeQuery();
+				rs.next();
+				
+				
+				desc = rs.getString("descripcion");
+			  
+				
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+					
+			return desc;
+		}
+
+	}
 	
 
-}

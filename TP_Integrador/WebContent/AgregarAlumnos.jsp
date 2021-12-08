@@ -4,7 +4,8 @@
 <%@page import="Entidad.Alumno" %>
 <%@page import="DaoImpl.PaisDaoImpl" %>
 <%@page import="Entidad.Pais" %>
-
+<%@page import="Entidad.Provincia" %>
+<%@page import="Entidad.Localidad" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -74,7 +75,7 @@
 		<td> Nacionalidad</td>
 		<td>
 			<select name="Nacionalidad" style="width: 148px ; ">  
-	<%--
+	<%-- 
 	<%
 	int i = 0;
    		ArrayList<Pais> list = null;
