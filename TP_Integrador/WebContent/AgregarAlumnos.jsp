@@ -1,7 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Entidad.Alumno" %>
+<%@page import="Entidad.Pais" %>
+<%@page import="Dao.PaisDao" %>
+<%@page import="DaoImpl.PaisDaoImpl" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,7 +43,7 @@
 	
 	<h1><p align="center";" ><b>Agregar Alumnos </b> </p></h1>
 	
-	<form action="ServletAlumno" method="post" class ="contenedor">
+	<form action="ServletAlumno" method="get" class ="contenedor">
 	<table>
 	<% 
 	int legajo=1000;
@@ -67,25 +71,20 @@
 		<tr>
 		<td> Nacionalidad</td>
 		<td>
-			<select name="Nacionalidad" required style="width: 148px ; ">  
-	<%-- 
+			<select name="Nacionalidad" style="width: 148px ; ">  
 	<%
 	int i=0;
-   ArrayList<Nacionalidad> list = new ArrayList<Nacionalidad>();
-
-     if(request.getAttribute("ListaNacionalidad")!=null){
-    	 list= (ArrayList<Nacionalidad>) request.getAttribute("listaNacionalidad");}
+   		ArrayList<Pais> list = new ArrayList<Pais>();
+   			list = (ArrayList<Pais>) request.getAttribute("listarPais");
      %>
      <option value=null selected disabled hidden>Elegir una</option>
-     <%for(Nacionalidad t : list){
+     <%for(Pais t : list){
      	 
-    	 %>
-     
-	
-		<option ><%=t.getDescripcion_Nacionalidad()%></option>
+    	 %>	
+		<option ><%= t.getDescripcionPais() %> </option>
 		
-		<%} %>
-		--%>
+		<%} 
+		%>
 	</select>
 	</td>
 		</tr>

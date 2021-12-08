@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import DaoImpl.AlumnoDaoImpl;
 import DaoImpl.DocenteDaoImpl;
+import DaoImpl.PaisDaoImpl;
 import Entidad.Alumno;
 import Entidad.Docente;
+import Entidad.Pais;
 
 /**
  * Servlet implementation class ServletAlumno
@@ -35,7 +37,8 @@ public class ServletAlumno extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Agregar Alumno
-		
+		PaisDaoImpl pDao = new PaisDaoImpl();
+		ArrayList <Pais> listPais = new ArrayList<Pais>();
 		
 		if(request.getParameter("btnAgregar")!=null){
 			if(request.getParameter("txtDni")!=null && request.getParameter("txtNombre")!=null && request.getParameter("txtApellido")!=null && request.getParameter("txtFecha")!=null&& request.getParameter("txtDireccion")!=null&& request.getParameter("txtNacionalidad")!=null&& request.getParameter("txtProvincia")!=null && request.getParameter("txtEmail")!=null&& request.getParameter("txtTelefono")!=null) {
@@ -53,7 +56,8 @@ public class ServletAlumno extends HttpServlet {
 				
 				alu.setEmail(request.getParameter("txtEmail"));
 				alu.setTelefono(request.getParameter("txtTelefono"));
-				
+				listPais = pDao.ListarPais();
+				request.setAttribute("listarPais", listPais);
 				AlumnoDaoImpl dao = new AlumnoDaoImpl();
 				filas = dao.agregarAlumno(alu);
 						
