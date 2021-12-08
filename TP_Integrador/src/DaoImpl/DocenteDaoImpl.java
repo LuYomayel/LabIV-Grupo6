@@ -133,5 +133,27 @@ public class DocenteDaoImpl implements DocenteDao{
 		}
 		return x;
 	}
+
+	@Override
+	public int obtenerIdDocente(String mail) {
+		Docente docente = new Docente();
+		Connection cn = null;	
+		int id = -1;
+		try {
+			cn = DriverManager.getConnection(host+dbName,user,pass);
+			Statement st =cn.createStatement();
+			String query = "select idDocente from docentes where email= '"+mail+"'";
+			ResultSet rs = st.executeQuery(query);
+			rs.next();
+			id = rs.getInt("idDocente");		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		if(id > 0) return id;
+		else return -1;
+		
+	}
 	
 }

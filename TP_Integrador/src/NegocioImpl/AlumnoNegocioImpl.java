@@ -48,7 +48,7 @@ public class AlumnoNegocioImpl implements AlumnoNegocio{
 		}
 		return estado;  //estado al ser int pregunto por el 0
 	}
-
+	
 	@Override
 	public Alumno obtenerAlumno(int id) {
 		// TODO Auto-generated method stub

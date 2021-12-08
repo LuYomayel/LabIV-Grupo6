@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DaoImpl.UsuarioDaoImpl;
+import Entidad.Usuario;
+
 /**
  * Servlet implementation class ServletLogin
  */
@@ -36,11 +39,27 @@ public class ServletLogin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("btnAceptar")!=null) {
+			String user = request.getParameter("usuario");
+			String pass = request.getParameter("contrasena");
+			Usuario usuario = new Usuario();
+			usuario.setContrasena(pass);
+			usuario.setUsuario(user);
 			
+			UsuarioDaoImpl usuarioDao = new UsuarioDaoImpl();
+			int login = usuarioDao.obtenerUsuario(usuario); 
+			if (login == 1) {
+				RequestDispatcher rd = request.getRequestDispatcher("/ListadoAlumnos.jsp");   
+		        rd.forward(request, response);
+			}
+			else if(login == 0){
+				request.setAttribute("error", false);
+				RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");   
+		        rd.forward(request, response);
+			}else if(login ==2) {
+				RequestDispatcher rd = request.getRequestDispatcher("/IndexAdministrador.jsp");   
+		        rd.forward(request, response);
+			}
 			
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/IndexAdministrador.jsp");   
-	        rd.forward(request, response);
 		}
 	}
 

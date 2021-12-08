@@ -10,5 +10,5 @@ public interface DocenteDao {
 	public ArrayList<Docente> ListarDocentes();
 	public int eliminarDocente(int id);
 	public Docente obtenerDocente(String apellido);
-	
+	public int obtenerIdDocente(String mail);
 }
