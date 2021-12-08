@@ -67,7 +67,7 @@
 		<tr>
 		<td> Nacionalidad</td>
 		<td>
-			<select name="Nacionalidad" required style="width: 148px ; ">  
+			<select name="Nacionalidad" style="width: 148px ; ">  
 	<%-- 
 	<%
 	int i=0;

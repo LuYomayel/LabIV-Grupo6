@@ -158,6 +158,7 @@
 		
 	</table>
 	</form>
+	
 		<%
 			int filas=0;
 			if(request.getAttribute("fila") != null)
@@ -165,7 +166,8 @@
 		%>
 		<% if(filas == 1){ %>
 			<b>¡Alumno agregado con exito! </b>
-			<%} %>
+			<%}
+		%>
 	
 </body>
 </html>
