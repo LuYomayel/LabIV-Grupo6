@@ -12,10 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import DaoImpl.AlumnoDaoImpl;
 import DaoImpl.DocenteDaoImpl;
+import DaoImpl.LocalidadDaoImpl;
 import DaoImpl.PaisDaoImpl;
+import DaoImpl.ProvinciaDaoImpl;
 import Entidad.Alumno;
 import Entidad.Docente;
+import Entidad.Localidad;
 import Entidad.Pais;
+import Entidad.Provincia;
 
 /**
  * Servlet implementation class ServletAlumno
@@ -76,7 +80,27 @@ public class ServletAlumno extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/ListadoAlumnos.jsp");
 			rd.forward(request, response);
 		}
-		
+		if (request.getParameter("Param")!=null) {
+			PaisDaoImpl pDao = new PaisDaoImpl();
+			ArrayList<Pais> lista = pDao.ListarPais();
+			request.setAttribute("ListarPais", lista);
+			RequestDispatcher rd = request.getRequestDispatcher("/AgregarAlumnos.jsp");
+			rd.forward(request, response);
+		}
+		if (request.getParameter("Param")!=null) {
+			ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();
+			ArrayList<Provincia> listaProv = provDao.ListarProvincia();
+			request.setAttribute("ListarProvincia", listaProv);
+			RequestDispatcher rd = request.getRequestDispatcher("/AgregarAlumnos.jsp");
+			rd.forward(request, response);
+		}
+		if (request.getParameter("Param")!=null) {
+			LocalidadDaoImpl lDao = new LocalidadDaoImpl();
+			ArrayList<Localidad> lista = lDao.ListarLocalidad();
+			request.setAttribute("ListarLocalidad", lista);
+			RequestDispatcher rd = request.getRequestDispatcher("/AgregarAlumnos.jsp");
+			rd.forward(request, response);
+		}
 		if(request.getParameter("btnEliminar")!=null)
 		{
 			String aux = request.getParameter("idAlumno").toString();

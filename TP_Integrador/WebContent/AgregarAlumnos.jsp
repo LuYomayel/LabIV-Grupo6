@@ -4,6 +4,7 @@
 <%@page import="Entidad.Alumno" %>
 <%@page import="DaoImpl.PaisDaoImpl" %>
 <%@page import="Entidad.Pais" %>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -41,9 +42,9 @@
             
 	</header>
 	
-	<h1><p align="center";" ><b>Agregar Alumnos </b> </p></h1>
+	<h1><p align="center";"><b>Agregar Alumnos </b> </p></h1>
 	
-	<form action="ServletAlumno" method="post" class ="contenedor" action ="ServeletPais">
+	<form action="ServletAlumno" method="post" class ="contenedor">
 	<table>
 	<% 
 	int legajo=1000;
@@ -73,11 +74,13 @@
 		<td> Nacionalidad</td>
 		<td>
 			<select name="Nacionalidad" style="width: 148px ; ">  
+	<%--
 	<%
+	int i = 0;
    		ArrayList<Pais> list = null;
-   		if (request.getAttribute("listarPais")!=null)
+   		if (request.getAttribute("ListarPais")!=null)
    		{
-   				list = (ArrayList<Pais>) request.getAttribute("listarPais");
+   				list = (ArrayList<Pais>) request.getAttribute("ListarPais");
    				}
      %>
      <option value=null selected disabled hidden>Elegir un Pais</option>
@@ -88,7 +91,7 @@
 		
 		<%} 
 		%>
-		
+		--%>
 	</select>
 	</td>
 		</tr>
@@ -96,21 +99,18 @@
 			<td>Provincia</td>
 			<td>
 			<select name="Provincia" style="width: 148px; " > 
-				<%-- 
+			<%--	
 	<%
 
-   ArrayList<Provincia> list = new ArrayList<Provincia>();
-
-     if(request.getAttribute("ListaProvincia")!=null){
-    	 list= (ArrayList<Provincia>) request.getAttribute("ListaProvincia");}
+   		ArrayList<Provincia> listprov = new ArrayList<Provincia>();
+     	if(request.getAttribute("ListarProvincia")!=null){
+    		listprov= (ArrayList<Provincia>) request.getAttribute("ListarProvincia");}
      %>
      <option value=null selected disabled hidden>Elegir una Provincia</option>
-     <%for(Provincia t : list){
+     <%for(Provincia t : listprov){
      	 
     	 %>
-     
-	
-		<option ><%=t.getDescripcion()%></option>
+		<option ><%=t.getDescripcionProv()%></option>
 		
 		<%} %>
 		--%>
@@ -121,24 +121,23 @@
 			<td>Localidad</td>
 			<td>
 			<select select name="Localidad" style="width: 148px; " >
-			<%-- 
-			<%
-				int i=0;
-		   		ArrayList<Localidad> list = new ArrayList<Localidad>();
+		<%-- 	
+			<%				
+		   		ArrayList<Localidad> listLocalidad = new ArrayList<Localidad>();
 		
-		     if(request.getAttribute("ListaLocalidad")!=null){
-		    	 list= (ArrayList<Localidad>) request.getAttribute("ListaLocalidad");}
+		     if(request.getAttribute("ListarLocalidad")!=null){
+		    	 list= (ArrayList<Localidad>) request.getAttribute("ListarLocalidad");}
 		     %>
 		     <option value=null selected disabled hidden>Elegir una Localidad</option>
-		     <%for(Localidad t : list){
+		     <%for(Localidad t : listLocalidad){
 		     	 
 		    	 %>
 		     
 			
-				<option ><%=t.getDescripcion_Localidad()%></option>
+				<option ><%=t.getDescripcion()%></option>
 				
 				<%} %>
-		--%>	
+			--%>
 			</select>
 			</td>
 		</tr>
@@ -158,12 +157,12 @@
 		
 	</table>
 	</form>
-	<%
-	int filas=0;
-	if(request.getAttribute("fila") != null)
+		<%
+			int filas=0;
+			if(request.getAttribute("fila") != null)
 		filas = (int)request.getAttribute("fila");
-%>
-<% if(filas == 1){ %>
+		%>
+		<% if(filas == 1){ %>
 			<b>¡Alumno agregado con exito! </b>
 			<%} %>
 	

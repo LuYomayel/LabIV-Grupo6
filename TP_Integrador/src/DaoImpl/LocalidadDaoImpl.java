@@ -35,7 +35,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 			e.printStackTrace();
 		}
 		return filas;
-}
+	}
 	@Override
 	public ArrayList<Localidad> ListarLocalidad() {
 		try {
