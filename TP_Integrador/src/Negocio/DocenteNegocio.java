@@ -7,6 +7,6 @@ import Entidad.Docente;
 public interface DocenteNegocio {
 	public int agregarDocente(Docente docente);
 	public ArrayList<Docente> ListarDocentes();
-	public int eliminarDocente(int legajo);
-	public Docente obtenerDocente(int legajo);
+	public int eliminarDocente(int id);
+	public Docente obtenerDocente(String apellido);
 }
