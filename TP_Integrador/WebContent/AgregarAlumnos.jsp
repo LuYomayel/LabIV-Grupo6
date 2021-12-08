@@ -53,32 +53,101 @@
 			<td>Legajo</td><td><input type="text" name="Legajo" class="menu2" value="<%=legajo%>" readonly="true"></td>
 		</tr>
 		<tr>
-			<td>Documento</td><td><input type="text" name="txtDni"></td>
+			<td>Documento</td><td><input type="text" name="txtDni" required></td>
 		</tr>
 		<tr>
-			<td>Nombre</td><td><input type="text" name="txtNombre"></td>
+			<td>Nombre</td><td><input type="text" name="txtNombre"required></td>
 		</tr>
 		<tr>
-			<td>Apellido</td><td><input type="text" name="txtApellido"></td>
+			<td>Apellido</td><td><input type="text" name="txtApellido" required></td>
 		</tr>
 		<tr>
-			<td>Fecha de Nacimiento</td><td><input type="text" name="txtFecha"></td>
+			<td>Fecha de Nacimiento</td><td><input type="text" name="txtFecha"required></td>
 		</tr>
 		<tr>
-			<td>Nacionalidad</td><td><input type="text" name="txtNacionalidad"></td>
+		<td> Nacionalidad</td>
+		<td>
+			<select name="Nacionalidad" required style="width: 148px ; ">  
+	<%-- 
+	<%
+	int i=0;
+   ArrayList<Nacionalidad> list = new ArrayList<Nacionalidad>();
+
+     if(request.getAttribute("ListaNacionalidad")!=null){
+    	 list= (ArrayList<Nacionalidad>) request.getAttribute("listaNacionalidad");}
+     %>
+     <option value=null selected disabled hidden>Elegir una</option>
+     <%for(Nacionalidad t : list){
+     	 
+    	 %>
+     
+	
+		<option ><%=t.getDescripcion_Nacionalidad()%></option>
+		
+		<%} %>
+		--%>
+	</select>
+	</td>
 		</tr>
 		<tr>
-			<td>Provincia</td><td><input type="text" name="txtProvincia"></td>
+			<td>Provincia</td>
+			<td>
+			<select name="Provincia" style="width: 148px; " > 
+				<%-- 
+	<%
+	int i=0;
+   ArrayList<Provincia> list = new ArrayList<Provincia>();
+
+     if(request.getAttribute("ListaProvincia")!=null){
+    	 list= (ArrayList<Provincia>) request.getAttribute("ListaProvincia");}
+     %>
+     <option value=null selected disabled hidden>Elegir una</option>
+     <%for(Provincia t : list){
+     	 
+    	 %>
+     
+	
+		<option ><%=t.getDescripcion_Provincia()%></option>
+		
+		<%} %>
+		--%>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Localidad</td>
+			<td>
+			<select select name="Localidad" style="width: 148px; " >
+			<%-- 
+			<%
+				int i=0;
+		   		ArrayList<Localidad> list = new ArrayList<Localidad>();
+		
+		     if(request.getAttribute("ListaLocalidad")!=null){
+		    	 list= (ArrayList<Localidad>) request.getAttribute("ListaLocalidad");}
+		     %>
+		     <option value=null selected disabled hidden>Elegir una</option>
+		     <%for(Localidad t : list){
+		     	 
+		    	 %>
+		     
+			
+				<option ><%=t.getDescripcion_Localidad()%></option>
+				
+				<%} %>
+		--%>	
+			</select>
+			</td>
 		</tr>
 		
 		<tr>
-			<td>Direccion</td><td><input type="text" name="txtDireccion"></td>
+			<td>Direccion</td><td><input type="text" name="txtDireccion"required></td>
 		</tr>
 		<tr>
-			<td>Email</td><td><input type="text" name="txtEmail"></td>
+			<td>Email</td><td><input type="text" name="txtEmail"required></td>
 		</tr>
 		<tr>
-			<td>Telefono</td><td><input type="text" name="txtTelefono"></td>
+			<td>Telefono</td><td><input type="text" name="txtTelefono"required></td>
 		</tr>
 		<tr>
 			<td><input type="Submit" name="btnAgregar" value="AGREGAR" style="color: #000000"></td>
@@ -86,5 +155,14 @@
 		
 	</table>
 	</form>
+	<%
+	int filas=0;
+	if(request.getAttribute("fila") != null)
+		filas = (int)request.getAttribute("fila");
+%>
+<% if(filas == 1){ %>
+			<b>¡Alumno agregado con exito! </b>
+			<%} %>
+	
 </body>
 </html>
