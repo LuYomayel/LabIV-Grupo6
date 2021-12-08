@@ -65,14 +65,80 @@
 			<td>Fecha de Nacimiento</td><td><input type="text" name="txtFecha"></td>
 		</tr>
 		<tr>
-			<td>Nacionalidad</td><td><input type="text" name="txtNacionalidad"></td>
-		</tr>
+		<td> Nacionalidad</td>
+		<td>
+			<select name="Nacionalidad" required style="width: 148px ; ">  
+	<%-- 
+	<%
+	int i=0;
+   ArrayList<Nacionalidad> list = new ArrayList<Nacionalidad>();
+
+     if(request.getAttribute("ListaNacionalidad")!=null){
+    	 list= (ArrayList<Nacionalidad>) request.getAttribute("listaNacionalidad");}
+     %>
+     <option value=null selected disabled hidden>Elegir una</option>
+     <%for(Nacionalidad t : list){
+     	 
+    	 %>
+     
+	
+		<option ><%=t.getDescripcion_Nacionalidad()%></option>
 		
-		<tr>
-			<td>Localidad</td><td><input type="text" name="txtLocalidad"></td>
+		<%} %>
+		--%>
+	</select>
+	</td>
 		</tr>
-		
 		<tr>
+			<td>Provincia</td>
+			<td>
+			<select name="Provincia" style="width: 148px; " > 
+				<%-- 
+	<%
+	int i=0;
+   ArrayList<Provincia> list = new ArrayList<Provincia>();
+
+     if(request.getAttribute("ListaProvincia")!=null){
+    	 list= (ArrayList<Provincia>) request.getAttribute("ListaProvincia");}
+     %>
+     <option value=null selected disabled hidden>Elegir una</option>
+     <%for(Provincia t : list){
+     	 
+    	 %>
+     
+	
+		<option ><%=t.getDescripcion_Provincia()%></option>
+		
+		<%} %>
+		--%>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Localidad</td>
+			<td>
+			<select select name="Localidad" style="width: 148px; " >
+			<%-- 
+			<%
+				int i=0;
+		   		ArrayList<Localidad> list = new ArrayList<Localidad>();
+		
+		     if(request.getAttribute("ListaLocalidad")!=null){
+		    	 list= (ArrayList<Localidad>) request.getAttribute("ListaLocalidad");}
+		     %>
+		     <option value=null selected disabled hidden>Elegir una</option>
+		     <%for(Localidad t : list){
+		     	 
+		    	 %>
+		     
+			
+				<option ><%=t.getDescripcion_Localidad()%></option>
+				
+				<%} %>
+		--%>	
+			</select>
+			</td>
+		</tr>
 			<td>Email</td><td><input type="text" name="txtEmail"></td>
 		</tr>
 		
