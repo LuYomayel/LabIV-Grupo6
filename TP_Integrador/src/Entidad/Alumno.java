@@ -13,6 +13,7 @@ public class Alumno {
 	private String localidad;
 	private String email;
 	private String telefono;
+	private int IdCarrera;
 	private static int cont=9999;
 	
 	public Alumno() {
@@ -137,5 +138,8 @@ public class Alumno {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+	public int getIdCarrera() {
+		return IdCarrera;
 	}
 }

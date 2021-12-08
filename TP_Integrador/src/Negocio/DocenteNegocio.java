@@ -9,4 +9,5 @@ public interface DocenteNegocio {
 	public ArrayList<Docente> ListarDocentes();
 	public int eliminarDocente(int id);
 	public Docente obtenerDocente(String apellido);
+	Docente obtenerDocente(int legajo);
 }

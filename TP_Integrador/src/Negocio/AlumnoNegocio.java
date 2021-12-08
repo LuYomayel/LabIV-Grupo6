@@ -10,4 +10,5 @@ public interface AlumnoNegocio {
 	public int eliminarAlumno(int id);
 	//¿Apellido y nombre?
 	public Alumno obtenerAlumno(String Apellido);
+	Alumno obtenerAlumno(int id);
 }
