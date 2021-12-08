@@ -6,23 +6,23 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Dao.PaisDao;
-
+import Dao.LocalidadDao;
+import Entidad.Localidad;
 import Entidad.Pais;
 
-public class PaisDaoImpl implements PaisDao {
+public class LocalidadDaoImpl implements LocalidadDao {
 	private static String host = "jdbc:mysql://localhost:3306/";
 	private static String user = "root";
 	private static String pass = "admin";/* "root";*/
 	private static String dbName = "dbutn2";
 	@Override
-	public int AgregarPais(Pais pais) {
+	public int AgregarLocalidad(Localidad localidad) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		}catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		String query = "INSERT INTO paises(idPais,descripcion) values("+pais.getIdPais()+",'"+pais.getDescripcionPais()+"')";
+		String query = "INSERT INTO localidades(idLocalidad,descripcion,idProvincia) values("+localidad.getIdLocalidad()+",'"+localidad.getDescripcion()+",'"+localidad.getIdProvincia()+"');";
 		
 		Connection cn = null;
 		int filas =0;
@@ -35,37 +35,39 @@ public class PaisDaoImpl implements PaisDao {
 			e.printStackTrace();
 		}
 		return filas;
-	}
+}
 	@Override
-	public ArrayList<Pais> ListarPais() {
+	public ArrayList<Localidad> ListarLocalidad() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ArrayList<Pais> listarPais= new ArrayList<Pais>();
+		ArrayList<Localidad> listarLocalidad= new ArrayList<Localidad>();
 		Connection cn= null;
 		try {
 			cn = DriverManager.getConnection(host+dbName,user,pass);
-			String query = "Select idPais, descripcion from paises order by descripcion asc;";
+			String query = "Select idLocalidad, descripcion, idProvincia from localidades order by descripcion asc;";
 					Statement st = cn.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			
 			while (rs.next()) {
-			Pais x = new Pais();
-			x.setIdPais(rs.getInt("idPais"));
-			x.setDescripcionPais(rs.getString("Descripcion"));
-			listarPais.add(x);
+			Localidad x = new Localidad();
+			x.setIdLocalidad(rs.getInt("idLocalidad"));
+			x.setDescripcion(rs.getString("Descripcion"));
+			x.setIdProvincia(rs.getInt("IdProvincia"));
+			listarLocalidad.add(x);
 			}
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		return listarPais;
+		return listarLocalidad;
+
 	}
 	@Override
-	public int eliminarPais(int id) {
+	public int eliminarLocalidad(int id) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
@@ -79,7 +81,7 @@ public class PaisDaoImpl implements PaisDao {
 		{
 			cn = DriverManager.getConnection(host+dbName, user,pass);
 			Statement st = cn.createStatement();
-			String query = "DELETE FROM paises WHERE idpais ="+id;
+			String query = "DELETE FROM localidades WHERE idlocalidad ="+id;
 			filas=st.executeUpdate(query);
 		}
 		catch(Exception e)
@@ -89,17 +91,18 @@ public class PaisDaoImpl implements PaisDao {
 		return filas;
 	}
 	@Override
-	public Pais obtenerPais(int id) {
-		Pais x = new Pais();
+	public Localidad obtenerLocalidad(int id) {
+		Localidad x = new Localidad();
 		Connection cn = null;
 		try {
 			cn = DriverManager.getConnection(host+dbName,user,pass);
 			Statement st =cn.createStatement();
-			String query = "SELECT * FROM paises WHERE idPais="+id;
+			String query = "SELECT * FROM localidades WHERE idLocalidad="+id;
 			ResultSet rs = st.executeQuery(query);
 			rs.next();
-			x.setIdPais(rs.getInt("IdPais"));
-			x.setDescripcionPais(rs.getString("Descripcion"));
+			x.setIdLocalidad(rs.getInt("IdLocalidad"));
+			x.setDescripcion(rs.getString("Descripcion"));
+			x.setIdProvincia(rs.getInt("IdProvincia"));
 		}
 		catch(Exception e)
 		{
@@ -107,6 +110,4 @@ public class PaisDaoImpl implements PaisDao {
 		}
 		return x;
 	}
-	
-
 }

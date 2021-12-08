@@ -2,5 +2,8 @@
 /NegocioImpl/
 /Dao/
 /Entidad/
+<<<<<<< HEAD
 /Servlets/
+=======
+>>>>>>> 69f46c9a5bd0651eda02fffb61e1dd8b50edcd05
 /DaoImpl/
