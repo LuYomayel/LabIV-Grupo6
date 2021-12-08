@@ -1,9 +1,9 @@
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import ="java.util.*" %>
 <%@page import="Entidad.Alumno" %>
-<%@page import="Entidad.Pais" %>
-<%@page import="Dao.PaisDao" %>
 <%@page import="DaoImpl.PaisDaoImpl" %>
+<%@page import="Entidad.Pais" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -43,7 +43,7 @@
 	
 	<h1><p align="center";" ><b>Agregar Alumnos </b> </p></h1>
 	
-	<form action="ServletAlumno" method="get" class ="contenedor">
+	<form action="ServletAlumno" method="post" class ="contenedor" action ="ServeletPais">
 	<table>
 	<% 
 	int legajo=1000;
@@ -69,15 +69,18 @@
 			<td>Fecha de Nacimiento</td><td><input type="text" name="txtFecha"required></td>
 		</tr>
 		<tr>
+
 		<td> Nacionalidad</td>
 		<td>
 			<select name="Nacionalidad" style="width: 148px ; ">  
 	<%
-	int i=0;
-   		ArrayList<Pais> list = new ArrayList<Pais>();
-   			list = (ArrayList<Pais>) request.getAttribute("listarPais");
+   		ArrayList<Pais> list = null;
+   		if (request.getAttribute("listarPais")!=null)
+   		{
+   				list = (ArrayList<Pais>) request.getAttribute("listarPais");
+   				}
      %>
-     <option value=null selected disabled hidden>Elegir una</option>
+     <option value=null selected disabled hidden>Elegir un Pais</option>
      <%for(Pais t : list){
      	 
     	 %>	
@@ -85,6 +88,7 @@
 		
 		<%} 
 		%>
+		
 	</select>
 	</td>
 		</tr>
@@ -94,19 +98,19 @@
 			<select name="Provincia" style="width: 148px; " > 
 				<%-- 
 	<%
-	int i=0;
+
    ArrayList<Provincia> list = new ArrayList<Provincia>();
 
      if(request.getAttribute("ListaProvincia")!=null){
     	 list= (ArrayList<Provincia>) request.getAttribute("ListaProvincia");}
      %>
-     <option value=null selected disabled hidden>Elegir una</option>
+     <option value=null selected disabled hidden>Elegir una Provincia</option>
      <%for(Provincia t : list){
      	 
     	 %>
      
 	
-		<option ><%=t.getDescripcion_Provincia()%></option>
+		<option ><%=t.getDescripcion()%></option>
 		
 		<%} %>
 		--%>
@@ -125,7 +129,7 @@
 		     if(request.getAttribute("ListaLocalidad")!=null){
 		    	 list= (ArrayList<Localidad>) request.getAttribute("ListaLocalidad");}
 		     %>
-		     <option value=null selected disabled hidden>Elegir una</option>
+		     <option value=null selected disabled hidden>Elegir una Localidad</option>
 		     <%for(Localidad t : list){
 		     	 
 		    	 %>
