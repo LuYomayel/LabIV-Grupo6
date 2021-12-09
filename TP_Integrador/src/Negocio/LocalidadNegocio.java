@@ -1,4 +1,4 @@
-package Negocio;
+/*package Negocio;
 
 import java.util.ArrayList;
 
@@ -9,4 +9,4 @@ public interface LocalidadNegocio {
 	public ArrayList<Localidad> ListarLocalidades();
 	public int eliminarLocalidad(int id);
 	public Alumno obtenerLocalidad(int id);
-}
+}*/

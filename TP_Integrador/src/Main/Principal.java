@@ -1,4 +1,4 @@
-package main;
+/*package main;
 
 import negocio.AlumnoNegocio;
 import negocioImpl.AlumnoNegocioImpl;
@@ -32,4 +32,4 @@ public class Principal {
 		controlador.inicializar();
 	}
 
-}
+}*/

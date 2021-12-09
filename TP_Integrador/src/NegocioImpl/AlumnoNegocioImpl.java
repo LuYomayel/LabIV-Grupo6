@@ -1,4 +1,4 @@
-package NegocioImpl;
+/*package NegocioImpl;
 
 import java.util.ArrayList;
 
@@ -60,4 +60,4 @@ public class AlumnoNegocioImpl implements AlumnoNegocio{
 		// TODO Auto-generated method stub
 		return null;
 	}
-}
+}*/

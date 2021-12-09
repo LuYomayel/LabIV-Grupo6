@@ -1,4 +1,4 @@
-package NegocioImpl;
+/*package NegocioImpl;
 
 import java.util.ArrayList;
 
@@ -41,10 +41,10 @@ public class UsuarioNegocioImpl implements UsuarioNegocio{
 	public Alumno obtenerAdmin(String apellido) {
 
 		return null;
-	
+	}
 		@Override
 	public Alumno obtenerUsuario(int id) {
 	return null;
 	}
 
-}
+}*/

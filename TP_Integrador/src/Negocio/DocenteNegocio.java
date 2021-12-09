@@ -1,4 +1,4 @@
-package Negocio;
+/*package Negocio;
 
 import java.util.ArrayList;
 
@@ -10,4 +10,4 @@ public interface DocenteNegocio {
 	public int eliminarDocente(int id);
 	public Docente obtenerDocente(String apellido);
 	Docente obtenerDocente(int legajo);
-}
+}*/
