@@ -1,4 +1,4 @@
-package Negocio;
+Alumnopackage Negocio;
 
 import java.util.ArrayList;
 
@@ -9,4 +9,5 @@ public interface UsuarioNegocio {
 	public ArrayList<Usuario> ListarUsuarios();
 	public int eliminarUsuario(int id);
 	public Alumno obtenerUsuario(int id);
+	public boolean obtenerAdmin(Usuario usuario);
 }
