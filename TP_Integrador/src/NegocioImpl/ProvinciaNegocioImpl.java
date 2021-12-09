@@ -14,7 +14,8 @@ public class ProvinciaNegocioImpl implements ProvinciaNegocio{
 	public int agregarProvincia(Provincia provincia) {
 		int estado=0;
 		if(	Provincia.getIdPais()>0 && 
-				provincia.getDescripcionProv.trim().length()>=0)
+			provincia.getDescripcionProv.trim().length()>=0 &&
+			Localidad.getIdPais()>0))
 		{
 			estado=prdao.agregarProvincia(provincia);
 		}
