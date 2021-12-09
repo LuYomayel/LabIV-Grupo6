@@ -16,7 +16,7 @@ public class PaisDaoImpl implements PaisDao {
 	private static String host = "jdbc:mysql://localhost:3306/";
 	private static String user = "root";
 	private static String pass = "admin";/* "root";*/
-	private static String dbName = "dbutn2";
+	private static String dbName = "dbunt2";
 	@Override
 	public int AgregarPais(Pais pais) {
 		try {
@@ -38,6 +38,7 @@ public class PaisDaoImpl implements PaisDao {
 		}
 		return filas;
 	}
+	
 	@Override
 	public ArrayList<Pais> ListarPais() {
 		try {
@@ -49,10 +50,10 @@ public class PaisDaoImpl implements PaisDao {
 		ArrayList<Pais> listarPais= new ArrayList<Pais>();
 		Connection cn= null;
 		try {
-			cn = DriverManager.getConnection(host+dbName,user,pass);
-			String query = "Select idPais, descripcion from paises order by descripcion asc;";
-					Statement st = cn.createStatement();
-			ResultSet rs = st.executeQuery(query);
+			cn = DriverManager.getConnection(host+ "dbunt2",user,pass);
+			//String query = "Select idPais, Descripcion from paises";
+			Statement st = cn.createStatement();
+			ResultSet rs = st.executeQuery("Select idPais,Descripcion FROM paises");
 			
 			while (rs.next()) {
 			Pais x = new Pais();
@@ -60,9 +61,12 @@ public class PaisDaoImpl implements PaisDao {
 			x.setDescripcionPais(rs.getString("Descripcion"));
 			listarPais.add(x);
 			}
+			cn.close();
 		}
 		catch(Exception e){
 			e.printStackTrace();
+		}finally {
+			
 		}
 		return listarPais;
 	}

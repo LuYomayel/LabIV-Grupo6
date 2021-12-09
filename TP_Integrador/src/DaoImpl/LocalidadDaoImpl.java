@@ -14,7 +14,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 	private static String host = "jdbc:mysql://localhost:3306/";
 	private static String user = "root";
 	private static String pass = "admin";/* "root";*/
-	private static String dbName = "dbutn2";
+	private static String dbName = "dbunt2";
 	@Override
 	public int AgregarLocalidad(Localidad localidad) {
 		try {
@@ -48,7 +48,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 		Connection cn= null;
 		try {
 			cn = DriverManager.getConnection(host+dbName,user,pass);
-			String query = "Select idLocalidad, descripcion, idProvincia from localidades order by descripcion asc;";
+			String query = "Select idLocalidad, descripcion, idProvincia from localidades";
 					Statement st = cn.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			
@@ -59,6 +59,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 			x.setIdProvincia(rs.getInt("IdProvincia"));
 			listarLocalidad.add(x);
 			}
+			cn.close();
 		}
 		catch(Exception e){
 			e.printStackTrace();

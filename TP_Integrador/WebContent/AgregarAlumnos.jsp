@@ -1,11 +1,11 @@
-<%@page import="java.util.List"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import ="java.util.*" %>
 <%@page import="Entidad.Alumno" %>
 <%@page import="DaoImpl.PaisDaoImpl" %>
 <%@page import="Entidad.Pais" %>
 <%@page import="Entidad.Provincia" %>
 <%@page import="Entidad.Localidad" %>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import ="java.util.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -71,77 +71,79 @@
 			<td>Fecha de Nacimiento</td><td><input type="text" name="txtFecha"required></td>
 		</tr>
 		<tr>
-
-		<td> Nacionalidad</td>
-		<td>
-			<select name="Nacionalidad" style="width: 148px ; ">  
-	<%-- 
 	<%
-	int i = 0;
    		ArrayList<Pais> list = null;
    		if (request.getAttribute("ListarPais")!=null)
    		{
-   				list = (ArrayList<Pais>) request.getAttribute("ListarPais");
-   				}
+ 			list = (ArrayList<Pais>) request.getAttribute("ListarPais");
+   		}
      %>
-     <option value=null selected disabled hidden>Elegir un Pais</option>
-     <%for(Pais t : list){
-     	 
-    	 %>	
-		<option ><%= t.getDescripcionPais() %> </option>
+   	<%
+   		ArrayList<Provincia> listprov = null;
+     	if(request.getAttribute("ListarProvincia")!=null){
+    		listprov= (ArrayList<Provincia>) request.getAttribute("ListarProvincia");}
+     %>
+  			<%				
+		   		ArrayList<Localidad> listLocalidad = null;
 		
-		<%} 
-		%>
-		--%>
+		     if(request.getAttribute("ListarLocalidad")!=null){
+		    	 listLocalidad = (ArrayList<Localidad>) request.getAttribute("ListarLocalidad");}
+		     %>
+		<td> Nacionalidad</td>
+		<td>
+			<select name="Nacionalidad" style="width: 148px ; ">  
+
+     <option value=null selected disabled hidden>Elegir un Pais</option>
+     <% if (list!= null)
+     	for(Pais t : list){
+    	 %>	
+		<option><%= t.getDescripcionPais()%> </option>
+		<%} %>
 	</select>
 	</td>
+	<td><a href = "ServletAlumno?ParamPais=1"> Mostrar Paises</a> </td>
 		</tr>
 		<tr>
 			<td>Provincia</td>
 			<td>
 			<select name="Provincia" style="width: 148px; " > 
-			<%--	
-	<%
 
-   		ArrayList<Provincia> listprov = new ArrayList<Provincia>();
-     	if(request.getAttribute("ListarProvincia")!=null){
-    		listprov= (ArrayList<Provincia>) request.getAttribute("ListarProvincia");}
-     %>
      <option value=null selected disabled hidden>Elegir una Provincia</option>
-     <%for(Provincia t : listprov){
+     <% if(listprov!=null)
+     	for(Provincia t : listprov){
      	 
     	 %>
 		<option ><%=t.getDescripcionProv()%></option>
 		
 		<%} %>
-		--%>
 			</select>
 			</td>
+			<%--<td><a href = "ServletAlumno?ParamProv=1"> Mostrar Provincias</a> </td>
+			 --%>
+				
 		</tr>
 		<tr>
 			<td>Localidad</td>
 			<td>
-			<select select name="Localidad" style="width: 148px; " >
-		<%-- 	
-			<%				
-		   		ArrayList<Localidad> listLocalidad = new ArrayList<Localidad>();
-		
-		     if(request.getAttribute("ListarLocalidad")!=null){
-		    	 list= (ArrayList<Localidad>) request.getAttribute("ListarLocalidad");}
-		     %>
+			<select select name="Localidad" style="width: 148px; " >	
+
 		     <option value=null selected disabled hidden>Elegir una Localidad</option>
-		     <%for(Localidad t : listLocalidad){
-		     	 
+		     <% if(listLocalidad!=null)
+		     	for(Localidad t : listLocalidad){
 		    	 %>
 		     
-			
 				<option ><%=t.getDescripcion()%></option>
 				
 				<%} %>
-			--%>
+
 			</select>
 			</td>
-		</tr>
+						</td>
+						<%--
+						
+				<td><a href = "ServletAlumno?ParamLocal=1"> Mostrar Localidad</a> </td>
+		--%>
+				</tr>
 		
 		<tr>
 			<td>Direccion</td><td><input type="text" name="txtDireccion"required></td>

@@ -14,7 +14,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao{
 	private static String host = "jdbc:mysql://localhost:3306/";
 	private static String user = "root";
 	private static String pass = "admin";/* "root";*/
-	private static String dbName = "dbutn2";
+	private static String dbName = "dbunt2";
 	
 	public int AgregarProvincia(Provincia provincia) {
 		try {
@@ -49,20 +49,24 @@ public class ProvinciaDaoImpl implements ProvinciaDao{
 		Connection cn= null;
 		try {
 			cn = DriverManager.getConnection(host+dbName,user,pass);
-			String query = "Select idProvincia, descripcion, idPais from provincias order by descripcion asc;";
+			//String query = "Select idProvincia, descripcion, idPais from provincias";
 					Statement st = cn.createStatement();
-			ResultSet rs = st.executeQuery(query);
+			ResultSet rs = st.executeQuery("Select idProvincia, descripcion, idPais FROM provincias");
 			
 			while (rs.next()) {
 			Provincia x = new Provincia();
 			x.setIdProvincia(rs.getInt("idProvincia"));
-			x.setDescripcionProv(rs.getString("Descripcion"));
+			x.setDescripcionProv(rs.getString("descripcion"));
 			x.setIdPais(rs.getInt("IdPais"));
 			listarProvincia.add(x);
 			}
+			cn.close();
 		}
 		catch(Exception e){
 			e.printStackTrace();
+		}
+		finally {
+			
 		}
 		return listarProvincia;
 
