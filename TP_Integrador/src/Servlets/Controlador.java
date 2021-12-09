@@ -1,7 +1,5 @@
-package presentacion.controlador;
+package Servlets.controlador;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import negocio.AlumnoNegocio;
 import negocio.DocenteNegocio;
@@ -16,7 +14,14 @@ import entidad.Pais;
 import entidad.Provincia;
 import entidad.Localidad;
 
-public class Controlador implements ActionListener
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Controlador 
 {
 		private VentanaPrincipal ventanaPrincipal;
 		private AlumnoNegocio aNeg;
@@ -25,17 +30,35 @@ public class Controlador implements ActionListener
 		private ProvinciaNegocio prNeg;
 		private LocalidadNegocio lNeg;
 		private UsuarioNegocio uNeg;
-		private ArrayList<Persona> personasEnTabla;
+		private ArrayList<Alumno> personasEnTabla;
 		
-		public Controlador(VentanaPrincipal vista, PersonaNegocio pNeg)
+		public Controlador(VentanaPrincipal vista, AlumnoNegocio aNeg, DocenteNegocio dNeg,
+		PaisNegocio paNeg, ProvinciaNegocio prNeg, LocalidadNegocio lNeg, LocalidadNegocio lNeg, 
+		UsuarioNegocio uNeg)
 		{
 			this.ventanaPrincipal = vista;
-			this.pNeg = pNeg;
-			this.ventanaPrincipal.getBtnAgregar().addActionListener(a->ventanaAgregarPersona(a));
-			this.ventanaPrincipal.getBtnBorrar().addActionListener(s->borrarPersona(s));
+			this.aNeg = pNeg;
+			this.dNeg = pNeg;
+			this.paNeg = pNeg;
+			this.prNeg = pNeg;
+			this.lNeg = pNeg;
+			this.uNeg = pNeg;
+			//this.ventanaPrincipal.getBtnAgregar().addActionListener(a->ventanaAgregarPersona(a));
+			//this.ventanaPrincipal.getBtnBorrar().addActionListener(s->borrarPersona(s));
 		}
 		
 		
-	
+		//private void ventanaAgregarPersona(ActionEvent a) 
+		
+
+		//public void borrarPersona(ActionEvent s)
+		
+		
+		//public void inicializar()
+		
+		
+		//private void refrescarTabla()
+		
+
 		
 }

@@ -19,13 +19,17 @@ public class Principal {
 	
 	public static void main(String[] args) {
 		
+		VentanaPrincipal vista = new VentanaPrincipal();
+		
 		AlumnoNegocio negocio = new AlumnoNegocioImpl();
 		DocenteNegocio negocio = new DocenteNegocioImpl();
 		PaisNegocio negocio = new PaisNegocioImpl();
 		ProvinciaNegocio negocio = new ProvinciaNegocioImpl();
 		LocalidadNegocio negocio = new LocalidadNegocioImpl();
 		UsuarioNegocio negocio = new UsuarioNegocioImpl();
-		ServletLogin controlador = new ServletLogin(vista, negocio);
+		
+		Controlador controlador = new Controlador(vista, negocio);
+		controlador.inicializar();
 	}
 
 }
