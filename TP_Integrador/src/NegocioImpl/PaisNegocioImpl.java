@@ -1,4 +1,4 @@
-package NegocioImpl;
+/*package NegocioImpl;
 
 import java.util.ArrayList;
 
@@ -44,4 +44,4 @@ public class PaisNegocioImpl implements PaisNegocio{
 	}
 		
 
-}
+}*/

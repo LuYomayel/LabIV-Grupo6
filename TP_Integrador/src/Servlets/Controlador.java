@@ -1,4 +1,4 @@
-package Servlets.controlador;
+/*package Servlets.controlador;
 
 import java.util.ArrayList;
 import negocio.AlumnoNegocio;
@@ -61,4 +61,4 @@ public class Controlador
 		
 
 		
-}
+}*/
