@@ -41,6 +41,13 @@ public class ServletAlumno extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Agregar Alumno
+		/*
+		PaisDaoImpl pDao = new PaisDaoImpl();
+		ArrayList<Pais> listaPais = pDao.ListarPais();
+		ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();
+		ArrayList<Provincia> listaProv = provDao.ListarProvincia();
+		LocalidadDaoImpl lDao = new LocalidadDaoImpl();
+		ArrayList<Localidad> listaLocal = lDao.ListarLocalidad();*/
 
 		if(request.getParameter("btnAgregar")!=null){
 			if(request.getParameter("txtDni")!=null && request.getParameter("txtNombre")!=null && request.getParameter("txtApellido")!=null && request.getParameter("txtFecha")!=null&& request.getParameter("txtDireccion")!=null&& request.getParameter("txtNacionalidad")!=null&& request.getParameter("txtProvincia")!=null && request.getParameter("txtEmail")!=null&& request.getParameter("txtTelefono")!=null) {
@@ -61,15 +68,17 @@ public class ServletAlumno extends HttpServlet {
 
 				AlumnoDaoImpl dao = new AlumnoDaoImpl();
 				filas = dao.agregarAlumno(alu);	
-
 				
 				PaisDaoImpl pDao = new PaisDaoImpl();
-				ArrayList<Pais> lista = pDao.ListarPais();
+				ArrayList<Pais> listaPais = pDao.ListarPais();
 				ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();
 				ArrayList<Provincia> listaProv = provDao.ListarProvincia();
-				
+				LocalidadDaoImpl lDao = new LocalidadDaoImpl();
+				ArrayList<Localidad> listaLocal = lDao.ListarLocalidad();
+
 				request.setAttribute("ListarProvincia", listaProv);
-				request.setAttribute("ListarPais", lista);
+				request.setAttribute("ListarPais", listaPais);
+				request.setAttribute("ListarLocalidad", listaLocal);
 				request.setAttribute("cantFilas", filas);
 				RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 				rd.forward(request, response);
@@ -77,9 +86,14 @@ public class ServletAlumno extends HttpServlet {
 			}
 			else {
 				PaisDaoImpl pDao = new PaisDaoImpl();
-				ArrayList<Pais> lista = pDao.ListarPais();
-				
-				request.setAttribute("ListarPais", lista);
+				ArrayList<Pais> listaPais = pDao.ListarPais();
+				ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();
+				ArrayList<Provincia> listaProv = provDao.ListarProvincia();
+				LocalidadDaoImpl lDao = new LocalidadDaoImpl();
+				ArrayList<Localidad> listaLocal = lDao.ListarLocalidad();
+				request.setAttribute("ListarProvincia", listaProv);
+				request.setAttribute("ListarPais", listaPais);
+				request.setAttribute("ListarLocalidad", listaLocal);
 				RequestDispatcher rd= request.getRequestDispatcher("/AgregarAlumnos.jsp");
 				rd.forward(request, response);
 			}
@@ -161,9 +175,11 @@ public class ServletAlumno extends HttpServlet {
 			ArrayList<Pais> listaPais = pDao.ListarPais();
 			ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();
 			ArrayList<Provincia> listaProv = provDao.ListarProvincia();
-			
+			LocalidadDaoImpl lDao = new LocalidadDaoImpl();
+			ArrayList<Localidad> listaLocal = lDao.ListarLocalidad();
 			request.setAttribute("ListarProvincia", listaProv);
 			request.setAttribute("ListarPais", listaPais);
+			request.setAttribute("ListarLocalidad", listaLocal);
 			
 			request.setAttribute("legajo", legajo);
 			RequestDispatcher rd = request.getRequestDispatcher("/AgregarAlumnos.jsp");
