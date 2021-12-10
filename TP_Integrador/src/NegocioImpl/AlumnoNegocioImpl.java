@@ -12,7 +12,7 @@ public class AlumnoNegocioImpl implements AlumnoNegocio{
 
 	@Override
 	public int agregarAlumno(Alumno alumno) {
-		int estado=0;
+		boolean estado=false;
 		if(alumno.getLegajo()>0 && 
 				alumno.getDni().trim().length()>0 &&
 				alumno.getNombre().trim().length()>0 &&
@@ -38,26 +38,35 @@ public class AlumnoNegocioImpl implements AlumnoNegocio{
 
 	@Override
 	public int eliminarAlumno(int id) {
-		int estado=0;
+		boolean estado=false;
 		String Apellido = adao.getApellido;		
 		Alumno alumno = obtenerAlumno(Apellido);
 		if(alumno.getLegajo()>0 )//También se puede preguntar si existe ese ID 
-			//El tema es que el ID lo maneja la base de datos.
 		{
 			estado=adao.eliminarAlumno(id);
 		}
-		return estado;  //estado al ser int pregunto por el 0
+		return estado; 
 	}
 	
 	@Override
 	public Alumno obtenerAlumno(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		boolean estado=false;
+		Alumno alumno = obtenerAlumno(id);
+		if(alumno.getLegajo()>0 )
+		{
+			estado=adao.obtenerAlumno(id);
+		}
+		return estado; 
 	}
 
 	@Override
 	public Alumno obtenerAlumno(String Apellido) {
-		// TODO Auto-generated method stub
-		return null;
+		boolean estado=false;
+		Alumno alumno = obtenerAlumno(Apellido);
+		if(alumno.getLegajo()>0 )
+		{
+			estado=adao.obtenerAlumno(Apellido);
+		}
+		return estado; 
 	}
 }*/

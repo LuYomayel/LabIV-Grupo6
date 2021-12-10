@@ -12,7 +12,7 @@ public class DocenteNegocioImpl implements DocenteNegocio{
 	
 	@Override
 	public int agregarDocente(Docente docente) {
-		int estado=0;
+		boolean estado=false;
 		if(docente.getLegajo()>0 && 
 				docente.getDni().trim().length()>0 &&
 				docente.getNombre().trim().length()>0 &&
@@ -36,27 +36,37 @@ public class DocenteNegocioImpl implements DocenteNegocio{
 	}
 
 	@Override
-	public int eliminarDocente(int legajo) {
-		int estado=0;
+	public int eliminarDocente(int id) {
+		boolean estado=false;
 		String Apellido = ddao.getApellido;
-		Docente docente =obtenerDocente(legajo);
+		Docente docente =obtenerDocente(apellido);
 		if(docente.getLegajo()>0 )//El tema es que el ID lo maneja la base de datos. 
 		{
-			estado=ddao.eliminarDocente(legajo);
+			estado=ddao.eliminarDocente(id);
 		}
-		return estado;  //estado al ser int pregunto por el 0
-	}
-
-	@Override
-	public Docente obtenerDocente(int legajo) {
-		// TODO Auto-generated method stub
-		return null;
+		return estado;  
 	}
 
 	@Override
 	public Docente obtenerDocente(String apellido) {
-		// TODO Auto-generated method stub
-		return null;
+		boolean estado=false;
+		Docente docente = obtenerDocente(Apellido);
+		if(docente.getLegajo()>0 )
+		{
+			estado=ddao.obtenerDocente(Apellido);
+		}
+		return estado; 
+	}
+
+	@Override
+	public Docente obtenerIdDocente(String mail) {
+		boolean estado=false;
+		Docente docente = obtenerIdDocente(mail);
+		if(docente.getLegajo()>0 )
+		{
+			estado=ddao.obtenerIdDocente(mail);
+		}
+		return estado; 
 	}
 
 }*/
