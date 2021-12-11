@@ -71,22 +71,22 @@
 		{*/
 	%>	
 		<tr>
-			<form name="formulario" action="ServletAlumno?idAlumno=<%=alumno.getLegajo()%>" method="get">
+			<form name="formulario" action="ServletAlumno?idAlumno=<%--=alumno.getLegajo()--%>" method="get">
 				
 
-					<td><%= //alumnoxc.getLegajo()%> <input type="hidden" name="idAlumno" value="<%=//alumnoxc.getLegajo()%>"> </td>
+					<%-- <td><%= //alumnoxc.getLegajo()%> <input type="hidden" name="idAlumno" value="<%=//alumnoxc.getLegajo()%>"> </td>
 					<td><%= //alumnoxc.getNombre()%></td>
 					<td><%= //alumnoxc.getCurso()%></td>
 					<td><%= //alumnoxc.getNota1()%></td>
 					<td><%= //alumnoxc.getNota2()%></td>
 					<td><%= //alumnoxc.getRecup1()%></td>
 					<td><%= //alumnoxc.getRecup2()%></td>
-					<td><%= //alumnoxc.getEstado()%></td>
+					<td><%= //alumnoxc.getEstado()--%></td>
 					<td><input type="submit" name="btnModificar" value="Modificar"></td>
 				
 				</form> 
 				</tr>
-				<% /*  } */ %>
+				<%-- /*  } */ --%>
 		</tbody>
 			</nav>
 	</table>
