@@ -50,7 +50,7 @@ public class PaisDaoImpl implements PaisDao {
 		ArrayList<Pais> listarPais= new ArrayList<Pais>();
 		Connection cn= null;
 		try {
-			cn = DriverManager.getConnection(host+ "dbunt2",user,pass);
+			cn = DriverManager.getConnection(host+dbName,user,pass);
 			//String query = "Select idPais, Descripcion from paises";
 			Statement st = cn.createStatement();
 			ResultSet rs = st.executeQuery("Select idPais,Descripcion FROM paises");

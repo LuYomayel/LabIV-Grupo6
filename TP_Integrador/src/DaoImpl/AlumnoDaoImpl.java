@@ -24,7 +24,7 @@ public class AlumnoDaoImpl implements AlumnoDao{
 			// TODO Auto-generated catch block
 			e.printStackTrace();						
 		}
-		String query="INSERT INTO alumnos(legajo, dni,nombre,apellido,fechaNac,direccion,nacionalidad,provincia,email,telefono)VALUES("+alumno.getLegajo()+",'"+alumno.getDni()+"','"+alumno.getNombre()+"','"+alumno.getApellido()+"','"+alumno.getFechanacimiento()+"','"+alumno.getDireccion()+"','"+alumno.getNacionalidad()+"','"+alumno.getProvincia()+"','"+alumno.getEmail()+"','"+alumno.getTelefono()+"')";
+		String query="INSERT INTO alumnos(legajo, dni,nombre,apellido,fechaNac,direccion,idPais,idProvincia,idLocalidad,email,telefono)VALUES("+alumno.getLegajo()+",'"+alumno.getDni()+"','"+alumno.getNombre()+"','"+alumno.getApellido()+"',STR_TO_DATE('"+alumno.getFechanacimiento()+"','%d/%m/%Y'),'"+alumno.getDireccion()+"','"+alumno.getNacionalidad()+"','"+alumno.getProvincia()+"','"+alumno.getLocalidad()+"','"+alumno.getEmail()+"','"+alumno.getTelefono()+"')";
 		Connection cn = null;
 		int filas =0;
 		try {

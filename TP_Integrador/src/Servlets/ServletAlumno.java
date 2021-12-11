@@ -49,8 +49,10 @@ public class ServletAlumno extends HttpServlet {
 		LocalidadDaoImpl lDao = new LocalidadDaoImpl();
 		ArrayList<Localidad> listaLocal = lDao.ListarLocalidad();*/
 
-		if(request.getParameter("btnAgregar")!=null){
-			if(request.getParameter("txtDni")!=null && request.getParameter("txtNombre")!=null && request.getParameter("txtApellido")!=null && request.getParameter("txtFecha")!=null&& request.getParameter("txtDireccion")!=null&& request.getParameter("txtNacionalidad")!=null&& request.getParameter("txtProvincia")!=null && request.getParameter("txtEmail")!=null&& request.getParameter("txtTelefono")!=null) {
+		if(request.getParameter("btnAgregar") !=null){
+			String s = request.getParameter("Provincia");
+			System.out.println(s);
+			if(request.getParameter("txtDni")!=null && request.getParameter("txtNombre")!=null && request.getParameter("txtApellido")!=null && request.getParameter("txtFecha")!=null&& request.getParameter("txtDireccion")!=null && request.getParameter("Nacionalidad")!=null && request.getParameter("Provincia")!=null && request.getParameter("Localidad")!=null && request.getParameter("txtEmail")!=null&& request.getParameter("txtTelefono")!=null) {
 				int filas =0;
 				Alumno alu = new Alumno();
 				
@@ -60,15 +62,16 @@ public class ServletAlumno extends HttpServlet {
 				alu.setApellido(request.getParameter("txtApellido"));
 				alu.setFechanacimiento(request.getParameter("txtFecha"));
 				alu.setDireccion(request.getParameter("txtDireccion"));
-				alu.setNacionalidad(request.getParameter("txtNacionalidad"));
-				alu.setProvincia(request.getParameter("txtProvincia"));
-				
+				alu.setNacionalidad(request.getParameter("Nacionalidad"));
+				alu.setProvincia(request.getParameter("Provincia"));
+				alu.setLocalidad(request.getParameter("Localidad"));
 				alu.setEmail(request.getParameter("txtEmail"));
 				alu.setTelefono(request.getParameter("txtTelefono"));
-
+				System.out.println("xd");
+				System.out.println((String)request.getParameter("Nacionalidad"));
 				AlumnoDaoImpl dao = new AlumnoDaoImpl();
-				filas = dao.agregarAlumno(alu);	
-				
+				//filas = dao.agregarAlumno(alu);	
+				filas =1 ;
 				PaisDaoImpl pDao = new PaisDaoImpl();
 				ArrayList<Pais> listaPais = pDao.ListarPais();
 				ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();
@@ -80,11 +83,26 @@ public class ServletAlumno extends HttpServlet {
 				request.setAttribute("ListarPais", listaPais);
 				request.setAttribute("ListarLocalidad", listaLocal);
 				request.setAttribute("cantFilas", filas);
-				RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/AgregarAlumnos.jsp");
 				rd.forward(request, response);
 				
 			}
 			else {
+				System.out.println("Entramos");
+				int legajo = 1000;
+				AlumnoDaoImpl dao = new AlumnoDaoImpl();
+				ArrayList<Alumno> lista= dao.ListarAlumnos();
+				request.setAttribute("listaA", lista);
+				
+				if(lista != null) {
+					for(Alumno alumno : lista) {
+						if(alumno.getLegajo()>legajo) legajo = alumno.getLegajo();
+						
+					}
+					
+				}
+				legajo++;
+				
 				PaisDaoImpl pDao = new PaisDaoImpl();
 				ArrayList<Pais> listaPais = pDao.ListarPais();
 				ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();

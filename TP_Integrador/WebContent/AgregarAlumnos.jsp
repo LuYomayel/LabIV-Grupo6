@@ -45,7 +45,7 @@
 	
 	<h1><p align="center";"><b>Agregar Alumnos </b> </p></h1>
 	
-	<form action="ServletAlumno" method="post" class ="contenedor">
+	<form action="ServletAlumno" method="get" class ="contenedor">
 	<table>
 	<% 
 	int legajo=1000;
@@ -91,17 +91,17 @@
 		     %>
 		<td> Nacionalidad</td>
 		<td>
-			<select name="Nacionalidad" style="width: 148px ; ">  
+			<select id ="Nacionalidad" name="Nacionalidad" style="width: 148px ; ">  
 
      <option value=null selected disabled hidden>Elegir un Pais</option>
      <% if (list!= null)
      	for(Pais t : list){
     	 %>	
-		<option><%= t.getDescripcionPais()%> </option>
+		<option value=<%= t.getIdPais() %> ><%= t.getDescripcionPais()%> </option>
 		<%} %>
 	</select>
 	</td>
-	<td><a href = "ServletAlumno?ParamPais=1"> Mostrar Paises</a> </td>
+	
 		</tr>
 		<tr>
 			<td>Provincia</td>
@@ -113,14 +113,12 @@
      	for(Provincia t : listprov){
      	 
     	 %>
-		<option ><%=t.getDescripcionProv()%></option>
+		<option value=<%= t.getIdProvincia() %>><%=t.getDescripcionProv()%></option>
 		
 		<%} %>
 			</select>
 			</td>
-			<%--<td><a href = "ServletAlumno?ParamProv=1"> Mostrar Provincias</a> </td>
-			 --%>
-				
+							
 		</tr>
 		<tr>
 			<td>Localidad</td>
@@ -132,17 +130,14 @@
 		     	for(Localidad t : listLocalidad){
 		    	 %>
 		     
-				<option ><%=t.getDescripcion()%></option>
+				<option value=<%= t.getIdLocalidad() %>><%=t.getDescripcion()%></option>
 				
 				<%} %>
 
 			</select>
 			</td>
 						</td>
-						<%--
 						
-				<td><a href = "ServletAlumno?ParamLocal=1"> Mostrar Localidad</a> </td>
-		--%>
 				</tr>
 		
 		<tr>
@@ -168,8 +163,7 @@
 		%>
 		<% if(filas == 1){ %>
 			<b>¡Alumno agregado con exito! </b>
-			<%}
-		%>
+			<%}%>
 	
 </body>
 </html>

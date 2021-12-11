@@ -15,11 +15,12 @@
       <input class="controls" type="text" name="usuario" value="" placeholder="Usuario">
       <input class="controls" type="password" name="contrasena" value="" placeholder="Contraseña">
       <input class="buttons" type="submit" value="Ingresar" name="btnAceptar">
-     <%--
-      <% if(!(boolean)request.getAttribute("error")) {%>
+     
+      <% if(request.getAttribute("error")!=null){ 
+      if(!(boolean)request.getAttribute("error")) {%>
       <label id="lblError">Usuario o contraseña incorrecto</label>
-		<% } %>
- --%>    
+		<% }} %>
+    
     </form>
 
 </body>
