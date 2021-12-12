@@ -48,6 +48,7 @@
 	<form action="ServletAlumno" method="get" class ="contenedor">
 	<table>
 	<% 
+	
 	int legajo=1000;
 	if(request.getAttribute("legajo")!=null)
 	{

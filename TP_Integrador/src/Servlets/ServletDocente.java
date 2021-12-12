@@ -12,8 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import DaoImpl.AlumnoDaoImpl;
 import DaoImpl.DocenteDaoImpl;
+import DaoImpl.LocalidadDaoImpl;
+import DaoImpl.PaisDaoImpl;
+import DaoImpl.ProvinciaDaoImpl;
 import Entidad.Alumno;
 import Entidad.Docente;
+import Entidad.Localidad;
+import Entidad.Pais;
+import Entidad.Provincia;
 
 
 /**
@@ -82,34 +88,74 @@ public class ServletDocente extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("btnAgregar")!=null){
-			if(request.getParameter("txtDni")!=null && request.getParameter("txtNombre")!=null && request.getParameter("txtApellido")!=null && request.getParameter("txtFecha")!=null && request.getParameter("txtNacionalidad")!=null && request.getParameter("txtLocalidad")!=null && request.getParameter("txtEmail")!=null && request.getParameter("txtTelefono")!=null && request.getParameter("txtContraseña")!=null) {
+		if(request.getParameter("btnAgregar") !=null){
+			
+			if(request.getParameter("txtDni")!=null && request.getParameter("txtNombre")!=null && request.getParameter("txtApellido")!=null && request.getParameter("txtFecha")!=null&& request.getParameter("txtDireccion")!=null && request.getParameter("Nacionalidad")!=null && request.getParameter("Provincia")!=null && request.getParameter("Localidad")!=null && request.getParameter("txtEmail")!=null&& request.getParameter("txtTelefono")!=null) {
 				int filas =0;
-				Docente doc = new Docente();
+				Docente docente = new Docente();
 				
-				doc.setLegajo(1000);
-				doc.setDni(request.getParameter("txtDni"));
-				doc.setNombre(request.getParameter("txtNombre"));
-				doc.setApellido(request.getParameter("txtApellido"));
-				doc.setFechanacimiento(request.getParameter("txtFecha"));
-				doc.setDireccion(request.getParameter("txtDireccion"));
-				doc.setNacionalidad(request.getParameter("txtNacionalidad"));
-				doc.setLocalidad(request.getParameter("txtLocalidad"));
-				
-				doc.setEmail(request.getParameter("txtEmail"));
-				doc.setContraseña(request.getParameter("txtContraseña"));
-				doc.setTelefono(request.getParameter("txtTelefono"));
+				docente.setLegajo(Integer.parseInt(request.getParameter("Legajo")));
+				docente.setDni(request.getParameter("txtDni"));
+				docente.setNombre(request.getParameter("txtNombre"));
+				docente.setApellido(request.getParameter("txtApellido"));
+				docente.setFechanacimiento(request.getParameter("txtFecha"));
+				docente.setDireccion(request.getParameter("txtDireccion"));
+				docente.setNacionalidad(request.getParameter("Nacionalidad"));
+				docente.setProvincia(request.getParameter("Provincia"));
+				docente.setLocalidad(request.getParameter("Localidad"));
+				docente.setEmail(request.getParameter("txtEmail"));
+				docente.setContraseña(request.getParameter("txtContraseña"));
+				docente.setTelefono(request.getParameter("txtTelefono"));
 				
 				DocenteDaoImpl dao = new DocenteDaoImpl();
-				filas = dao.agregarDocente(doc);
-						
+				filas = dao.agregarDocente(docente);	
+				//filas = 1;
+				PaisDaoImpl pDao = new PaisDaoImpl();
+				ArrayList<Pais> listaPais = pDao.ListarPais();
+				ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();
+				ArrayList<Provincia> listaProv = provDao.ListarProvincia();
+				LocalidadDaoImpl lDao = new LocalidadDaoImpl();
+				ArrayList<Localidad> listaLocal = lDao.ListarLocalidad();
+
+				request.setAttribute("ListarProvincia", listaProv);
+				request.setAttribute("ListarPais", listaPais);
+				request.setAttribute("ListarLocalidad", listaLocal);
 				request.setAttribute("cantFilas", filas);
-				RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+				
+				int legajo = Integer.parseInt(request.getParameter("Legajo"));
+				legajo++;
+				request.setAttribute("legajo", legajo);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/AgregarAlumnos.jsp");
 				rd.forward(request, response);
 				
 			}
 			else {
-				RequestDispatcher rd= request.getRequestDispatcher("/ListadoProfesores.jsp");
+				
+				int legajo = 1000;
+				AlumnoDaoImpl dao = new AlumnoDaoImpl();
+				ArrayList<Alumno> lista= dao.ListarAlumnos();
+				request.setAttribute("listaA", lista);
+				
+				if(lista != null) {
+					for(Alumno alumno : lista) {
+						if(alumno.getLegajo()>legajo) legajo = alumno.getLegajo();
+						
+					}
+					
+				}
+				legajo++;
+				
+				PaisDaoImpl pDao = new PaisDaoImpl();
+				ArrayList<Pais> listaPais = pDao.ListarPais();
+				ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();
+				ArrayList<Provincia> listaProv = provDao.ListarProvincia();
+				LocalidadDaoImpl lDao = new LocalidadDaoImpl();
+				ArrayList<Localidad> listaLocal = lDao.ListarLocalidad();
+				request.setAttribute("ListarProvincia", listaProv);
+				request.setAttribute("ListarPais", listaPais);
+				request.setAttribute("ListarLocalidad", listaLocal);
+				RequestDispatcher rd= request.getRequestDispatcher("/AgregarAlumnos.jsp");
 				rd.forward(request, response);
 			}
 			
