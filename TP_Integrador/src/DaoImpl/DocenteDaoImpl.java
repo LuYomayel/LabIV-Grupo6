@@ -24,7 +24,7 @@ public class DocenteDaoImpl implements DocenteDao{
 			// TODO Auto-generated catch block
 			e.printStackTrace();						
 		}
-		String query="INSERT INTO docentes(legajo_Docente, Dni_Docente, Nombre_Docente, Apellido_Docente, FechaNac_Docente, Localidad_Docente, Telefono_Docente,Nacionalidad_Docente, Email_Docente, Contrasenia_Docente)VALUES("+docente.getLegajo()+",'"+docente.getDni()+"','"+docente.getNombre()+"','"+docente.getApellido()+"','"+docente.getFechanacimiento()+"','"+docente.getLocalidad()+"','"+docente.getTelefono()+"','"+docente.getNacionalidad()+"','"+docente.getEmail()+"','"+docente.getContraseña()+"')";
+		String query="INSERT INTO docentes(Legajo, Dni, Nombre, Apellido, FechaNac, Direccion, idPais,idProvincia,idLocalidad, Telefono, Email,idCarrera)VALUES("+docente.getLegajo()+",'"+docente.getDni()+"','"+docente.getNombre()+"','"+docente.getApellido()+"',STR_TO_DATE('"+docente.getFechanacimiento()+"','%d/%m/%Y'),'"+docente.getDireccion()+"',"+docente.getNacionalidad()+","+docente.getProvincia()+","+docente.getLocalidad()+","+docente.getTelefono()+",'"+docente.getEmail()+"',"+1+")";
 		Connection cn = null;
 		int filas =0;
 		try {
@@ -34,6 +34,10 @@ public class DocenteDaoImpl implements DocenteDao{
 		}
 		catch(Exception e) {
 			e.printStackTrace();
+		}
+		if(filas > 0) {
+			UsuarioDaoImpl uDao = new UsuarioDaoImpl();
+			uDao.agregarDocente(docente);
 		}
 		return filas;
 	}
@@ -155,5 +159,24 @@ public class DocenteDaoImpl implements DocenteDao{
 		else return -1;
 		
 	}
-	
+	public int obtenerIdDocentexLegajo(Docente docente) {
+		Docente d = new Docente();
+		Connection cn = null;	
+		int id = -1;
+		try {
+			cn = DriverManager.getConnection(host+dbName,user,pass);
+			Statement st =cn.createStatement();
+			String query = "select idDocente from docentes where legajo="+docente.getLegajo();
+			ResultSet rs = st.executeQuery(query);
+			rs.next();
+			id = rs.getInt("idDocente");		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		if(id > 0) return id;
+		else return -1;
+		
+	}
 }

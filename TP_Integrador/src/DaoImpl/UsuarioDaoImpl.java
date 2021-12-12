@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 import Dao.UsuarioDao;
 import Entidad.Alumno;
+import Entidad.Docente;
 import Entidad.Usuario;
 
 
@@ -80,6 +81,33 @@ public class UsuarioDaoImpl implements UsuarioDao{
 			ex.printStackTrace();
 		}
 		return false;
+	}
+
+
+	@Override
+	public void agregarDocente(Docente docente) {
+		System.out.println(docente.getContraseña());
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();						
+		}
+		int filas =0;
+		DocenteDaoImpl dao = new DocenteDaoImpl();
+		int id = dao.obtenerIdDocentexLegajo(docente);
+		System.out.println(id);
+		Connection cn = null;
+		try {
+			cn = DriverManager.getConnection(host+dbName,user,pass);
+			Statement st = cn.createStatement();
+			String query = "insert into usuarios(idDocente_Usuario,contrasenia)values("+id+",'"+docente.getContraseña()+"')";
+			filas = st.executeUpdate(query);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		
 	}
 	
 	

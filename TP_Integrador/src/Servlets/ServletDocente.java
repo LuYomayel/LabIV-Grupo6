@@ -79,6 +79,17 @@ public class ServletDocente extends HttpServlet {
 			legajo++;
 			
 			request.setAttribute("legajo", legajo);
+			
+			PaisDaoImpl pDao = new PaisDaoImpl();
+			ArrayList<Pais> listaPais = pDao.ListarPais();
+			ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();
+			ArrayList<Provincia> listaProv = provDao.ListarProvincia();
+			LocalidadDaoImpl lDao = new LocalidadDaoImpl();
+			ArrayList<Localidad> listaLocal = lDao.ListarLocalidad();
+			request.setAttribute("ListarProvincia", listaProv);
+			request.setAttribute("ListarPais", listaPais);
+			request.setAttribute("ListarLocalidad", listaLocal);
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/AgregarProfesores.jsp");
 			rd.forward(request, response);
 		}
@@ -126,20 +137,20 @@ public class ServletDocente extends HttpServlet {
 				legajo++;
 				request.setAttribute("legajo", legajo);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("/AgregarAlumnos.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/AgregarProfesores.jsp");
 				rd.forward(request, response);
 				
 			}
 			else {
 				
 				int legajo = 1000;
-				AlumnoDaoImpl dao = new AlumnoDaoImpl();
-				ArrayList<Alumno> lista= dao.ListarAlumnos();
+				DocenteDaoImpl dao = new DocenteDaoImpl();
+				ArrayList<Docente> lista= dao.ListarDocentes();
 				request.setAttribute("listaA", lista);
 				
 				if(lista != null) {
-					for(Alumno alumno : lista) {
-						if(alumno.getLegajo()>legajo) legajo = alumno.getLegajo();
+					for(Docente docente : lista) {
+						if(docente.getLegajo()>legajo) legajo = docente.getLegajo();
 						
 					}
 					

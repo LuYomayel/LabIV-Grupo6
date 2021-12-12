@@ -11,4 +11,5 @@ public interface DocenteDao {
 	public int eliminarDocente(int id);
 	public Docente obtenerDocente(String apellido);
 	public int obtenerIdDocente(String mail);
+	public int obtenerIdDocentexLegajo(Docente docente);
 }

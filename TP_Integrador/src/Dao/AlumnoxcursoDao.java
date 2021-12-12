@@ -1,4 +1,4 @@
-package Dao;
+/*package Dao;
 
 import java.util.ArrayList;
 
@@ -9,4 +9,4 @@ public interface AlumnoDaoxcurso {
 	public ArrayList<Alumnoxcurso> ListarAlumnosxcurso();
 	public int eliminarAlumnoxcurso(int id);
 	public Alumno obtenerAlumno(int id);
-}
+}*/
