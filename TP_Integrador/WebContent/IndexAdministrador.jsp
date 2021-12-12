@@ -29,7 +29,7 @@
                             </li>
                         <li><a href="#">Cursos</a>
                         <ul id="desple">
-                                <li><a href="#">Agregado de cursado</a></li>
+                                <li><a href="ServletCursos?Agregar=1">Agregado de cursado</a></li>
                                 <li><a href="#">Agregar Alumnos a cursado</a></li>
                             </ul>
                             </li>
