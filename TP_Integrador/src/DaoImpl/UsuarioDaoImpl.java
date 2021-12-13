@@ -15,8 +15,8 @@ import Entidad.Usuario;
 public class UsuarioDaoImpl implements UsuarioDao{
 	private static String host = "jdbc:mysql://localhost:3306/";
 	private static String user = "root";
-	private static String pass = "root";// "root";
-	private static String dbName = "dbutn2";
+	private static String pass = "admin";// "root";
+	private static String dbName = "dbunt2";
 	
 	
 	@Override

@@ -47,6 +47,7 @@
 	
 	<form action="ServletAlumno" method="get" class ="contenedor">
 	<table>
+	
 	<% 
 	
 	int legajo=1000;
@@ -69,7 +70,7 @@
 			<td>Apellido</td><td><input type="text" name="txtApellido" required></td>
 		</tr>
 		<tr>
-			<td>Fecha de Nacimiento</td><td><input type="text" name="txtFecha"required></td>
+			<td>Fecha de Nacimiento</td><td><input type="text" name="txtFecha"required></td><td>Con formato dd/mm/aaaa</td>
 		</tr>
 		<tr>
 	<%
@@ -149,6 +150,9 @@
 		</tr>
 		<tr>
 			<td>Telefono</td><td><input type="text" name="txtTelefono"required></td>
+		</tr>
+		<tr>
+			<td> ID CARRERA </td><td><input type ="text" name ="txtIdCarrera"required></td>
 		</tr>
 		<tr>
 			<td><input type="Submit" name="btnAgregar" value="AGREGAR" style="color: #000000"></td>

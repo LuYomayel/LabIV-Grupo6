@@ -166,7 +166,7 @@ public class ServletDocente extends HttpServlet {
 				request.setAttribute("ListarProvincia", listaProv);
 				request.setAttribute("ListarPais", listaPais);
 				request.setAttribute("ListarLocalidad", listaLocal);
-				RequestDispatcher rd= request.getRequestDispatcher("/AgregarAlumnos.jsp");
+				RequestDispatcher rd= request.getRequestDispatcher("/AgregarProfesores.jsp");
 				rd.forward(request, response);
 			}
 			

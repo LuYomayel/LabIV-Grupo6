@@ -15,8 +15,8 @@ import Entidad.Pais;
 public class PaisDaoImpl implements PaisDao {
 	private static String host = "jdbc:mysql://localhost:3306/";
 	private static String user = "root";
-	private static String pass = "root";/* "root";*/
-	private static String dbName = "dbutn2";
+	private static String pass = "admin";/* "root";*/
+	private static String dbName = "dbunt2";
 	@Override
 	public int AgregarPais(Pais pais) {
 		try {
@@ -50,7 +50,7 @@ public class PaisDaoImpl implements PaisDao {
 		ArrayList<Pais> listarPais= new ArrayList<Pais>();
 		Connection cn= null;
 		try {
-			cn = DriverManager.getConnection(host+dbName,user,pass);
+			cn = DriverManager.getConnection(host+"dbunt2",user,pass);
 			//String query = "Select idPais, Descripcion from paises";
 			Statement st = cn.createStatement();
 			ResultSet rs = st.executeQuery("Select idPais,Descripcion FROM paises");

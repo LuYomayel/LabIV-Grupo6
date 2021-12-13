@@ -12,8 +12,8 @@ import Entidad.Alumno;
 public class AlumnoDaoImpl implements AlumnoDao{
 	private static String host = "jdbc:mysql://localhost:3306/";
 	private static String user = "root";
-	private static String pass =  "root"; // "root"
-	private static String dbName = "dbutn2";
+	private static String pass =  "admin";  // "root"
+	private static String dbName = "dbunt2";
 	
 	
 	@Override
@@ -50,29 +50,37 @@ public class AlumnoDaoImpl implements AlumnoDao{
 		ArrayList<Alumno>listaAlumnos = new ArrayList<Alumno>();
 		Connection cn= null;
 		try {
-			cn = DriverManager.getConnection(host+dbName,user,pass);
-			String query = "SELECT a.legajo Legajo,a.dni Dni,a.nombre Nombre,a.apellido Apellido, a.fechaNac FechaNacimiento, a.direccion Direccion, p.descripcion Pais, pr.descripcion Provincia, l.descripcion Localidad, a.email Email, a.telefono Telefono  FROM alumnos a join paises p on p.idPais = a.idPais join provincias pr on pr.idPais = p.idPais join localidades l on l.idLocalidad = a.idLocalidad;"; 
+			cn = DriverManager.getConnection(host+"dbunt2",user,pass);
+			//String query = "SELECT a.legajo Legajo,a.dni Dni,a.nombre Nombre,a.apellido Apellido, a.fechaNac FechaNacimiento, a.direccion Direccion, p.descripcion Pais, pr.descripcion Provincia, l.descripcion Localidad, a.email Email, a.telefono Telefono, a.idcarrera idCarrera  FROM alumnos a join paises p on p.idPais = a.idPais join provincias pr on pr.idPais = p.idPais join localidades l on l.idLocalidad = a.idLocalidad"; 
 					Statement st = cn.createStatement();
-			ResultSet rs = st.executeQuery(query);
+			ResultSet rs = st.executeQuery("SELECT a.legajo Legajo,a.dni Dni,a.nombre Nombre,a.apellido Apellido, a.fechaNac FechaNacimiento, a.direccion Direccion, p.descripcion Pais, pr.descripcion Provincia, l.descripcion Localidad, a.email Email, a.telefono Telefono, a.idcarrera idCarrera  FROM alumnos a join paises p on p.idPais = a.idPais join provincias pr on pr.idPais = p.idPais join localidades l on l.idLocalidad = a.idLocalidad");
+					//(query);
+//					("SELECT a.legajo Legajo,a.dni Dni,a.nombre Nombre,a.apellido Apellido, a.fechaNac FechaNacimiento, a.direccion Direccion, p.descripcion Pais, pr.descripcion Provincia, l.descripcion Localidad, a.email Email, a.telefono Telefono, a.idcarrera idCarrera  FROM alumnos a");//a join paises p on p.idPais = a.idPais join provincias pr on pr.idPais = p.idPais join localidades l on l.idLocalidad = a.idLocalidad");
+			//("SELECT Legajo,Dni, Nombre, Apellido, fechaNac , direccion , idPais, idProvincia, idLocalidad,  Email,  Telefono,  idCarrera  FROM alumnos");
 			
 			while (rs.next()) {
 				Alumno x = new Alumno();
-				x.setLegajo(rs.getInt("legajo"));
-				x.setDni(rs.getString("dni"));
-				x.setNombre(rs.getString("nombre"));
-				x.setApellido(rs.getString("apellido"));
-				x.setFechanacimiento(rs.getString("fechaNacimiento"));
-				x.setDireccion(rs.getString("direccion"));
+				x.setLegajo(rs.getInt("Legajo"));
+				x.setDni(rs.getString("Dni"));
+				x.setNombre(rs.getString("Nombre"));
+				x.setApellido(rs.getString("Apellido"));
+				x.setFechanacimiento(rs.getString("FechaNacimiento"));
+				x.setDireccion(rs.getString("Direccion"));
 				x.setNacionalidad(rs.getString("Pais"));
-				x.setProvincia(rs.getString("provincia"));
+				x.setProvincia(rs.getString("Provincia"));
 				x.setLocalidad(rs.getString("Localidad"));
-				x.setEmail(rs.getString("email"));
-				x.setTelefono(rs.getString("telefono"));			
+				x.setEmail(rs.getString("Email"));
+				x.setTelefono(rs.getString("Telefono"));	
+				x.setIdCarrera(rs.getInt("idCarrera"));
 				listaAlumnos.add(x);
 			}
+			cn.close();
 		}
 		catch(Exception e){
 			e.printStackTrace();
+		}
+		finally {
+			
 		}
 		return listaAlumnos;
 	}
@@ -124,7 +132,8 @@ public class AlumnoDaoImpl implements AlumnoDao{
 			x.setNacionalidad(rs.getString("nacionalidad"));
 			x.setProvincia(rs.getString("provincia"));
 			x.setEmail(rs.getString("email"));
-			x.setTelefono(rs.getString("telefono"));			
+			x.setTelefono(rs.getString("telefono"));	
+			x.setIdCarrera(rs.getInt("idcarrera"));
 		}
 		catch(Exception e)
 		{

@@ -66,6 +66,7 @@ public class ServletAlumno extends HttpServlet {
 				alu.setLocalidad(request.getParameter("Localidad"));
 				alu.setEmail(request.getParameter("txtEmail"));
 				alu.setTelefono(request.getParameter("txtTelefono"));
+				alu.setIdCarrera(Integer.parseInt(request.getParameter("txtIdCarrera")));
 				
 				AlumnoDaoImpl dao = new AlumnoDaoImpl();
 				filas = dao.agregarAlumno(alu);	
@@ -121,6 +122,16 @@ public class ServletAlumno extends HttpServlet {
 			
 			}
 		if(request.getParameter("Param")!= null) {
+			AlumnoDaoImpl dao = new AlumnoDaoImpl();
+			ArrayList<Alumno> lista= dao.ListarAlumnos();
+			
+			request.setAttribute("listaA", lista);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/ListadoAlumnos.jsp");
+			rd.forward(request, response);
+		}
+		
+		if(request.getParameter("ListarTodos")!= null) {
 			AlumnoDaoImpl dao = new AlumnoDaoImpl();
 			ArrayList<Alumno> lista= dao.ListarAlumnos();
 			
@@ -197,13 +208,14 @@ public class ServletAlumno extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		/*if(request.getParameter("btnListarAlumnos")!=null) {
+		if(request.getParameter("btnMostrarAlumnos")!=null) 
+		{
 			AlumnoDaoImpl dao = new AlumnoDaoImpl();
 			ArrayList<Alumno> lista= dao.ListarAlumnos();
-			request.setAttribute("listita", lista);
-			RequestDispatcher rd = request.getRequestDispatcher("/ListarAlumnos.jsp");
+			request.setAttribute("listaA", lista);
+			RequestDispatcher rd = request.getRequestDispatcher("/ListadoAlumnos.jsp");
 			rd.forward(request, response);
-	}*/
+		}
 		
 		if(request.getParameter("btnEliminar")!=null) {
 			int id= Integer.parseInt(request.getParameter("legajo").toString());
@@ -211,8 +223,8 @@ public class ServletAlumno extends HttpServlet {
 			dao.eliminarAlumno(id);
 			
 			ArrayList<Alumno> lista= dao.ListarAlumnos();
-			request.setAttribute("listita", lista);
-			RequestDispatcher rd = request.getRequestDispatcher("/");
+			request.setAttribute("listaA", lista);
+			RequestDispatcher rd = request.getRequestDispatcher("/ListadoAlumnos.jsp");
 			rd.forward(request, response);
 		}
 	}

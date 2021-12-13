@@ -20,7 +20,7 @@ public class Alumno {
 		
 	}
 
-	public Alumno(String dni, String nombre, String apellido, String fechanacimiento, String direccion, String nacionalidad,String provincia,String localidad, String email, String telefono) {
+	public Alumno(String dni, String nombre, String apellido, String fechanacimiento, String direccion, String nacionalidad,String provincia,String localidad, String email, String telefono, int idCarr) {
 		super();
 		
 		this.legajo = devuelveProximoLegajo();
@@ -34,10 +34,12 @@ public class Alumno {
 		this.localidad = localidad;
 		this.email = email;
 		this.telefono = telefono;
-		//ini mod joaquin 
-		
-		//fin mod joaquin 
+		this.IdCarrera = idCarr;
 	}
+	public void setIdCarrera(int idCarrera) {
+		IdCarrera = idCarrera;
+	}
+
 	public static int devuelveProximoLegajo() {
 		return cont++;
 

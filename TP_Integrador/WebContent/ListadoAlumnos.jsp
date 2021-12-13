@@ -10,7 +10,17 @@
 <title>Listado de alumnos</title>
 <link rel="Stylesheet" href="Css/ListadoAlumno.css" />
 </head>
-<body>
+<body>	
+
+	<% 
+	ArrayList<Alumno> listaAlumnos = null;
+	if(request.getAttribute("listaA")!=null)
+	{
+		listaAlumnos = (ArrayList<Alumno>) request.getAttribute("listaA");
+	}
+
+	 %>
+
 	<header>
     	 <nav class="menu">
                 <ul>
@@ -37,22 +47,10 @@
             </nav>
             
 	</header>
-	
-	<% 
-	ArrayList<Alumno> listaAlumnos = null;
-	if(request.getAttribute("listaA")!=null)
-	{
-		listaAlumnos = (ArrayList<Alumno>) request.getAttribute("listaA");
-	}
 
- %>
-	
-	<h1><p aling ="Center";"  ><b> Listar Alumno</b></p> </h1>
-	<form action="ServeletAlumno" method= "post" class ="contenedor">
-		<table border=1 ,style="text-align: center"> 
-		<nav class= "table">
-		<thead>
-		
+	<h1><p aling ="Center";"  ><b> Listar Alumno</b></p> 
+</h1>
+		<table border=1> 
 		<tr>
 			<th>Legajo</th>
 			<th>Documento</th>
@@ -63,44 +61,38 @@
 			<th>Nacionalidad</th>
 			<th>Provincia</th>
 			<th>Localidad</th>
-			
 			<th>Email</th>
 			<th>Telefono</th>
+			<th>Carrera </th>
 			<th>ELIMINAR</th>
 		</tr>
-		</thead>
-		<tbody>
-				<%  if(listaAlumnos!=null)
+		<%  if(listaAlumnos!=null)
 		for(Alumno alumno : listaAlumnos) 
 		{
-	%>	
+			%>	
 		<tr>
-			<form name="formulario" action="ServletAlumno?idAlumno=<%=alumno.getLegajo()%>" method="get">
-				
-
+					<form name="formulario" action="ServletAlumno?idAlumno=<%=alumno.getLegajo()%>" method="get">
+			<form action="ServletAlumno" method = "post">
 					<td><%= alumno.getLegajo()%> <input type="hidden" name="idAlumno" value="<%=alumno.getLegajo()%>"> </td>
 					<td><%= alumno.getDni()%></td>
 					<td><%= alumno.getNombre()%></td>
 					<td><%= alumno.getApellido()%></td>
-					<td><%= alumno.getFechanacimiento()%>c</td>
+					<td><%= alumno.getFechanacimiento()%></td>
 					<td><%= alumno.getDireccion()%></td>
 					<td><%= alumno.getNacionalidad()%></td>
 					<td><%= alumno.getProvincia()%></td>
 					<td><%= alumno.getLocalidad()%></td>
 					<td><%= alumno.getEmail()%></td>
 					<td><%= alumno.getTelefono()%></td>
-					
+					<td><%= alumno.getIdCarrera()%></td>
 					<td><input type="submit" name="btnEliminar" value="Eliminar"></td>
-				
-				</form> 
+			</form>
 				</tr>
-				<%  } %>
-		</tbody>
-			</nav>
+			<%  } %>
 	</table>
 	
+	
+	
 	</form>
-	
-	
 </body>
 </html>
