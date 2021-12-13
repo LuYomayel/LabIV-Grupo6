@@ -8,5 +8,5 @@ public interface AlumnoDaoxcurso {
 	public int agregarAlumnoxcurso(Alumnoxcurso alumnoxcurso);
 	public ArrayList<Alumnoxcurso> ListarAlumnosxcurso();
 	public int eliminarAlumnoxcurso(int id);
-	public Alumno obtenerAlumno(int id);
+	public Alumno obtenerAlumnoxcurso(int id);     //modific Anibal
 }*/
