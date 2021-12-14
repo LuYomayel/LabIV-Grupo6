@@ -2,13 +2,13 @@
 <%@page import="DaoImpl.AlumnoDaoImpl"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="Entidad.Alumno" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+       <%@page import="Entidad.Alumno" %>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Listado de alumnos</title>
-<link rel="Stylesheet" href="Css/ListadoAlumno.css" />
+<meta charset="ISO-8859-1">
+<title>Modifcar alumnos</title>
+<link rel="Stylesheet" href="Css/ModificarAlumno.css" />
 </head>
 <body>	
 
@@ -33,6 +33,7 @@
                         <ul id="desple">
                                 <li><a href="ServletAlumno?Agregar=1"><p align="left">Agregado de Alumno</p></a></li>
                                 <li><a href="ServletAlumno?Param=1"><p align="left">Listado de alumnos</p></a></li>
+                            	<li><a href="ServletAlumno?Modificar=1"><p aling="left"> Modificar Alumnos</p> </a> </li>
                             </ul>
                             </li>
                         
@@ -48,7 +49,7 @@
             
 	</header>
 
-	<h1><p aling ="Center";"  ><b> Listar Alumno</b></p> 
+	<h1><p aling ="Center";"  ><b> Modificar Alumno</b></p> 
 </h1>
 		<table border=1> 
 		<tr>
@@ -64,7 +65,7 @@
 			<th>Email</th>
 			<th>Telefono</th>
 			<th>Carrera </th>
-			<th>ELIMINAR</th>
+			<th>MODIFICAR</th>
 		</tr>
 		<%  if(listaAlumnos!=null)
 		for(Alumno alumno : listaAlumnos) 
@@ -74,18 +75,18 @@
 					<form name="formulario" action="ServletAlumno?idAlumno=<%=alumno.getLegajo()%>" method="get">
 			<form action="ServletAlumno" method = "post">
 					<td><%= alumno.getLegajo()%> <input type="hidden" name="idAlumno" value="<%=alumno.getLegajo()%>"> </td>
-					<td><%= alumno.getDni()%></td>
-					<td><%= alumno.getNombre()%></td>
-					<td><%= alumno.getApellido()%></td>
-					<td><%= alumno.getFechanacimiento()%></td>
-					<td><%= alumno.getDireccion()%></td>
-					<td><%= alumno.getNacionalidad()%></td>
-					<td><%= alumno.getProvincia()%></td>
-					<td><%= alumno.getLocalidad()%></td>
-					<td><%= alumno.getEmail()%></td>
-					<td><%= alumno.getTelefono()%></td>
-					<td><%= alumno.getIdCarrera()%></td>
-					<td><input type="submit" name="btnEliminar" value="Eliminar"></td>
+					<td><input type ="text" name ="dniAlumno" value= "<%=alumno.getDni() %>"> </td>
+					<td><input type ="text" name ="NombreAlumno" value= "<%=alumno.getNombre() %>"></td>
+					<td><input type ="text" name ="ApellidoAlumno" value= "<%=alumno.getApellido() %>"></td>
+					<td><input type ="text" name ="NacAlumno" value= "<%=alumno.getFechanacimiento() %>"></td>
+					<td><input type ="text" name ="DireccionAlumno" value= "<%=alumno.getDireccion() %>"></td>
+					<td><input type ="text" name ="PaisAlumno" value= "<%=alumno.getNacionalidad() %>"></td>
+					<td><input type ="text" name ="ProvinciaAlumno" value= "<%= alumno.getProvincia()%>"></td>
+					<td><input type ="text" name ="LocalidadAlumno" value= "<%=alumno.getLocalidad() %>"></td>
+					<td><input type ="text" name ="EmailAlumno" value= "<%=alumno.getEmail() %>"></td>
+					<td><input type ="text" name ="TelefonoAlumno" value= "<%=alumno.getTelefono() %>"></td>
+					<td><input type ="text" name ="CarreraAlumno" value= "<%=alumno.getIdCarrera() %>"></td>
+					<td><input type="submit" name="btnModificar" value="Modificar"></td>
 			</form>
 				</tr>
 			<%  } %>
@@ -93,4 +94,5 @@
 
 	</form>
 </body>
+
 </html>

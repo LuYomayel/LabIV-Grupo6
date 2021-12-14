@@ -28,6 +28,7 @@
                         <ul id="desple">
                                 <li><a href="ServletAlumno?Agregar=1"><p align="left">Agregado de Alumno</p></a></li>
                                 <li><a href="ServletAlumno?Param=1"><p align="left">Listado de alumnos</p></a></li>
+ 								<li><a href="ServletAlumno?Modificar=1"><p aling="left"> Modificar Alumnos</p> </a> </li>                           
                             </ul>
                             </li>
                         

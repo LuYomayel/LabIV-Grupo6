@@ -119,7 +119,78 @@ public class ServletAlumno extends HttpServlet {
 				RequestDispatcher rd= request.getRequestDispatcher("/AgregarAlumnos.jsp");
 				rd.forward(request, response);
 			}
-			
+		}
+			if(request.getParameter("btnModificar") !=null){
+				//System.out.println(request.getParameter("Legajo"));
+				if(request.getParameter("txtDni")!=null && request.getParameter("txtNombre")!=null && request.getParameter("txtApellido")!=null && request.getParameter("txtFecha")!=null&& request.getParameter("txtDireccion")!=null && request.getParameter("Nacionalidad")!=null && request.getParameter("Provincia")!=null && request.getParameter("Localidad")!=null && request.getParameter("txtEmail")!=null&& request.getParameter("txtTelefono")!=null) {
+					int filas =0;
+					Alumno alu = new Alumno();
+					
+					alu.setLegajo(Integer.parseInt(request.getParameter("Legajo")));
+					alu.setDni(request.getParameter("txtDni"));
+					alu.setNombre(request.getParameter("txtNombre"));
+					alu.setApellido(request.getParameter("txtApellido"));
+					alu.setFechanacimiento(request.getParameter("txtFecha"));
+					alu.setDireccion(request.getParameter("txtDireccion"));
+					alu.setNacionalidad(request.getParameter("Nacionalidad"));
+					alu.setProvincia(request.getParameter("Provincia"));
+					alu.setLocalidad(request.getParameter("Localidad"));
+					alu.setEmail(request.getParameter("txtEmail"));
+					alu.setTelefono(request.getParameter("txtTelefono"));
+					alu.setIdCarrera(Integer.parseInt(request.getParameter("txtIdCarrera")));
+					
+					AlumnoDaoImpl dao = new AlumnoDaoImpl();
+					filas = dao.agregarAlumno(alu);	
+					//filas = 1;
+					PaisDaoImpl pDao = new PaisDaoImpl();
+					ArrayList<Pais> listaPais = pDao.ListarPais();
+					ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();
+					ArrayList<Provincia> listaProv = provDao.ListarProvincia();
+					LocalidadDaoImpl lDao = new LocalidadDaoImpl();
+					ArrayList<Localidad> listaLocal = lDao.ListarLocalidad();
+
+					request.setAttribute("ListarProvincia", listaProv);
+					request.setAttribute("ListarPais", listaPais);
+					request.setAttribute("ListarLocalidad", listaLocal);
+					request.setAttribute("cantFilas", filas);
+					
+					int legajo = Integer.parseInt(request.getParameter("Legajo"));
+					legajo++;
+					request.setAttribute("legajo", legajo);
+					
+					RequestDispatcher rd = request.getRequestDispatcher("/ModificarAlumno.jsp");
+					rd.forward(request, response);
+					
+				}
+				else {
+					
+					int legajo = 1000;
+					AlumnoDaoImpl dao = new AlumnoDaoImpl();
+					ArrayList<Alumno> lista= dao.ListarAlumnos();
+					request.setAttribute("listaA", lista);
+					
+					if(lista != null) {
+						for(Alumno alumno : lista) {
+							if(alumno.getLegajo()>legajo) legajo = alumno.getLegajo();
+							
+						}
+						
+					}
+					legajo++;
+					
+					PaisDaoImpl pDao = new PaisDaoImpl();
+					ArrayList<Pais> listaPais = pDao.ListarPais();
+					ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();
+					ArrayList<Provincia> listaProv = provDao.ListarProvincia();
+					LocalidadDaoImpl lDao = new LocalidadDaoImpl();
+					ArrayList<Localidad> listaLocal = lDao.ListarLocalidad();
+					request.setAttribute("ListarProvincia", listaProv);
+					request.setAttribute("ListarPais", listaPais);
+					request.setAttribute("ListarLocalidad", listaLocal);
+					RequestDispatcher rd= request.getRequestDispatcher("/ModificarAlumno.jsp");
+					rd.forward(request, response);
+				}
+				
 			}
 		if(request.getParameter("Param")!= null) {
 			AlumnoDaoImpl dao = new AlumnoDaoImpl();
@@ -201,6 +272,35 @@ public class ServletAlumno extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/AgregarAlumnos.jsp");
 			rd.forward(request, response);
 		}
+		if(request.getParameter("Modificar")!=null) {
+			int legajo = 1000;
+			AlumnoDaoImpl dao = new AlumnoDaoImpl();
+			ArrayList<Alumno> lista= dao.ListarAlumnos();
+			request.setAttribute("listaA", lista);
+			
+			if(lista != null) {
+				for(Alumno alumno : lista) {
+					if(alumno.getLegajo()>legajo) legajo = alumno.getLegajo();
+					System.out.println(legajo);
+				}
+				
+			}
+			legajo++;
+			
+			PaisDaoImpl pDao = new PaisDaoImpl();
+			ArrayList<Pais> listaPais = pDao.ListarPais();
+			ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();
+			ArrayList<Provincia> listaProv = provDao.ListarProvincia();
+			LocalidadDaoImpl lDao = new LocalidadDaoImpl();
+			ArrayList<Localidad> listaLocal = lDao.ListarLocalidad();
+			request.setAttribute("ListarProvincia", listaProv);
+			request.setAttribute("ListarPais", listaPais);
+			request.setAttribute("ListarLocalidad", listaLocal);
+			
+			request.setAttribute("legajo", legajo);
+			RequestDispatcher rd = request.getRequestDispatcher("/ModificarAlumno.jsp");
+			rd.forward(request, response);
+		}
 		
 	}
 
@@ -208,7 +308,7 @@ public class ServletAlumno extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("btnMostrarAlumnos")!=null) 
+	/*	if(request.getParameter("btnMostrarAlumnos")!=null) 
 		{
 			AlumnoDaoImpl dao = new AlumnoDaoImpl();
 			ArrayList<Alumno> lista= dao.ListarAlumnos();
@@ -216,7 +316,7 @@ public class ServletAlumno extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/ListadoAlumnos.jsp");
 			rd.forward(request, response);
 		}
-		
+		*/
 		if(request.getParameter("btnEliminar")!=null) {
 			int id= Integer.parseInt(request.getParameter("legajo").toString());
 			AlumnoDaoImpl dao =new AlumnoDaoImpl();
