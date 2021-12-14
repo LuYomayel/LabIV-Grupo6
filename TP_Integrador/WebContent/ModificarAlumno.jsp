@@ -1,5 +1,11 @@
+<%@page import="Entidad.Alumno" %>
+<%@page import="DaoImpl.PaisDaoImpl" %>
+<%@page import="Entidad.Pais" %>
+<%@page import="Entidad.Provincia" %>
+<%@page import="Entidad.Localidad" %>
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="DaoImpl.AlumnoDaoImpl"%>
+<%@page import ="java.util.*" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
        <%@page import="Entidad.Alumno" %>
@@ -18,7 +24,7 @@
 	{
 		listaAlumnos = (ArrayList<Alumno>) request.getAttribute("listaA");
 	}
-
+	
 	 %>
 
 	<header>
@@ -67,6 +73,24 @@
 			<th>Carrera </th>
 			<th>MODIFICAR</th>
 		</tr>
+			<%
+   		ArrayList<Pais> list = null;
+   		if (request.getAttribute("ListarPais")!=null)
+   		{
+ 			list = (ArrayList<Pais>) request.getAttribute("ListarPais");
+   		}
+     %>
+   	<%
+   		ArrayList<Provincia> listprov = null;
+     	if(request.getAttribute("ListarProvincia")!=null){
+    		listprov= (ArrayList<Provincia>) request.getAttribute("ListarProvincia");}
+     %>
+  			<%				
+		   		ArrayList<Localidad> listLocalidad = null;
+		
+		     if(request.getAttribute("ListarLocalidad")!=null){
+		    	 listLocalidad = (ArrayList<Localidad>) request.getAttribute("ListarLocalidad");}
+		     %>
 		<%  if(listaAlumnos!=null)
 		for(Alumno alumno : listaAlumnos) 
 		{
@@ -89,6 +113,7 @@
 					<td><input type="submit" name="btnModificar" value="Modificar"></td>
 			</form>
 				</tr>
+
 			<%  } %>
 	</table>
 

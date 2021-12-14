@@ -121,23 +121,24 @@ public class ServletAlumno extends HttpServlet {
 			}
 		}
 			if(request.getParameter("btnModificar") !=null){
-				//System.out.println(request.getParameter("Legajo"));
-				if(request.getParameter("txtDni")!=null && request.getParameter("txtNombre")!=null && request.getParameter("txtApellido")!=null && request.getParameter("txtFecha")!=null&& request.getParameter("txtDireccion")!=null && request.getParameter("Nacionalidad")!=null && request.getParameter("Provincia")!=null && request.getParameter("Localidad")!=null && request.getParameter("txtEmail")!=null&& request.getParameter("txtTelefono")!=null) {
+				System.out.println(request.getParameter("idAlumno"));
+				
+			/*	if(request.getParameter("dniAlumno")!=null && request.getParameter("NombreAlumno")!=null && request.getParameter("ApellidoAlumno")!=null && request.getParameter("NacAlumno")!=null&& request.getParameter("DireccionAlumno")!=null && request.getParameter("PaisAlumno")!=null && request.getParameter("ProvinciaAlumno")!=null && request.getParameter("LocalidadAlumno")!=null && request.getParameter("EmailAlumno")!=null&& request.getParameter("TelefonoAlumno")!=null) {
 					int filas =0;
 					Alumno alu = new Alumno();
 					
-					alu.setLegajo(Integer.parseInt(request.getParameter("Legajo")));
-					alu.setDni(request.getParameter("txtDni"));
-					alu.setNombre(request.getParameter("txtNombre"));
-					alu.setApellido(request.getParameter("txtApellido"));
-					alu.setFechanacimiento(request.getParameter("txtFecha"));
-					alu.setDireccion(request.getParameter("txtDireccion"));
-					alu.setNacionalidad(request.getParameter("Nacionalidad"));
-					alu.setProvincia(request.getParameter("Provincia"));
-					alu.setLocalidad(request.getParameter("Localidad"));
-					alu.setEmail(request.getParameter("txtEmail"));
-					alu.setTelefono(request.getParameter("txtTelefono"));
-					alu.setIdCarrera(Integer.parseInt(request.getParameter("txtIdCarrera")));
+					alu.setLegajo(Integer.parseInt(request.getParameter("idAlumno")));
+					alu.setDni(request.getParameter("dniAlumno"));
+					alu.setNombre(request.getParameter("NombreAlumno"));
+					alu.setApellido(request.getParameter("ApellidoAlumno"));
+					alu.setFechanacimiento(request.getParameter("NacAlumno"));
+					alu.setDireccion(request.getParameter("DireccionAlumno"));
+					alu.setNacionalidad(request.getParameter("PaisAlumno"));
+					alu.setProvincia(request.getParameter("ProvinciaAlumno"));
+					alu.setLocalidad(request.getParameter("LocalidadAlumno"));
+					alu.setEmail(request.getParameter("EmailAlumno"));
+					alu.setTelefono(request.getParameter("TelefonoAlumno"));
+					alu.setIdCarrera(Integer.parseInt(request.getParameter("CarreraAlumno")));
 					
 					AlumnoDaoImpl dao = new AlumnoDaoImpl();
 					filas = dao.agregarAlumno(alu);	
@@ -154,9 +155,6 @@ public class ServletAlumno extends HttpServlet {
 					request.setAttribute("ListarLocalidad", listaLocal);
 					request.setAttribute("cantFilas", filas);
 					
-					int legajo = Integer.parseInt(request.getParameter("Legajo"));
-					legajo++;
-					request.setAttribute("legajo", legajo);
 					
 					RequestDispatcher rd = request.getRequestDispatcher("/ModificarAlumno.jsp");
 					rd.forward(request, response);
@@ -190,7 +188,7 @@ public class ServletAlumno extends HttpServlet {
 					RequestDispatcher rd= request.getRequestDispatcher("/ModificarAlumno.jsp");
 					rd.forward(request, response);
 				}
-				
+				*/
 			}
 		if(request.getParameter("Param")!= null) {
 			AlumnoDaoImpl dao = new AlumnoDaoImpl();

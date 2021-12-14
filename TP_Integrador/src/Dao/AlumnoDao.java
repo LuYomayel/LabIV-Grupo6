@@ -10,4 +10,5 @@ public interface AlumnoDao {
 	public ArrayList<Alumno> ListarAlumnos();
 	public int eliminarAlumno(int id);
 	public Alumno obtenerAlumno(String apellido);
+	public int ModificarAlumno(Alumno alumno, int legajo);
 }
