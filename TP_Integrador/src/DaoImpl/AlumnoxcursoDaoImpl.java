@@ -24,11 +24,8 @@ public class AlumnoxcursoDaoImpl implements AlumnoxcursoDao{
 			// TODO Auto-generated catch block
 			e.printStackTrace();						
 		}
-		String query="INSERT INTO alumnosxcurso(estado, parcial1,parcial2, recupera1, recupera2, idCurso, 
-		idAlumno)VALUES('"+alumnoxcurso.getEstado()+"','"String.ValueOf('"+alumnoxcurso.getParcial1()+"') + \
-		"','"+alumnoxcurso.getParcial2()+"', \
-		'"+alumno.getRecupera1()+"','"+alumno.getRecupera2()+"','"+alumno.getIdCurso()+"', \
-		'"+alumno.getIdAlumno()"')";
+		String query="\r\n"+
+		"INSERT INTO alumnosxcurso(estado, parcial1,parcial2, recupera1, recupera2, idCurso, idAlumno)VALUES("+alumnoxcurso.getEstado()+",'"+alumnoxcurso.getParcial1()+"','"+alumnoxcurso.getParcial2()+"','"+alumnoxcurso.getRecupera1()+"','"+alumnoxcurso.getRecupera2()+"','"+alumnoxcurso.getIdCurso()+"',	'"+alumnoxcurso.getIdAlumno()+")";
 		Connection cn = null;
 		int filas =0;
 		try {
@@ -55,12 +52,8 @@ public class AlumnoxcursoDaoImpl implements AlumnoxcursoDao{
 		Connection cn= null;
 		try {
 			cn = DriverManager.getConnection(host+dbName,user,pass);
-			String query = "SELECT axc.idAlumnosxcurso,a.Nombre, a.Apellido,c.Descripcion_curso, axc.estado, axc.parcial1, axc.parcial2, axc.recuperatorio1,
-				axc.recuperatorio2, axc.idCurso, axc.idAlumno FROM  alumnosxcurso axc
-				LEFT JOIN cursos c ON axc.idCurso = c.idCurso
-				LEFT JOIN docentes d ON c.idDocente = d.idDocente
-				LEFT JOIN alumnos a ON axc.idAlumno = a.idAlumno
-				ORDER BY a.Legajo ASC;"; 
+			String query = "SELECT axc.idAlumnosxcurso,a.Nombre, a.Apellido,c.Descripcion_curso, axc.estado, axc.parcial1, axc.parcial2, axc.recuperatorio1, axc.recuperatorio2, axc.idCurso, axc.idAlumno "
+					+ "FROM  alumnosxcurso axc LEFT JOIN cursos c ON axc.idCurso = c.idCurso LEFT JOIN docentes d ON c.idDocente = d.idDocente LEFT JOIN alumnos a ON axc.idAlumno = a.idAlumno ORDER BY a.Legajo ASC;"; 
 					Statement st = cn.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			
@@ -112,8 +105,8 @@ public class AlumnoxcursoDaoImpl implements AlumnoxcursoDao{
 	
 	
 	@Override
-	public Alumno obtenerAlumnoxcurso(int id) {
-		Alumno x = new Alumno();
+	public Alumnoxcurso obtenerAlumnoxcurso(int id) {
+		Alumnoxcurso x = new Alumnoxcurso();
 		Connection cn = null;
 		try {
 			cn = DriverManager.getConnection(host+dbName,user,pass);
