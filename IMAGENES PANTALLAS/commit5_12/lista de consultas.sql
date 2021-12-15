@@ -28,8 +28,8 @@ SELECT axc.idAlumnosxcurso,a.Nombre, a.Apellido,c.Descripcion_curso, axc.estado,
 axc.recuperatorio2 FROM  alumnosxcurso axc
 LEFT JOIN cursos c ON axc.idCurso = c.idCurso
 LEFT JOIN docentes d ON c.idDocente = d.idDocente
-LEFT JOIN alumnos a ON axc.idAlumno = a.idAlumno;
-
+LEFT JOIN alumnos a ON axc.idAlumno = a.idAlumno
+ORDER BY a.Legajo ASC;
 
 /****Hacer Stored procedures****/
 /*Materias que tiene una carrera
@@ -60,7 +60,8 @@ axc.recuperatorio2 FROM  alumnosxcurso axc
 LEFT JOIN cursos c ON axc.idCurso = c.idCurso
 LEFT JOIN docentes d ON c.idDocente = d.idDocente
 LEFT JOIN alumnos a ON axc.idAlumno = a.idAlumno
-WHERE a.Legajo = 12111 AND c.idCurso=1;
+WHERE a.Legajo = 12111 AND c.idCurso=1
+ORDER BY a.Legajo ASC;
 
 SELECT axc.idAlumnosxcurso,a.Nombre, a.Apellido,c.Descripcion_curso, axc.estado, axc.parcial1, axc.parcial2, axc.recuperatorio1, 
 axc.recuperatorio2 FROM  alumnosxcurso axc
@@ -90,33 +91,43 @@ _telefono int, _idcarrera int)
         _idprovincia, _idlocalidad, _email, _telefono, _idcarrera);
 	end  $$
 
-
-CREATE PROCEDURE borrar_alumno( in legajo int)
+/*así borra el registro determinado*/
+CREATE PROCEDURE borrar_alumno( in vlegajo int)
 begin
-	DELETE FROM ALUMNOS WHERE Legajo = legajo;
+	DELETE FROM ALUMNOS WHERE Legajo = vlegajo;
 end $$
 
+
+/*Así actualiza el registros determinado*/   
 delimiter $$  
-CREATE PROCEDURE actualizar_alumno (  legajo int ,dni int, nombre varchar(45), apellido varchar(45),
-fechanac varchar(45), direccion varchar(45), idpais int, idprovincia int, idlocalidad int, email varchar(45),
-telefono int, idcarrera int)
+CREATE PROCEDURE actualizar_alumno (  vlegajo int ,vdni int, vnombre varchar(45), vapellido varchar(45),
+vfechanac varchar(45), vdireccion varchar(45), vidpais int, vidprovincia int, vidlocalidad int, vemail varchar(45),
+vtelefono int, vidcarrera int)
 	begin 				
-	update alumnos
-    set Dni = dni, Nombre = nombre, Apellido = apellido, FechaNac = fechanac, 
-    Direccion = direccion, idPais = idpais, idProvincia = idprovincia, idLocalidad = idlocalidad, 
-    Email = email, Telefono = telefono, idCarrera = idcarrera
-    where Legajo = legajo;
+	update alumnos 
+    set Nombre = vnombre, Apellido = vapellido, FechaNac = vfechanac, 
+    Direccion = vdireccion, idPais = vidpais, idProvincia = vidprovincia, idLocalidad = vidlocalidad, 
+    Email = vemail, Telefono = vtelefono, idCarrera = vidcarrera
+    where Legajo = vlegajo;
 	end  $$
+ 
     
 /* Legajo es Unique por lo que no puede actualizarse porque no debe duplicarse
 Funcionamiento SP insertar_alumno, etc... TERCERA EJECUCION*/
 call insertar_alumno(12126, 40016, 'Leonela', 'Flores', '2000-01-01', 'Danford 42768', 2,2,2, 'lioflores@dominio.com', 352363623, 1); 
 call insertar_alumno(12127, 40017, 'Leone', 'Flo', '2000-01-01', 'Danfos 42768', 2,2,2, 'liofres@dominio.com', 35633323, 1);
 
+SET SQL_SAFE_UPDATES = 0; 
 call borrar_alumno(12127); /*Error Code: 1175. you are using safe update mode and you tried to update... */
+/*https://stackoverflow.com/questions/11448068/mysql-error-code-1175-during-update-in-mysql-workbench
+22:37:07	call borrar_alumno(12127)	Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`dbunt2`.`alumnosxcurso`, CONSTRAINT `FK_idAlumno_Alumnos` FOREIGN KEY (`idAlumno`) REFERENCES `alumnos` (`idAlumno`) ON DELETE NO ACTION ON UPDATE NO ACTION)	0.047 sec
+O sea se modificó por este error las relaciones entre tablas*/
+SET SQL_SAFE_UPDATES = 1; 
 
+SET SQL_SAFE_UPDATES = 0; 
 call actualizar_alumno(12127, 40017, 'Leone2', 'Flo', '2000-01-01', 'Danfos 42768', 2,2,2, 'liofres@dominio.com', 35633323, 1);
 /*Error Code: 1175. you are using safe update mode and you tried to update... */
+SET SQL_SAFE_UPDATES = 1; 
 
 
 
