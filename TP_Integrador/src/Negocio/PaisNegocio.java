@@ -8,5 +8,5 @@ public interface PaisNegocio {
 	public int agregarPais(Pais pais);
 	public ArrayList<Pais> ListarPais();
 	public int eliminarPais(int id);
-	public Alumno obtenerPais(int id);
+	public Pais obtenerPais(int id);
 }*/

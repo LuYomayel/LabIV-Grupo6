@@ -8,5 +8,5 @@ public interface LocalidadNegocio {
 	public int agregarLocalidad(Localidad localidad);
 	public ArrayList<Localidad> ListarLocalidades();
 	public int eliminarLocalidad(int id);
-	public Alumno obtenerLocalidad(int id);
+	public Localidad obtenerLocalidad(int id);
 }*/
