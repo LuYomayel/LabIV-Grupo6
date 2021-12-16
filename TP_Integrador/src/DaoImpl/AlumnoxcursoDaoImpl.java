@@ -1,4 +1,4 @@
-/*package DaoImpl;
+package DaoImpl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -132,4 +132,4 @@ public class AlumnoxcursoDaoImpl implements AlumnoxcursoDao{
 	
 	
 	
-}*/
+}

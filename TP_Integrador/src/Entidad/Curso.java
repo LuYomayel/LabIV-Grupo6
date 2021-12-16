@@ -5,10 +5,9 @@ public class Curso {
 	private String semestre;
 	private int año;
 	private Docente docente;
-	private Alumno alumno;
-	
+	private Alumno alumno;  //MAL
+	//Al curso se le debe asignar un grupo de alumnos, no un alumno
 	public Curso() {
-		
 	}
 	
 	
