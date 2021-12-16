@@ -69,7 +69,7 @@ public class ServletAlumno extends HttpServlet {
 				alu.setIdCarrera(Integer.parseInt(request.getParameter("txtIdCarrera")));
 				
 				AlumnoDaoImpl dao = new AlumnoDaoImpl();
-				filas = dao.agregarAlumno(alu);	
+				filas = dao.ModificarAlumno(alu,Integer.parseInt(request.getParameter("Legajo")));	
 				//filas = 1;
 				PaisDaoImpl pDao = new PaisDaoImpl();
 				ArrayList<Pais> listaPais = pDao.ListarPais();
@@ -91,39 +91,12 @@ public class ServletAlumno extends HttpServlet {
 				rd.forward(request, response);
 				
 			}
-			else {
-				
-				int legajo = 1000;
-				AlumnoDaoImpl dao = new AlumnoDaoImpl();
-				ArrayList<Alumno> lista= dao.ListarAlumnos();
-				request.setAttribute("listaA", lista);
-				
-				if(lista != null) {
-					for(Alumno alumno : lista) {
-						if(alumno.getLegajo()>legajo) legajo = alumno.getLegajo();
-						
-					}
-					
-				}
-				legajo++;
-				
-				PaisDaoImpl pDao = new PaisDaoImpl();
-				ArrayList<Pais> listaPais = pDao.ListarPais();
-				ProvinciaDaoImpl provDao = new ProvinciaDaoImpl();
-				ArrayList<Provincia> listaProv = provDao.ListarProvincia();
-				LocalidadDaoImpl lDao = new LocalidadDaoImpl();
-				ArrayList<Localidad> listaLocal = lDao.ListarLocalidad();
-				request.setAttribute("ListarProvincia", listaProv);
-				request.setAttribute("ListarPais", listaPais);
-				request.setAttribute("ListarLocalidad", listaLocal);
-				RequestDispatcher rd= request.getRequestDispatcher("/AgregarAlumnos.jsp");
-				rd.forward(request, response);
-			}
+
 		}
 			if(request.getParameter("btnModificar") !=null){
 				System.out.println(request.getParameter("idAlumno"));
 				
-			/*	if(request.getParameter("dniAlumno")!=null && request.getParameter("NombreAlumno")!=null && request.getParameter("ApellidoAlumno")!=null && request.getParameter("NacAlumno")!=null&& request.getParameter("DireccionAlumno")!=null && request.getParameter("PaisAlumno")!=null && request.getParameter("ProvinciaAlumno")!=null && request.getParameter("LocalidadAlumno")!=null && request.getParameter("EmailAlumno")!=null&& request.getParameter("TelefonoAlumno")!=null) {
+				if(request.getParameter("dniAlumno")!=null && request.getParameter("NombreAlumno")!=null && request.getParameter("ApellidoAlumno")!=null && request.getParameter("NacAlumno")!=null&& request.getParameter("DireccionAlumno")!=null && request.getParameter("PaisAlumno")!=null && request.getParameter("ProvinciaAlumno")!=null && request.getParameter("LocalidadAlumno")!=null && request.getParameter("EmailAlumno")!=null&& request.getParameter("TelefonoAlumno")!=null) {
 					int filas =0;
 					Alumno alu = new Alumno();
 					
@@ -188,7 +161,7 @@ public class ServletAlumno extends HttpServlet {
 					RequestDispatcher rd= request.getRequestDispatcher("/ModificarAlumno.jsp");
 					rd.forward(request, response);
 				}
-				*/
+				
 			}
 		if(request.getParameter("Param")!= null) {
 			AlumnoDaoImpl dao = new AlumnoDaoImpl();
