@@ -1,70 +1,73 @@
 package Entidad;
 
+
 public class Curso {
-	private Materia materia;
+	private int idCurso;
+	private int idMateria;
+	private String Descripcion_curso;
 	private String semestre;
 	private int año;
-	private Docente docente;
-	private Alumno alumno;  //MAL
-	//Al curso se le debe asignar un grupo de alumnos, no un alumno
+	private int idDocente;
+	//private Alumno alumno;  MAL, se asigna un grupo de alumnos. Toloza
+	//Para hacer el ArrayList =Descripcion_materia.
+	private String Descripcion_materia;
+	
 	public Curso() {
 	}
-	
-	
-	public Curso(String semestre, int año) {
+	/*public Curso(String semestre, int año) {
 		super();	
 		this.semestre = semestre;
 		this.año = año;
-		
+	}Toloza*/
+	public int getIdCurso() {
+		return idCurso;
+	}
+	public void setIdCurso(int idCurso) {
+		this.idCurso = idCurso;
 	}
 	
+	public int getIdMateria() {
+		return idMateria;
+	}
+	public void setIdMateria(int idMateria) {
+		this.idMateria = idMateria;
+	}
 	
-	public Materia getMateria() {
-		return materia;
+	public String getDescripcion_curso() {
+		return Descripcion_curso;
 	}
-	public void setMateria(Materia materia) {
-		this.materia = materia;
+	public void setDescripcion_curso(String descripcion_curso) {
+		Descripcion_curso = descripcion_curso;
 	}
+	
 	public String getSemestre() {
 		return semestre;
 	}
 	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
+	
 	public int getAño() {
 		return año;
 	}
 	public void setAño(int año) {
 		this.año = año;
 	}
-	public Docente getDocente() {
-		return docente;
+	
+	public int getIdDocente() {
+		return idDocente;
 	}
-	public void setDocente(Docente docente) {
-		this.docente = docente;
-	}
-	public Alumno getAlumno() {
-		return alumno;
-	}
-	public void setAlumno(Alumno alumno) {
-		this.alumno = alumno;
-	}
-
-	public int getIdMateria() {
-		return materia.getIdMateria();
+	public void setIdDocente(int idDocente) {
+		this.idDocente = idDocente;
 	}
 	
-	public String getNombreMateria() {
-		return materia.getNombreMateria();
-		
-	}
 	
-	public int getLegajoDocente() {
-		return docente.getLegajo();
+	//////////////////////////
+	public String getDescripcion_materia() {
+		return Descripcion_materia;
 	}
+	public void setDescripcion_materia(String descripcion_materia) {
+		Descripcion_materia = descripcion_materia;
+	}	
 	
-	public String getNombreCompletoDocente() {
-		return docente.toString();
-		
-	}
 }

@@ -51,14 +51,19 @@ public class CursoDaoImpl implements CursoDao{
 		try {
 			cn=DriverManager.getConnection(host+"dbunt2",user,pass);
 			Statement st = cn.createStatement();
-			ResultSet rs = st.executeQuery("SELECT c.idCurso,m.Descripcion_Materia, c.Descripcion_curso, c.Semestre,\r\n" + 
-					" c.Año, d.Nombre, d.Apellido, car.Descripcion_carrera FROM cursos c\r\n" + 
+			ResultSet rs = st.executeQuery("SELECT c.idCurso idCurso, m.idMateria idMateria, m.Descripcion_Materia D_Materia, c.Descripcion_curso D_Curso, c.Semestre semestre,\r\n" + 
+					" c.Año año, d.Nombre, d.Apellido, car.Descripcion_carrera FROM cursos c\r\n" + 
 					"LEFT JOIN materias m ON c.idMateria = m.idMateria\r\n" + 
 					"LEFT JOIN docentes d ON c.idDocente = d.idDocente\r\n" + 
 					"LEFT JOIN carreras car ON d.idCarrera = car.idCarrera; ");
 				while(rs.next()) {
 					Curso x =new Curso();
-					//x.setMateria(rs.); No puedo asignarle del resulset un objeto a X
+					x.setDescripcion_curso(rs.getString("D_curso"));
+					x.setDescripcion_materia(rs.getString("D_Materia"));
+					x.setAño(rs.getInt("año"));
+					x.setSemestre(rs.getString("semestre"));
+					x.setIdCurso(rs.getInt("idCurso")); 
+					//x.setMateria(rs.getMateria??); No puedo asignarle del resulset un objeto a X
 					//setMateria, setSemestre, setAño, setDocente
 				}cn.close();
 			}catch(Exception e) {
