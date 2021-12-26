@@ -53,7 +53,6 @@
 						<th>Nombre</th>
 						<th>Apellido</th>
 						
-						<th>ELIMINAR</th>
 					</tr>
 				</thead>
 			<tbody>

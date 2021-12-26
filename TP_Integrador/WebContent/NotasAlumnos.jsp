@@ -1,4 +1,6 @@
 <%@page import="java.util.ArrayList"%>
+<%@page import="DaoImpl.AlumnoxcursoDaoImpl"%>
+<%@page import="Entidad.Alumnoxcurso" %>
 <%@page import="DaoImpl.AlumnoDaoImpl"%>
 <%@page import="Entidad.Alumno" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,23 +15,12 @@
 <body>
 	<head>
 		<nav class="menu">
-			<ul>
-                        <li style="width: 276px; "><a href="#"><p align="left">Profesores</p></a>
-                        <ul id="desple">
-                                <li><a href="ServletDocente?Agregar=1"><p align="left">Agregado de Profesor</p></a></li>
-                                <li><a href="ServletDocente?Param=1"><p align="left">Listado de Profesores</p></a></li>
-                            </ul>
-                            </li><li style="width: 292px; "><a href="#"><p align="left">Alumnos</p></a>
-                        <ul id="desple">
-                                <li><a href="ServletAlumno?Agregar=1"><p align="left">Agregado de Alumno</p></a></li>
-                                <li><a href="ServletAlumno?Param=1"><p align="left">Listado de alumnos</p></a></li>
-                            </ul>
-                            </li>
-                        
+			<ul>           
                         <li style="width: 335px; "><a href="#"><p align="left">Cursos</p></a>
                         <ul id="desple">
-                                <li><a href="ServletCursos?Agregar=1"><p align="left">Agregado de cursado</p></a></li>
+                                <li><a href="ServletAlumnoxcurso?Agregar=1"><p align="left">Agregado de cursado</p></a></li>
                                 <li><a href="#"><p align="left">Agregar Alumnos a cursado</p></a></li>
+                                <li><a href="ServletAlumnoxcurso?Param=1"><p align="left">Listado de Alumnos por curso</p></a></li>
                             </ul>
                             </li>
                         <li><a href="#"><p align="left" style="width: 286px; ">Cerrar Sesion</p></a></li>
@@ -38,16 +29,15 @@
 	</head>
 	
 	<%
-	/*ArrayList<Alumnoxc> listaAlumnosxc = null;
+	ArrayList<Alumnoxcurso> listaAlumnosxc = null;
 	if(request.getAttribute("listaAxc")!=null)
 	{
-		listaAlumnosxc = (ArrayList<Alumnoxc>) request.getAttribute("listaAxc");
+		listaAlumnosxc = (ArrayList<Alumnoxcurso>) request.getAttribute("listaAxc");
 	}
-	*/
 	%>
 	
-	<h1><p aling ="Center";"  ><b> Listado de cursos</b></p> </h1> <!-- probablemente servlet diferente-->
-	<form action="ServeletAlumno" method= "post" class ="contenedor"> 
+	<h1><p aling ="Center";"  ><b> Listado de alumnos por curso</b></p> </h1> <!-- probablemente servlet diferente-->
+	<form action="ServeletAlumnoxcurso" method= "post" class ="contenedor"> 
 		<table border=1 ,style="text-align: center"> 
 		<nav class= "table">
 		<thead>
@@ -66,10 +56,10 @@
 		</tr>
 		</thead>
 		<tbody>
-				<%  /*if(listaAlumnosxc!=null)
-		for(Alumno alumno : listaAlumnosxc) 
-		{*/
-	%>	
+		<% if(listaAlumnosxc!=null)	
+		for(Alumnoxcurso alumnoxcurso : listaAlumnosxc) 
+		{
+		%>	
 		<tr>
 			<form name="formulario" action="ServletAlumno?idAlumno=<%--=alumno.getLegajo()--%>" method="get">
 				
@@ -86,7 +76,7 @@
 				
 				</form> 
 				</tr>
-				<%-- /*  } */ --%>
+				<% } %>
 		</tbody>
 			</nav>
 	</table>
