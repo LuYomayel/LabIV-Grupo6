@@ -1,4 +1,4 @@
-/*package Entidad;
+package Entidad;
 
 public class Alumnoxcurso {
 	private int id;
@@ -99,4 +99,4 @@ public class Alumnoxcurso {
 
 	
 	
-}*/
+}

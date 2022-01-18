@@ -271,6 +271,7 @@ public class ServletAlumno extends HttpServlet {
 			request.setAttribute("legajo", legajo);
 			RequestDispatcher rd = request.getRequestDispatcher("/ModificarAlumno.jsp");
 			rd.forward(request, response);
+			
 		}
 		
 	}
