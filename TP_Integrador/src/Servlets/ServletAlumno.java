@@ -297,6 +297,7 @@ public class ServletAlumno extends HttpServlet {
 			request.setAttribute("listaA", lista);
 			RequestDispatcher rd = request.getRequestDispatcher("/ListadoAlumnos.jsp");
 			rd.forward(request, response);
+			
 		}
 	}
 
