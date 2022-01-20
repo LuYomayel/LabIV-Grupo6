@@ -22,7 +22,7 @@ public class Docente {
 	}
 
 	public Docente( String dni, String nombre, String apellido, String fechanacimiento, String direccion,
-			String localidad, String nacionalidad, String email,String contraseña, String telefono, String provincia) {
+			String localidad, String nacionalidad, String email,String contraseña, String telefono, String provincia,int IdCarrera) {
 		super();		
 		this.legajo = devuelveProximoLegajo();
 		this.dni = dni;
@@ -36,6 +36,8 @@ public class Docente {
 		this.email = email;
 		this.contraseña = contraseña;
 		this.telefono = telefono;
+		this.IdCarrera = IdCarrera;
+		
 	}
 	
 	public static int devuelveProximoLegajo() {
@@ -146,15 +148,21 @@ public class Docente {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+	
+	public int getIdCarrera() {
+		return IdCarrera;
+	}
+
+	public void setIdCarrera(int IdCarrera) {
+		this.IdCarrera = IdCarrera;
+	}
+
 
 	@Override
 	public String toString() {
 		return apellido+" "+ nombre;
 	}
 
-	public int getIdCarrera() {
-		
-		return IdCarrera;
-	}
+	
 	
 }
