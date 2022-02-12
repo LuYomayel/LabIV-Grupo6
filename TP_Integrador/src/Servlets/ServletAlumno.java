@@ -69,7 +69,7 @@ public class ServletAlumno extends HttpServlet {
 				alu.setIdCarrera(Integer.parseInt(request.getParameter("txtIdCarrera")));
 				
 				AlumnoDaoImpl dao = new AlumnoDaoImpl();
-				filas = dao.ModificarAlumno(alu,Integer.parseInt(request.getParameter("Legajo")));	
+				filas = dao.ModificarAlumno(alu);	
 				//filas = 1;
 				PaisDaoImpl pDao = new PaisDaoImpl();
 				ArrayList<Pais> listaPais = pDao.ListarPais();

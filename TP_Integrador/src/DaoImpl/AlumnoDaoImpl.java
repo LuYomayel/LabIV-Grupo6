@@ -1,5 +1,6 @@
 package DaoImpl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -143,8 +144,9 @@ public class AlumnoDaoImpl implements AlumnoDao{
 		return x;
 	}
 	
-	public int ModificarAlumno(Alumno a, int legajo) {
+	public int ModificarAlumno(Alumno a) {
 		//Alumno alumno = new Alumno();
+		int estado = 0;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
@@ -160,7 +162,19 @@ public class AlumnoDaoImpl implements AlumnoDao{
 			cn = DriverManager.getConnection(host+dbName,user,pass);
 			Statement st =cn.createStatement();
 			String query=
-			"UPDATE alumnos set (legajo = '"+a.getLegajo()+"', dni ='"+a.getDni()+"',nombre"+a.getNombre()+"',apellido ='"+a.getApellido()+"',fechaNac= "+ "'STR_TO_DATE( '"+a.getFechanacimiento()+"','%d/%m/%Y'), direccion = '" +a.getDireccion()+"',idPais = "+a.getNacionalidad()+",idProvincia = "+a.getProvincia()+",idLocalidad ="+a.getLocalidad()+",email = '"+a.getEmail()+"',telefono = '"+a.getTelefono()+"',idCarrera ="+a.getIdCarrera()+"where (legajo = "+	legajo+")";
+			"(UPDATE alumnos set "
+			+"legajo = '"+a.getLegajo()+"',"			
+			+"dni ='"+a.getDni()+"',"
+			+"nombre"+a.getNombre()+"',"
+			+"',apellido ='"+a.getApellido()+"',"
+			+"fechaNac= "+ "'STR_TO_DATE( '"+a.getFechanacimiento()+"','%d/%m/%Y')',"
+			+"direccion = '" +a.getDireccion()+"',"
+			+"idPais = '"+a.getNacionalidad()+"',"
+			+"idProvincia = '"+a.getProvincia()+"',"
+			+"idLocalidad = '"+a.getLocalidad()+"',"
+			+"email = '"+a.getEmail()+"',"
+			+"telefono = '"+a.getTelefono()+"',"
+			+"idCarrera ='"+a.getIdCarrera()+"' where legajo = "+a.getId();
 			
 			filas = st.executeUpdate(query);
 		}
@@ -171,5 +185,36 @@ public class AlumnoDaoImpl implements AlumnoDao{
 	
 	}
 	
+	public int Baja(Alumno a) {
+		int estado = 0;
+		CallableStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		try {
+			statement = conexion.prepareCall("update alumnos set"
+					+"Estado = 0"
+					+"where ID = " +a.getId()
+					);
+			statement.execute();
+			estado = 1;
+		}
+		catch (SQLException e) {
+			estado = 0 ;
+		}
+		return estado;
+	}
+
+
+	@Override
+	public Alumno obtenerAlumnoxID(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Alumno obtenerAlumnoxApellido(String apellido) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

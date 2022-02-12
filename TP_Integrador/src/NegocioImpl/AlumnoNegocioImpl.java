@@ -1,18 +1,18 @@
-/*package NegocioImpl;
+package NegocioImpl;
 
 import java.util.ArrayList;
+import java.util.*;
 
 import Dao.AlumnoDao;
 import DaoImpl.AlumnoDaoImpl;
 import Entidad.Alumno;
-import Negocio.AlumnoNegocio;
 
-public class AlumnoNegocioImpl implements AlumnoNegocio{
-	AlumnoDao adao = new AlumnoDaoImpl();
 
-	@Override
+public class AlumnoNegocioImpl {
+	AlumnoDao aDao = new AlumnoDaoImpl();
+
 	public int agregarAlumno(Alumno alumno) {
-		boolean estado=false;
+		int estado = 0;
 		if(alumno.getLegajo()>0 && 
 				alumno.getDni().trim().length()>0 &&
 				alumno.getNombre().trim().length()>0 &&
@@ -26,47 +26,36 @@ public class AlumnoNegocioImpl implements AlumnoNegocio{
 				alumno.getIdCarrera()>0 
 				)
 		{
-			estado=adao.agregarAlumno(alumno);
+			estado=aDao.agregarAlumno(alumno);
 		}
 		return estado;
 	}
 
-	@Override
-	public ArrayList<Alumno> ListarAlumnos() {
-		return adao.ListarAlumnos();
+	public ArrayList<Alumno> listarAlumnosnos() {
+		ArrayList<Alumno> Lista = null;
+		Lista = aDao.ListarAlumnos();
+		
+		return aDao.ListarAlumnos();
 	}
 
-	@Override
+
 	public int eliminarAlumno(int id) {
-		boolean estado=false;
-		String Apellido = adao.getApellido;		
-		Alumno alumno = obtenerAlumno(Apellido);
-		if(alumno.getLegajo()>0 )//También se puede preguntar si existe ese ID 
-		{
-			estado=adao.eliminarAlumno(id);
-		}
+		int estado = 0;
+//		--String Apellido = aDao.getApellido;		
+//		--Alumno alumno = obtenerAlumno(Apellido);
+//		if(alumno.getLegajo()>0 )//También se puede preguntar si existe ese ID 
+//		{
+//			estado=aDao.eliminarAlumno(id);
+//		}
 		return estado; 
 	}
 	
-	@Override
-	public Alumno obtenerAlumno(int id) {
-		boolean estado=false;
-		Alumno alumno = obtenerAlumno(id);
-		if(alumno.getLegajo()>0 )
-		{
-			estado=adao.obtenerAlumno(id);
-		}
-		return estado; 
-	}
 
-	@Override
-	public Alumno obtenerAlumno(String Apellido) {
-		boolean estado=false;
-		Alumno alumno = obtenerAlumno(Apellido);
-		if(alumno.getLegajo()>0 )
-		{
-			estado=adao.obtenerAlumno(Apellido);
-		}
-		return estado; 
+
+
+	public int Baja(Alumno a) {
+		int bajaAl = 0;
+		bajaAl = aDao.Baja(a);
+		return bajaAl;
 	}
-}*/
+}
