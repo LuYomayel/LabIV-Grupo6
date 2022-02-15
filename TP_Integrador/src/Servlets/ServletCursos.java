@@ -41,6 +41,17 @@ public class ServletCursos extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/AgregadoCursado.jsp");
 			rd.forward(request, response);
 		}
+		
+		if(request.getParameter("Param")!= null) {
+			CursoDaoImpl dao = new CursoDaoImpl();
+			ArrayList<Curso> lista= dao.ListarCursos();
+			
+			request.setAttribute("listaC", lista);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/ListadoCursos.jsp");
+			rd.forward(request, response);
+		}
+		
 	}
 
 	/**

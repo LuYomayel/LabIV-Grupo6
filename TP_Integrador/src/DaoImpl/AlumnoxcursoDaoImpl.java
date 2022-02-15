@@ -78,6 +78,48 @@ public class AlumnoxcursoDaoImpl implements AlumnoxcursoDao{
 	
 	
 	@Override
+	public ArrayList<Alumnoxcurso> ListarAluxcursSelecta(String ElijeUnCurso) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<Alumnoxcurso>listaAluxcursSelecta = new ArrayList<Alumnoxcurso>();
+		Connection cn= null;
+		try {
+			cn = DriverManager.getConnection(host+dbName,user,pass);
+			String query = "SELECT axc.idAlumnosxcurso,a.Nombre, a.Apellido,c.Descripcion_curso, axc.estado, axc.parcial1, axc.parcial2, axc.recuperatorio1," +
+" axc.recuperatorio2 FROM  alumnosxcurso axc" +
+" LEFT JOIN cursos c ON axc.idCurso = c.idCurso" +
+" LEFT JOIN docentes d ON c.idDocente = d.idDocente" +
+"LEFT JOIN alumnos a ON axc.idAlumno = a.idAlumno"+
+"WHERE c.Descripcion_curso LIKE '% + ElijeUnCurso +%'" +
+"ORDER BY c.idCurso ASC;"; 
+					Statement st = cn.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			
+			while (rs.next()) {
+				Alumnoxcurso x = new Alumnoxcurso();
+				x.setId(rs.getInt("idAlumnosxcurso"));
+				x.setEstado(rs.getString("estado"));
+				x.setParcial1(rs.getDouble("parcial1"));
+				x.setParcial2(rs.getDouble("parcial2"));	
+				x.setRecupera1(rs.getDouble("recupera1"));
+				x.setRecupera2(rs.getDouble("recupera2"));
+				x.setIdCurso(rs.getInt("idCurso"));
+				x.setIdAlumno(rs.getInt("idAlumno"));	
+				listaAlumnosxcurso.add(x);
+			}
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return listaAlumnosxcurso;
+	}
+	
+	
+	@Override
 	public int eliminarAlumnoxcurso(int id) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

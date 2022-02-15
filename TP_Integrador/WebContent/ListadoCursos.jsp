@@ -21,6 +21,7 @@
                         <li style="width: 335px; "><a href="#"><p align="left">Cursos</p></a>
                         <ul id="desple">
                                 <li><a href="ServletCursos?Agregar=1"><p align="left">Agregado de cursado</p></a></li>
+                                <li><a href="ServletCursos?Param=1"><p align="left">Listado de cursos</p></a></li>
                                 <li><a href="#"><p align="left">Agregar Alumnos a cursado</p></a></li>
                             </ul>
                             </li>
@@ -63,8 +64,10 @@
 						{
 						%>
 					<form name="formulario" action="ServletCurso?idCurso=<%=curso.getIdCurso()%>" method="get">
+						
 						<td><%= curso.getIdCurso()%>   <input type="hidden" name="idCurso" value="<%=curso.getIdCurso()%>"> </td>
-						<td><%= curso.getDescripcion_curso() %></td>
+						<a href="ServletAlumnoxcurso?ElijeUnCurso=<%= curso.getDescripcion_curso() %>">
+						<td><%= curso.getDescripcion_curso() %></td> </a>
 						<td><%= curso.getDescripcion_materia()%></td>
 						<td><%= curso.getAño()%></td>
 						<td><%= curso.getSemestre()%></td>

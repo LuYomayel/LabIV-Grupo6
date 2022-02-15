@@ -43,6 +43,17 @@ public class ServletAlumnoxcurso extends HttpServlet{
 			rd.forward(request, response);
 		}
 		
+		//Parametro ElijeUnCurso de ListadoCursos.jsp
+		if(request.getParameter("ElijeUnCurso")!=null) {
+			AlumnoxcursoDaoImpl dao = new AlumnoxcursoDaoImpl();
+			ArrayList<Alumnoxcurso> listaselecta = dao.ListarAluxcursSelecta(ElijeUnCurso);
+			request.setAttribute("listaAxcSelect", lista);
+			RequestDispatcher rd = request.getRequestDispatcher("/NotasAlumnos.jsp");
+			rd.forward(request, response);
+		}
+		
+		
+		
 		
 		//Parametro Agregar de NotasAlumnos.jsp
 		if(request.getParameter("Agregar")!=null) {
