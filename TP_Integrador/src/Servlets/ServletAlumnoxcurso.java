@@ -46,8 +46,9 @@ public class ServletAlumnoxcurso extends HttpServlet{
 		//Parametro ElijeUnCurso de ListadoCursos.jsp
 		if(request.getParameter("ElijeUnCurso")!=null) {
 			AlumnoxcursoDaoImpl dao = new AlumnoxcursoDaoImpl();
+				String ElijeUnCurso = request.getParameter("ElijeUnCurso");	
 			ArrayList<Alumnoxcurso> listaselecta = dao.ListarAluxcursSelecta(ElijeUnCurso);
-			request.setAttribute("listaAxcSelect", lista);
+			request.setAttribute("listaAxcSelect", listaselecta);
 			RequestDispatcher rd = request.getRequestDispatcher("/NotasAlumnos.jsp");
 			rd.forward(request, response);
 		}
