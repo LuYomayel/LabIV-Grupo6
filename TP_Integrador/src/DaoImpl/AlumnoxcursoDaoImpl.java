@@ -109,13 +109,13 @@ public class AlumnoxcursoDaoImpl implements AlumnoxcursoDao{
 				x.setRecupera2(rs.getDouble("recupera2"));
 				x.setIdCurso(rs.getInt("idCurso"));
 				x.setIdAlumno(rs.getInt("idAlumno"));	
-				listaAlumnosxcurso.add(x);
+				ListarAluxcursSelecta.add(x);
 			}
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		return listaAlumnosxcurso;
+		return ListarAluxcursSelecta;
 	}
 	
 	

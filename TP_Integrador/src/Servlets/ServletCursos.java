@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DaoImpl.CursoDaoImpl;
 import DaoImpl.MateriaDaoImpl;
+import Entidad.Curso;
 import Entidad.Materia;
 
 /**
