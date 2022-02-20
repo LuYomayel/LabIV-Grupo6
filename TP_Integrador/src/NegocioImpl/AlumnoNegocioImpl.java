@@ -31,7 +31,7 @@ public class AlumnoNegocioImpl {
 		return estado;
 	}
 
-	public ArrayList<Alumno> listarAlumnosnos() {
+	public ArrayList<Alumno> ListarAlumnos() {
 		ArrayList<Alumno> Lista = null;
 		Lista = aDao.ListarAlumnos();
 		
