@@ -46,6 +46,7 @@ public class UsuarioNegocioImpl implements UsuarioNegocio{
 		return null;
 	}
 		
+	
 	public int Baja(Usuario u) {
 		int bajaUl = 0;
 		bajaUl = udao.Baja(u);
