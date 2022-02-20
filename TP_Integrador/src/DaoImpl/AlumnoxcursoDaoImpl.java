@@ -173,5 +173,23 @@ public class AlumnoxcursoDaoImpl implements AlumnoxcursoDao{
 	}
 	
 	
+	public int Baja(Alumnoxcurso axc) {
+		int estado = 0;
+		CallableStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		try {
+			statement = conexion.prepareCall("update alumnosxcurso set"
+					+"Estado2 = 0"
+					+"where ID = " +a.getId()
+					);
+			statement.execute();
+			estado2 = 1;
+		}
+		catch (SQLException e) {
+			estado = 0 ;
+		}
+		return estado2;
+	}
+	
 	
 }

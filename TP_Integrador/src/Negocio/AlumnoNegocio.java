@@ -11,4 +11,5 @@ public interface AlumnoNegocio {
 	//¿Apellido y nombre?
 	public Alumno obtenerAlumno(String Apellido);
 	Alumno obtenerAlumno(int id);
+	public int Baja(Alumno a);
 }
