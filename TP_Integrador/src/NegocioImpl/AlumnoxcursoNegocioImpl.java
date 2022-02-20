@@ -9,7 +9,7 @@ import Entidad.Alumnoxcurso;
 
 
 public class AlumnoxcursoNegocioImpl {
-	AlumnoxcursoDao aDao = new AlumnoxcursoDaoImpl();
+	AlumnoxcursoDao axcDao = new AlumnoxcursoDaoImpl();
 
 	public int agregarAlumno(Alumnoxcurso alumnoxcurso) {
 		int estado = 0;
@@ -22,16 +22,16 @@ public class AlumnoxcursoNegocioImpl {
 				alumnoxcurso.getIdAlumno()>0 
 				)
 		{
-			estado=aDao.agregarAlumnoxcurso(alumnoxcurso);
+			estado=axcDao.agregarAlumnoxcurso(alumnoxcurso);
 		}
 		return estado;
 	}
 
 	public ArrayList<alumnoxcurso> ListarAlumnosxcurso() {
 		ArrayList<alumnoxcurso> Lista = null;
-		Lista = aDao.ListarAlumnosxcurso();
+		Lista = axcDao.ListarAlumnosxcurso();
 		
-		return aDao.ListarAlumnosxcurso();
+		return axcDao.ListarAlumnosxcurso();
 	}
 
 
@@ -46,7 +46,7 @@ public class AlumnoxcursoNegocioImpl {
 
 	public int Baja(Alumnoxcurso axc) {
 		int bajaAl = 0;
-		bajaAl = aDao.Baja(axc);
+		bajaAl = axcDao.Baja(axc);
 		return bajaAl;
 	}
 }

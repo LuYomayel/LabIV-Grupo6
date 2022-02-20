@@ -12,4 +12,5 @@ public interface DocenteDao {
 	public Docente obtenerDocente(String apellido);
 	public int obtenerIdDocente(String mail);
 	public int obtenerIdDocentexLegajo(Docente docente);
+	public int Baja(Docente d);
 }

@@ -1,4 +1,4 @@
-/*package NegocioImpl;
+package NegocioImpl;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ import Entidad.Docente;
 import Negocio.DocenteNegocio;
 
 public class DocenteNegocioImpl implements DocenteNegocio{
-	DocenteDao ddao = new DocenteDaoImpl();
+	DocenteDao dDao = new DocenteDaoImpl();
 	
 	@Override
 	public int agregarDocente(Docente docente) {
@@ -25,25 +25,29 @@ public class DocenteNegocioImpl implements DocenteNegocio{
 				docente.getTelefono().trim().length()>0 && 
 				docente.getIdCarrera()>0)
 		{
-			estado=ddao.agregarDocente(docente);
+			estado=dDao.agregarDocente(docente);
 		}
 		return estado;
 	}
 
 	@Override
 	public ArrayList<Docente> ListarDocentes() {
-		return ddao.ListarDocentes();
+		ArrayList<Docente> Lista = null;
+		Lista = dDao.ListarDocentes();
+		
+		return dDao.ListarDocentes();
 	}
 
 	@Override
 	public int eliminarDocente(int id) {
-		boolean estado=false;
+		int estado =0;
+		/*boolean estado=false;
 		String Apellido = ddao.getApellido;
 		Docente docente =obtenerDocente(apellido);
 		if(docente.getLegajo()>0 )//El tema es que el ID lo maneja la base de datos. 
 		{
 			estado=ddao.eliminarDocente(id);
-		}
+		}*/
 		return estado;  
 	}
 
@@ -53,7 +57,7 @@ public class DocenteNegocioImpl implements DocenteNegocio{
 		Docente docente = obtenerDocente(Apellido);
 		if(docente.getLegajo()>0 )
 		{
-			estado=ddao.obtenerDocente(Apellido);
+			estado=dDao.obtenerDocente(Apellido);
 		}
 		return estado; 
 	}
@@ -64,9 +68,14 @@ public class DocenteNegocioImpl implements DocenteNegocio{
 		Docente docente = obtenerIdDocente(mail);
 		if(docente.getLegajo()>0 )
 		{
-			estado=ddao.obtenerIdDocente(mail);
+			estado=dDao.obtenerIdDocente(mail);
 		}
 		return estado; 
 	}
 
-}*/
+	public int Baja(Docente d) {
+		int bajaDl = 0;
+		bajaDl = dDao.Baja(d);
+		return bajaDl;
+	}
+}
