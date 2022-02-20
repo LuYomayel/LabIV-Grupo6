@@ -1,8 +1,10 @@
 package DaoImpl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 
@@ -106,8 +108,25 @@ public class UsuarioDaoImpl implements UsuarioDao{
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
-		
-		
+	}
+	
+	
+	public int Baja(Usuario u) {
+		int estado = 0;
+		CallableStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		try {
+			statement = conexion.prepareCall("update usuarios set"
+					+"Estado = 0"
+					+"where idUsuarios = " +u.getId()
+					);
+			statement.execute();
+			estado = 1;
+		}
+		catch (SQLException e) {
+			estado = 0 ;
+		}
+		return estado;
 	}
 	
 	

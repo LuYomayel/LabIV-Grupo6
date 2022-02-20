@@ -1,4 +1,4 @@
-/*package NegocioImpl;
+package NegocioImpl;
 
 import java.util.ArrayList;
 
@@ -6,11 +6,15 @@ import Dao.UsuarioDao;
 import DaoImpl.UsuarioDaoImpl;
 import Entidad.Usuario;
 import Negocio.UsuarioNegocio;
+import Dao.DocenteDao;
+import DaoImpl.DocenteDaoImpl;
+import Entidad.Docente;
+import Negocio.DocenteNegocio;
 
 public class UsuarioNegocioImpl implements UsuarioNegocio{
 	UsuarioDao udao = new UsuarioDaoImpl();
 	
-	@Override
+	/*@Override
 	public int agregarUsuario(Usuario usuario) {
 		int estado=0;
 		if(	usuario.getUsuario()>0 && 
@@ -35,16 +39,16 @@ public class UsuarioNegocioImpl implements UsuarioNegocio{
 			estado=udao.eliminarUsuario(id);
 		}
 		return estado;  //estado al ser int pregunto por el 0
-	}
+	}*/
 
-		@Override
+	@Override
 	public Alumno obtenerAdmin(String apellido) {
-
 		return null;
 	}
-		@Override
-	public Alumno obtenerUsuario(int id) {
-	return null;
+		
+	public int Baja(Usuario u) {
+		int bajaUl = 0;
+		bajaUl = udao.Baja(u);
+		return bajaUl;
 	}
-
-}*/
+}
